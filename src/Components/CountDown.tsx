@@ -9,7 +9,7 @@ export default function CountDown() {
             <div id="count-down" className="w-full m-auto border- flex flex-col items-center mt-10 h-[621px] p-2 gap-10 justify-center relative" style={{background:"linear-gradient(#293464B2), url('/countdownbg.jpg')"}}>
             <svg width="1282" height="549" viewBox="0 0 1282 549" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-[-12px]">
 <path d="M30.5145 431.638L24.6313 432.552L27.4185 427.614L26.2773 426.64L21.7192 430.066L21.9357 424.313L20.514 424.066L18.1702 429.52L15.2261 424.521L13.9199 424.856L14.3198 430.444L9.56119 427.969L8.71419 429.04L12.3323 433.648L6.28369 433.799L6.08989 435.222L11.5567 437.266L6.57101 440.396L6.97001 441.841L12.583 440.766L9.91387 445.804L11.0551 446.779L15.4951 443.252L15.5488 449.166L16.96 449.266L19.191 443.785L22.1849 448.964L23.4412 448.449L22.7213 442.519L27.8394 445.37L28.7257 444.332L25.1417 439.684L31.0775 439.506L31.2766 438.157L25.8045 436.039L30.903 432.937L30.5145 431.638Z" fill="#C8AD6E"/>
-<circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-1 0 0 1 513.266 0.109375)" fill="#6982C1" fill-opacity="0.4"/>
+<circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-1 0 0 1 513.266 0.109375)" fill="#6982C1" fillOpacity="0.4"/>
 <circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-1 0 0 1 438.199 84.0078)" fill="#C8AD6E"/>
 <rect x="1249.74" y="492.381" width="15.7799" height="6.36088" transform="rotate(-130.1 1249.74 492.381)" fill="#C8AD6E"/>
 <rect x="1236.42" y="491.271" width="15.7799" height="6.36088" transform="rotate(-130.1 1236.42 491.271)" fill="#C8AD6E"/>
