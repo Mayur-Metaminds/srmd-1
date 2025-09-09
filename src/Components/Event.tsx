@@ -48,7 +48,7 @@ export default function EventSection() {
   );
 }
 
-function EventCard({ text,svg }: { text: string,svg:any}) {
+function EventCard({ text,svg }: { text: string,svg:React.ReactNode}) {
   return (
     <div className="relative bg-[#FED543] rounded-2xl p-6 pb-0 sm:p-8 flex items-center justify-center text-center shadow-md h-[305px] sm:h-40 lg:h-44">
       <p className="text-gray-900 font-medium text-sm sm:text-base lg:text-lg leading-snug">
