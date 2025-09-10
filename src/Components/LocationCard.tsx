@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function LocationCard() {
     return (
-        <div className="min-w-[410px]  border-2 border-[#FED543] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
+        <div className="w-[45%]sm:w-full  border-2 border-[#FED543] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
             {/* Header */}
             <div className="bg-[#C8AD6E] text-white text-center py-3 px-4 font-medium  mt-2 w-[95%] flex justify-center m-auto rounded-lg text-[20px] ">
                 Mumbai - Location

@@ -28,7 +28,7 @@ const events = [
 
 export default function EventSection() {
   return (
-    <section className="w-full py-10 flex flex-col items-center bg-white px-4" >
+    <section className="w-full  py-10 flex flex-col items-center bg-white px-4" >
       {/* Badge */}
       <div className="flex items-center gap-2 px-4 py-1 rounded-full bg-[#293464] text-white font-medium mb-8 text-sm sm:text-base">
                     <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,12 +50,12 @@ export default function EventSection() {
 
 function EventCard({ text,svg }: { text: string,svg:React.ReactNode}) {
   return (
-    <div className="relative bg-[#FED543] rounded-2xl p-6 pb-0 sm:p-8 flex items-center justify-center text-center shadow-md h-[305px] sm:h-40 lg:h-44">
+    <div className=" relative bg-[#FED543] rounded-2xl p-6  sm:p-8 flex items-center justify-center text-center shadow-md h-[305px] sm:h-40 lg:h-44">
       <p className="text-gray-900 font-medium text-sm sm:text-base lg:text-lg leading-snug">
         {text}
       </p>
       {/* Decorative shape placeholder */}
-      <div className="absolute bottom-5 left-2 opacity-30">
+      <div className="absolute bottom-0 left-0 opacity-30">
        
       {svg}
       </div>
