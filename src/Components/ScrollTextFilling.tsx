@@ -30,7 +30,7 @@ export default function ScrollTypingEffect(
     paragraph.textContent = "";
 
     const spanArray: HTMLElement[] = [];
-    for (let char of text) {
+    for (const char of text) {
       const span = document.createElement("span");
       span.textContent = char;
       paragraph.appendChild(span);
@@ -48,7 +48,7 @@ export default function ScrollTypingEffect(
       }
       const scrollY = window.scrollY;
       const spans = spansRef.current;
-      let idx = currentIndexRef.current;
+      const idx = currentIndexRef.current;
 
       if (scrollY > lastScrollYRef.current) {
         // scroll up → reveal next character
