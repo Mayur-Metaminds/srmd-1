@@ -38,12 +38,12 @@ export default function CountDown() {
                     className="my-2 sm:my-4"
                     compactPreview={true}
                 />
-                <div className="text-white flex flex-col items-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 gap-1 sm:gap-2 lg:gap-1 text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[37px] px-4">
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                <div className="text-white  flex flex-col items-center w-full sm:w-3/4 md:w-2/3  gap-1 sm:gap-2 lg:gap-1 text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[37px] px-4">
+                    <div className="flex  sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
                         <CalendarDays width={20} height={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-[37px] xl:h-[37px]"/>
                         <span>Sunday,16 November, 2025</span>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                    <div className="flex sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
                         <MapPin width={20} height={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-[37px] xl:h-[37px]" />
                         <span>Lorem ipsum dolor sit amet consectetur .</span>
                     </div>

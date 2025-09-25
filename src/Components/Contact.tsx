@@ -66,9 +66,9 @@ export default function Contact() {
                     </div>
 
                     <div className="text-center mt-10">
-                        <button className="text-blue-950 hover:underline">
-                            view more
-                        </button>
+                         <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
+                    Know More
+                </button>
                     </div>
                 </div>
             </div>
