@@ -210,7 +210,7 @@ export default function VisionariesHero() {
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             {/* CTA Button */}
-            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#FED543] hover:bg-yellow-500 text-slate-800 font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744]  text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
               Pre-Register Now
             </button>
           </div>
@@ -234,22 +234,22 @@ export default function VisionariesHero() {
             <div className="space-y-4 w-full">
               <ScrollTypingEffect
                 text="From education pioneers to value-driven leaders - our speakers will inspire change and connection"
-                className="text-[40px] font-bold leading-[40px] text-[#33333366]"
+                className="text-[40px] font-medium leading-[48px] text-[#33333366]"
               />
             </div>
 
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-slate-800 mt-10">
+              <h2 className="text-3xl font-medium text-slate-[#222222] mt-10">
                 Lorem Ipsum
               </h2>
-              <p className="text-2xl leading-normal max-w-2xl transition-colors duration-300">
+              <p className="text-2xl leading-normal font-light max-w-2xl transition-colors duration-300">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               {/* CTA Button */}
-              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#FED543] hover:bg-yellow-500 text-slate-800 font-semibold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
                 Pre-Register Now
               </button>
             </div>
