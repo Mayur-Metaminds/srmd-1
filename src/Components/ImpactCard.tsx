@@ -131,8 +131,8 @@ export default function ImpactCard() {
       <div className="absolute  left-8 bottom-5 h-[60%] hidden sm:block">
       <img src="/impactcard/bgprop.png" alt="" className="h-full" />
       </div>
-         <div className="absolute  right-2/12 bottom-5 h-[30%] hidden sm:block">
-      <img src="/impactcard/bgpropright.png" alt="" className="h-full" />
+         <div className="absolute  right-32 bottom-5 h-[60%] hidden sm:block">
+      <img src="/impactcard/bgpropright1.png" alt="" className="h-full" />
       </div>
         
         
