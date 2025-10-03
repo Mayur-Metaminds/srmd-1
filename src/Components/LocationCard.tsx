@@ -3,24 +3,24 @@ import Image from "next/image";
 
 export default function LocationCard() {
     return (
-        <div className="lg:w-[45%] xl:w-[45%] sm:w-full  border-2 border-[#FED543] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
+        <div className="w-full  border-2 border-[#C8AD6E] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
             {/* Header */}
             <div className="bg-[#C8AD6E] text-white text-center py-3 px-4 font-medium  mt-2 w-[95%] flex justify-center m-auto rounded-lg text-[20px] ">
                 Mumbai - Location
             </div>
             
             {/* Content */}
-            <div className="p-4 space-y-5 flex-col flex text-[16px] sm:text-[20px] ">
+            <div className="p-4 space-y-5 flex-col flex text-[16px] sm:text-[20px] font-[400] ">
                 {/* Name and Phone on same line */}
                 <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-0  items-center sm:items-start justify-between w-[80%]">
                     <div className="flex items-center gap-2">
                         <UserRound className=" text-white"  fill="#000000" width={24} height={24}/>
-                        <span className="text-gray-900  ">Jashel Metha</span>
+                        <span className="text-[#222222]  ">Jashel Metha</span>
                     </div>
                     <div className="flex items-center gap-2">
                         {/* <Phone className=" text-white" fill="#00000" color="#ffffff" /> */}
                         <Image src={"/phone.png"} alt="ff" width={24} height={24} />
-                        <span className="text-gray-900 ">9986964695</span>
+                        <span className="text-[#222222] ">9986964695</span>
                     </div>
                 </div>
                 
@@ -35,7 +35,7 @@ export default function LocationCard() {
                 <div className="flex items-center gap-2">
                     {/* <MapPin className=" text-white" fill="#00000" height={20} /> */}
                     <Image src={"/mappin.png"} alt="ff" width={24} height={24} />
-                    <span className="text-gray-900  leading-relaxed">
+                    <span className="text-[#222222]  leading-relaxed">
                         104 Shanti Sadan, Serpentine Street, Kumara Park West, Bangalore - 560020
                     </span>
                 </div>

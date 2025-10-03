@@ -12,7 +12,7 @@ export default function TimelineGallery() {
     { title: "Lorem ipsum non", year: "2025" },
     { title: "Lorem ipsum non", year: "2025"},
     { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
+
   ];
 
 
@@ -66,7 +66,7 @@ export default function TimelineGallery() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 m-auto">
+      <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 ">
         {cards.map((card, idx) => (
           // <div
           //   key={idx}
@@ -107,7 +107,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   return (
     <motion.div
       ref={ref}
-      className={`min-w-[30%] max-w-[100%] w-[100%] sm:w-[30%] lg:w-[45%] md:w-[70%] xl:w-[30%] break-inside-avoid mb-10  ${idx%2===0?"mt-10":"mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
+      className={`min-w-[20%] max-w-[100%] w-[100%] sm:w-[30%] lg:w-[30%] md:w-[70%] xl:w-[20%] break-inside-avoid mb-10  ${idx%2===0?"mt-10":"mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ 
@@ -117,7 +117,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
       }}
     >
       {/* Video Thumbnail */}
-      <div className={`w-full h-[400px]   bg-gray-200 flex items-center justify-center relative`}>
+      <div className={`w-full min-h-[440px]   bg-gray-200 flex items-center justify-center relative`}>
         <Play size={48} className="text-gray-500" />
       </div>
       {/* Caption */}

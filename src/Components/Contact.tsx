@@ -5,12 +5,12 @@ export default function Contact() {
         <>
             <div className="flex justify-center mt-28 flex-col items-center relative overflow-hidden">
                 {/* Top decorative wave - responsive */}
-                <svg 
-                    width="100%" 
-                    height="396" 
-                    viewBox="0 0 1429 396" 
-                    fill="none" 
-                    className="absolute top-50 left-0 w-full h-auto min-w-full" 
+                <svg
+                    width="100%"
+                    height="396"
+                    viewBox="0 0 1429 396"
+                    fill="none"
+                    className="absolute top-50 left-0 w-full h-auto min-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="xMidYMid slice"
                 >
@@ -24,12 +24,12 @@ export default function Contact() {
                 </svg>
 
                 {/* Bottom decorative wave - responsive */}
-                <svg 
-                    width="100%" 
-                    height="396" 
-                    viewBox="0 0 1429 396" 
-                    fill="none" 
-                    className="absolute bottom-0 left-0 w-full h-auto min-w-full" 
+                <svg
+                    width="100%"
+                    height="396"
+                    viewBox="0 0 1429 396"
+                    fill="none"
+                    className="absolute bottom-0 left-0 w-full h-auto min-w-full"
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="xMidYMid slice"
                 >
@@ -51,7 +51,7 @@ export default function Contact() {
                         </svg>
                         <span>Contact us</span>
                     </button>
-{/* 
+                    {/* 
                     <div className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto ">
                         <LocationCard />
                         <LocationCard />
@@ -64,12 +64,18 @@ export default function Contact() {
                         <LocationCard />
                         <LocationCard />
                     </div> */}
-                    <AnimatedCard />
+                    <div className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto">
+
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(x =>
+
+                            <AnimatedCard key={x} idx={x} />
+                        )}
+                    </div>
 
                     <div className="text-center mt-10">
-                         <button className="bg-[#EFB744] text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
-                    Know More
-                </button>
+                        <button className="bg-[#EFB744] text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
+                            Know More
+                        </button>
                     </div>
                 </div>
             </div>
@@ -79,35 +85,26 @@ export default function Contact() {
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const AnimatedCard: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once:false, amount: 0.2 });
+const AnimatedCard = ({ idx }: { idx: number }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
-  return (
-    <motion.div
-      ref={ref}
-    //   key={idx}
-      className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+    return (
+        <motion.div
+            ref={ref}
+            //   key={idx}
+            className="lg:w-[45%] xl:w-[45%] sm:w-full"
+         initial={{ opacity: 0, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ 
         duration: 0.5, 
         delay:  0.1,
         ease: "easeOut"
       }}
-    >
-      {/* Video Thumbnail */}
+        >
+            {/* Video Thumbnail */}
 
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-                        <LocationCard />
-    </motion.div>
-  );
+            <LocationCard />
+        </motion.div>
+    );
 };
