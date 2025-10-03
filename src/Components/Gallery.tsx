@@ -85,6 +85,11 @@ export default function TimelineGallery() {
           <AnimatedCard card={card} idx={idx}  />
         ))}
       </div>
+           <div className="text-center mt-10">
+                         <button className="bg-[#EFB744] text-[#222222] font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
+                    Know More
+                </button>
+                    </div>
     </section>
   );
 }
