@@ -31,6 +31,7 @@ export default function Timeline() {
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum",
     },
   ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -44,13 +45,27 @@ export default function Timeline() {
       setCurrentIndex(currentIndex - 1);
     }
 
-    setTimeout(() => setIsAnimating(false), 800); // matches transition
+    setTimeout(() => setIsAnimating(false), 800);
+  };
+
+  const handleNext = () => {
+    if (isAnimating || currentIndex >= timelineData.length - 1) return;
+    setIsAnimating(true);
+    setCurrentIndex(currentIndex + 1);
+    setTimeout(() => setIsAnimating(false), 800);
+  };
+
+  const handlePrev = () => {
+    if (isAnimating || currentIndex <= 0) return;
+    setIsAnimating(true);
+    setCurrentIndex(currentIndex - 1);
+    setTimeout(() => setIsAnimating(false), 800);
   };
 
   return (
     <div
       id="count-down"
-      className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[804px] xl:h-[804px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
+      className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[820px] xl:h-[820px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
       style={{
         background: "linear-gradient(#293464B2, #293464B2), url('/countdownbg.jpg')",
         backgroundSize: "contain",
@@ -116,14 +131,35 @@ export default function Timeline() {
                     </div>
                 </div>
             </div> */}
+          {/* Timeline Card Section with Scroll Navigation */}
+                  {/* Animated Arrow Indicator */}
+  
+                
+         
       <div
-        className="w-full flex justify-center items-center h-screen overflow-hidden self-center sm:self-end "
+        className="w-full flex justify-center items-center relative flex-1 overflow-hidden"
         onWheel={handleWheel}
       >
+
+        <motion.div
+          key={`arrow-${currentIndex}`}
+          className="absolute top-0 left-0 z-30 flex items-center gap-2 w-[100vw]"
+          initial={{ x: "0%" }}
+          animate={{ x: "calc(100vw - 100px)"}}
+          transition={{  duration: 0.8,ease: "easeOut"} }
+        >
+          <svg width="1000" height="20" viewBox="0 0 1000 20" fill="none" className="text-white w-[100vw]">
+            <path d="M0 10H38M38 10L28 2M38 10L28 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-white text-sm font-medium whitespace-nowrap">Next</span>
+        </motion.div>
+ 
         <AnimatePresence mode="wait">
-          <TimelineCard key={timelineData[currentIndex].date} item={timelineData[currentIndex]} />
+          <TimelineCard key={currentIndex} item={timelineData[currentIndex]} />
         </AnimatePresence>
       </div>
+
+
 
       {/* <TimelineCard /> */}
       {/* Skip Button */}
@@ -210,16 +246,14 @@ const TimelineCard = ({ item }: { item: any }) => {
   return (
     <motion.div
       key={item.date}
-      className="text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-center sm:self-end"
-      initial={{ x: "50%", opacity: 0 }}
+      className="text-white w-[100vw] flex flex-col items-center   gap-3 sm:gap-6 z-20"
+      initial={{ x: "100%", opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: "-100vw", opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      exit={{ x: "-100%", opacity: 0 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      {/* Timeline Card Section */}
-
       <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
-        <span className="text-[14px] sm:text-[16px]">{item.title}</span>
+        <span className="text-[14px] sm:text-[16px]">{item.date}</span>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-start sm:items-end w-full max-w-full sm:max-w-[90%] md:max-w-[705px]">
@@ -229,12 +263,12 @@ const TimelineCard = ({ item }: { item: any }) => {
           className="object-cover w-full sm:w-[132px] md:w-[280px] lg:w-[360px] h-[200px] sm:h-[141px] md:h-[200px] lg:h-[274px] rounded-xl flex-shrink-0"
         />
         <div className="w-full flex flex-col justify-start sm:justify-end gap-2 self-start sm:self-end">
-          <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">Lorem Ipsum</h1>
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px]">{item.description}</p>
+          <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">{item.title}</h1>
+          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px]">
+            {item.description}
+          </p>
         </div>
       </div>
-
-
     </motion.div>
   );
 };

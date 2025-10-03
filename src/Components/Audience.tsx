@@ -58,7 +58,7 @@ export default function AudienceSection() {
                     <p className="text-[#22222266] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[40px] mt-2">
                         industry. Lorem Ipsum
                     </p> */}
-                    <ScrollTypingEffect text="Lorem typesetting industry. Lorem Ipsum"  className="font-[400] text-[26px] md:text-[30px]leading-tight  text-[#22222266] w-full "/>
+                    <ScrollTypingEffect text="Lorem typesetting industry. Lorem Ipsum"  className="font-[400] text-[26px] sm:text-[40px] md:text-[30px]  lg:text-[40px] xl:[40px] leading-tight  text-[#22222266] w-full "/>
                     </div>
    {/* Decorative Image - positioned differently on mobile */}
                 <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-2/4 ">
