@@ -190,7 +190,7 @@ export default function VisionariesHero() {
           <div className="space-y-4 w-full">
             <ScrollTypingEffect
               text="From education pioneers to value-driven leaders - our speakers will inspire change and connection"
-              className="text-[40px] sm:text-3xl font-bold leading-[40px] text-[#33333366]"
+              className="text-[40px] sm:text-3xl font-[400] leading-[48px] text-[#33333366]"
             />
           </div>
 
@@ -201,7 +201,7 @@ export default function VisionariesHero() {
 
           {/* Description */}
           <div className="space-y-4 sm:space-y-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-800">
+            <h2 className="text-xl sm:text-2xl font-medium">
               Lorem Ipsum
             </h2>
             <p className="text-base sm:text-lg leading-relaxed">
@@ -210,7 +210,7 @@ export default function VisionariesHero() {
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             {/* CTA Button */}
-            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744]  text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
               Pre-Register Now
             </button>
           </div>

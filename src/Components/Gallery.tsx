@@ -3,39 +3,19 @@ import ScrollTypingEffect from "./ScrollTextFilling";
 import { useEffect } from "react";
 
 export default function TimelineGallery() {
-  const cards = [
+   const cards:Card[] = [
     { title: "Lorem ipsum non", year: "2025" },
     { title: "Lorem ipsum non", year: "2025" },
     { title: "Lorem ipsum non", year: "2025" },
     { title: "Lorem ipsum non", year: "2025" },
+    { title: "Lorem ipsum non", year: "2025" },
+    { title: "Lorem ipsum non", year: "2025" },
+    { title: "Lorem ipsum non", year: "2025"},
     { title: "Lorem ipsum non", year: "2025" },
     { title: "Lorem ipsum non", year: "2025" },
   ];
 
 
-  // const [isVisible, setIsVisible] = useState(false)
-  // useEffect(() => {
-  //   if (!isVisible) {
-  //     lastScrollYRef.current = 0;
-  //     currentIndexRef.current = 0
-  //     return
-  //   }
-
-  // }, [isVisible])
-
-  // useEffect(() => {
-  //   if (!paragraph) return;
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       setIsVisible(entry.isIntersecting)
-  //     })
-  //   }, { threshold: 0.1 })
-  //   observer.observe(paragraph)
-
-  //   return () => {
-  //     observer.disconnect()
-  //   }
-  // }, [isVisible]);
 
 
   return (
@@ -86,7 +66,7 @@ export default function TimelineGallery() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8  w-[90%]  z-10 pt-5 m-auto">
+      <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 m-auto">
         {cards.map((card, idx) => (
           // <div
           //   key={idx}
@@ -112,27 +92,19 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Play } from 'lucide-react';
 
-interface Card {
-  title: string;
-  year: string | number;
-}
 
-interface AnimatedCardProps {
-  card: Card;
-  idx: number;
-}
 
 const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once:false, amount: 0.2 });
 
+
   return (
     <motion.div
       ref={ref}
-      key={idx}
-      className="flex flex-col items-center bg-white shadow-sm rounded-lg overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      className={`min-w-[30%] max-w-[100%] w-[100%] sm:w-[30%] lg:w-[45%] md:w-[70%] xl:w-[30%] break-inside-avoid mb-10  ${idx%2===0?"mt-10":"mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ 
         duration: 0.5, 
         delay: idx * 0.1,
@@ -140,8 +112,8 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
       }}
     >
       {/* Video Thumbnail */}
-      <div className="w-full aspect-[4/5] bg-gray-200 flex items-center justify-center relative">
-        <Play size={40} className="text-gray-500" />
+      <div className={`w-full h-[400px]   bg-gray-200 flex items-center justify-center relative`}>
+        <Play size={48} className="text-gray-500" />
       </div>
       {/* Caption */}
       <div className="flex justify-between w-full px-2 py-2 text-sm text-gray-700">
@@ -154,3 +126,14 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
 
 // Usage in your parent component:
 // <AnimatedCard card={card} idx={idx} />
+
+interface Card {
+  title: string;
+  year: string | number;
+
+}
+
+interface AnimatedCardProps {
+  card: Card;
+  idx: number;
+}

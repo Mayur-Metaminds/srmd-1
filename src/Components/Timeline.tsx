@@ -88,7 +88,7 @@ export default function Timeline() {
                 </div>
                 
             
-                    <ScrollTypingEffect className="text-[#7F85A2] text-[20px] sm:text-[26px] md:text-[32px] lg:text-[40px] leading-tight sm:leading-snug" colorChange="white"  text="Evolved over 20 years, and loved by lakhs of children across the world"    />
+                    <ScrollTypingEffect className="text-[#7F85A2] text-[20px] sm:text-[26px] md:text-[32px] lg:text-[40px] leading-tight font-[400] sm:leading-snug" colorChange="white"  text="Evolved over 20 years, and loved by lakhs of children across the world"    />
             </div>
 
             {/* Timeline Card Section */}
