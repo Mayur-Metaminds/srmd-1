@@ -1,31 +1,44 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tw-animate-css";
-/* ---break---
-*/
-/* :root {
-  --background: #ffffff;
-  --foreground: #ffffff;
+
+/* ---break--- */
+:root {
+  /* --background: #ffffff;
+  --foreground: #000000; */
+
+  /* ✅ correct font-family */
+  --font-sans: "Karla", sans-serif;
 }
 
+/* Tailwind theme overrides */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --color-background: var(--background);
+  --color-foreground: var(--foreground); */
+
+  /* make Tailwind’s `font-sans` use Karla */
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #ededed;
+/* Global body style */
+body {
+  font-family: var(--font-sans); /* ✅ apply globally */
+  /* background: var(--background);
+  color: var(--foreground); */
+}
+span.visible {
+  transition: color 0.3s ease;
+}
+
+@keyframes scrollX {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100vw);
   }
 }
-*/
-body {
 
-  font-family: "karla-200";
+.scroller {
+  animation: scrollX 8s linear forwards;
 }
-/* ---break---
-*/
-

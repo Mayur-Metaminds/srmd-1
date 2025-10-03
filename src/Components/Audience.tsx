@@ -29,7 +29,7 @@ const audience = [
 export default function AudienceSection() {
     return (
         <section
-            className="relative w-full overflow-hidden min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px] py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap"
+            className="relative  w-full overflow-hidden min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px] py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap"
             style={{
                 background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
                 backgroundSize: "cover",
@@ -48,23 +48,26 @@ export default function AudienceSection() {
                 </div>
 
                 {/* Heading */}
-                <div className="w-full">
+                <div className="w-full  h-full flex flex-col justify-between">
+                    <div>
+
                     <h2 className="font-semibold text-gray-900 text-2xl sm:text-3xl md:text-4xl lg:text-[40px] leading-tight">
                         Lorem typesetting
                     </h2>
                     <p className="text-gray-400 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[40px] mt-2">
                         industry. Lorem Ipsum
                     </p>
-                </div>
-
-                {/* Decorative Image - positioned differently on mobile */}
-                <div className="xl:absolute xl:bottom-0 xl:left-0 w-48 sm:w-56 md:w-64 lg:w-[300px] hidden sm:block">
+                    </div>
+   {/* Decorative Image - positioned differently on mobile */}
+                <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-2/4 ">
                     <img src="/image.png" alt="Decorative element" className="w-full object-contain" />
                 </div>
+                </div>
+             
             </div>
 
             {/* Right Section - Audience List */}
-            <div className="w-full lg:w-[50%] max-w-3xl space-y-4 sm:space-y-6 h-auto lg:h-[70%] flex flex-col justify-start lg:justify-end">
+            <div className="w-full lg:w-[50%] max-w-3xl space-y-4 sm:space-y-6 h-auto lg:h-[70%] flex flex-col justify-start lg:justify-end sm:self-end sm:justify-end">
                 <div className="">
                     <Accordion type="single" collapsible className="w-full">
                         {audience.map((item, i) => (
@@ -82,10 +85,7 @@ export default function AudienceSection() {
                 </button>
             </div>
 
-            {/* Mobile decorative image */}
-            <div className="w-32 sm:w-40 absolute bottom-4 left-4 sm:hidden">
-                <img src="/image.png" alt="Decorative element" className="w-full object-contain" />
-            </div>
+      
         </section>
     );
 }

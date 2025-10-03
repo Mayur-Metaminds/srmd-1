@@ -9,50 +9,50 @@ export default function Footer() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                     {/* Left Section - Mission Statement */}
                     <div className="space-y-4 sm:space-y-6">
-                        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-4xl font-bold leading-tight">
+                        <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-4xl font-bold leading-tight">
                             Creating a global community of purpose-driven children through value education and life skills
                         </h2>
                         <button className="text-base sm:text-lg lg:text-[20px] bg-white text-slate-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center gap-2 font-medium hover:bg-gray-100 transition-colors w-fit">
                             Know More 
-                            <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 p-1 bg-slate-800 text-white rounded-full flex-shrink-0" />
+                            <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 p-1 bg-[#C8AD6E] text-white rounded-full flex-shrink-0" />
                         </button>
                     </div>
 
                     {/* Right Section - Social Media and Other Websites */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-1">
                         {/* Social Media */}
                         <div className="space-y-4 sm:space-y-6">
                             <h3 className="text-lg sm:text-xl font-medium">Social Media</h3>
-                            <div className="space-y-3 sm:space-y-4">
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[14px] xl:text-[20px]">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Instagram
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors">
                                     LinkedIn
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Facebook
                                 </div>
                             </div>
                         </div>
 
                         {/* Other Websites */}
-                        <div className="space-y-4 sm:space-y-6">
+                        <div className="">
                             <h3 className="text-lg sm:text-xl font-medium">Other Websites</h3>
-                            <div className="space-y-3 sm:space-y-4">
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[14px] xl:text-[18px]">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Shrimad Rajchandra Mission Dharampur
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Shrimad Rajchandra Mission Dharampur
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     SRMD Yoga
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     SRMD Courses
                                 </div>
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors text-sm sm:text-base">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     SRMD Youth
                                 </div>
                             </div>
@@ -62,13 +62,13 @@ export default function Footer() {
 
                 {/* Bottom Section - Logo */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
-                    <div className="flex justify-start  sm:w-[88px]  lg:w-[402px]">
+                    <div className="flex justify-start  sm:w-[88px] md:w-[200px]  lg:w-[402px]">
                         <Image 
                             alt="logo" 
-                            src="/footerlogo.png" 
-                            width={402} 
+                            src="/footer/image.png" 
+                            width={333} 
                             height={137}
-                            className="w-full h-16 sm:h-[36px] lg:h-24 xl:h-[137px] max-w-full xl:object-cover md:object-cover"
+                            className="w-[87px] xl:w-[333px] lg:w-[333px] sm:w-[87px] md:w-[200px] h-[36px] sm:h-[36px] lg:h-28 xl:h-[137px] md:h-20  xl:object-cover md:object-cover"
                             priority
                         />
                     </div>
@@ -86,12 +86,16 @@ export default function Footer() {
             </div>
             
             {/* Top center star decoration */}
-            <div className="absolute -top-20 sm:-top-32 lg:-top-40 w-full flex justify-center h-48 sm:h-72 lg:h-80 xl:h-[417px] pointer-events-none ">
-                <img 
+            <div className="absolute -top-20 sm:-top-32 lg:-top-48 xl:-top-48 w-full flex justify-center h-48 sm:h-72 lg:h-80 xl:h-[417px] pointer-events-none ">
+                {/* <img 
                     src="/footer-star.png" 
                     alt="Footer star decoration" 
                     className="w-[50%] sm:w-[45%] lg:w-[35%] h-full object-contain opacity-70 sm:opacity-80 lg:opacity-100"
-                />
+                /> */}
+                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[50%] sm:w-[45%] lg:w-[35%] h-full object-contain opacity-30">
+<path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#C7AC6E"/>
+</svg>
+
             </div>
         </footer>
     );

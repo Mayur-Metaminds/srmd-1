@@ -1,70 +1,53 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import ScrollTypingEffect from "./ScrollTextFilling";
 
 interface CarouselProps {
   images?: string[];
   className?: string;
 }
 
+import ScrollTypingEffect from "./ScrollTextFilling";
+
 export function ImageStackk({
-  images = ["/mail.png", "/mappin.png", "/phone.png", "/mail.png", "/mappin.png"],
+  images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
   className = ""
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(Math.floor(images.length / 2));
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
-  // Handle window resize for responsive design
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
-    // Set initial width
     setWindowWidth(window.innerWidth);
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleNext = (): void => {
-    console.log("ds")
     if (isTransitioning) return;
-
     setIsTransitioning(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 400);
+    setTimeout(() => setIsTransitioning(false), 400);
   };
 
   const handlePrev = (): void => {
     if (isTransitioning) return;
-
     setIsTransitioning(true);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 400);
+    setTimeout(() => setIsTransitioning(false), 400);
   };
 
   const handleSlideClick = (index: number): void => {
     if (isTransitioning || index === currentIndex) return;
-
     setIsTransitioning(true);
     setCurrentIndex(index);
-
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 400);
+    setTimeout(() => setIsTransitioning(false), 400);
   };
 
-  // Responsive dimensions based on screen size
   const getResponsiveDimensions = () => {
-    if (windowWidth < 640) { // sm
+    if (windowWidth < 640) {
       return {
         containerWidth: 280,
         containerHeight: 280,
@@ -74,7 +57,7 @@ export function ImageStackk({
         spacing: 15,
         scale: 0.15
       };
-    } else if (windowWidth < 768) { // md
+    } else if (windowWidth < 768) {
       return {
         containerWidth: 320,
         containerHeight: 320,
@@ -84,7 +67,7 @@ export function ImageStackk({
         spacing: 20,
         scale: 0.12
       };
-    } else if (windowWidth < 1024) { // lg
+    } else if (windowWidth < 1024) {
       return {
         containerWidth: 360,
         containerHeight: 360,
@@ -94,7 +77,7 @@ export function ImageStackk({
         spacing: 25,
         scale: 0.1
       };
-    } else { // xl and above
+    } else {
       return {
         containerWidth: 400,
         containerHeight: 400,
@@ -112,14 +95,12 @@ export function ImageStackk({
   const getSlideStyle = (index: number): React.CSSProperties => {
     const diff = index - currentIndex;
     const absIndex = Math.abs(diff);
-
     const zIndex = images.length - absIndex;
     let scale = 1 - absIndex * (dimensions.scale / 2);
     let opacity = 100;
     const translateX = diff * (dimensions.spacing + 10);
     const translateY = absIndex * (windowWidth < 640 ? 8 : 12);
 
-    // Hide slides beyond max visible
     if (absIndex >= dimensions.maxVisibleSlides) {
       opacity = 100;
       scale = Math.max(0.6, scale);
@@ -140,24 +121,21 @@ export function ImageStackk({
   };
 
   return (
-    <div className={`w-full flex flex-col items-center ${className} `}>
-      {/* Main Carousel Container */}
+    <div className={`w-full flex flex-col items-center ${className}`}>
       <div
         className="relative mb-4 sm:mb-6"
         style={{
           width: dimensions.containerWidth,
           height: dimensions.containerHeight,
         }}
-
       >
-        <img src="/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13  h-[224px] -right-15 object-cover" />
-        <img src="/visionaries2.png" alt="" className="absolute w-[50px] top-20  h-[50px] right-0 object-cover" />
+        <img src="/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover" />
+        <img src="/visionaries2.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover" />
 
-        {/* Navigation Arrows - Only show on larger screens */}
         <button
           onClick={handlePrev}
           disabled={isTransitioning}
-          className=" cursor-pointer hidden sm:flex absolute -left-8 md:-left-12 top-1/2 transform -translate-y-1/2 z-30 bg-[#1D2B53] hover:bg-[#1D2B53]/90 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
+          className="cursor-pointer flex absolute -left-6 sm:-left-8 md:-left-12 top-1/2 transform -translate-y-1/2 z-30 bg-[#1D2B53] hover:bg-[#1D2B53]/90 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
           type="button"
           aria-label="Previous slide"
         >
@@ -167,258 +145,125 @@ export function ImageStackk({
         <button
           onClick={handleNext}
           disabled={isTransitioning}
-          className="cursor-pointer hidden sm:flex absolute -right-8 md:-right-12 top-1/2 transform -translate-y-1/2 z-30 bg-slate-700 hover:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
+          className="cursor-pointer flex absolute -right-6 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 z-30 bg-slate-700 hover:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
           type="button"
           aria-label="Next slide"
         >
           <ChevronRight size={windowWidth < 768 ? 18 : 24} />
         </button>
 
-        {/* Slides */}
         {images.map((src, index) => (
           <div
             key={index}
-            className="rounded-xl sm:rounded-2xl shadow-lg overflow-hidden bg-gray-200 flex items-center justify-center p-2"
+            className="rounded-xl sm:rounded-2xl shadow-lg overflow-hidden bg-gray-200 flex items-center justify-center p-1"
             style={getSlideStyle(index)}
             onClick={() => handleSlideClick(index)}
           >
-            {/* Placeholder content - replace with actual images */}
-            <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold rounded-xl sm:rounded-2xl">
-              {/* <span className="text-sm sm:text-base lg:text-lg">
-                Speaker {index + 1}
-              </span> */}
-              <img src={src} alt="" className="object-cover" />
+            <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold rounded-xl sm:rounded-2xl overflow-hidden">
+              <img src={src} alt="" className="w-full h-full" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Mobile Navigation Buttons - Only show on mobile */}
-      <div className="flex gap-3 mb-4 sm:hidden">
-        <button
-          onClick={handlePrev}
-          disabled={isTransitioning}
-          className="flex items-center justify-center px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm"
-          type="button"
-        >
-          <ChevronLeft size={16} className="mr-1" />
-          Prev
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={isTransitioning}
-          className="flex items-center justify-center px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm"
-          type="button"
-        >
-          Next
-          <ChevronRight size={16} className="ml-1" />
-        </button>
-      </div>
 
-      {/* Dots Indicator */}
-      {/* <div className="flex gap-1.5 sm:gap-2 mb-3">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleSlideClick(index)}
-            disabled={isTransitioning}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex
-                ? 'bg-slate-700'
-                : 'bg-gray-300 hover:bg-gray-400'
-              } disabled:cursor-not-allowed`}
-            type="button"
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div> */}
-
-      {/* Current slide indicator - Hide on mobile to save space */}
-      {/* <div className="hidden sm:block text-xs sm:text-sm text-gray-600">
-        {currentIndex + 1} of {images.length}
-      </div> */}
     </div>
   );
 }
 
-// Updated VisionariesHero component to integrate better
 export default function VisionariesHero() {
-
-
   return (
-    <>
-      <style>
-        {`
-      
-     span.visible {
-          color: #333333;
-          transition: color 0.3s ease;
-`}
+    <div className="relative min-h-screen overflow-hidden px-4 sm:px-6 md:px-12 lg:px-20">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-20">
+        {/* Mobile Layout - Stack vertically */}
+        <div className="lg:hidden flex flex-col space-y-6">
+          {/* Header Badge */}
+          <div className="inline-flex items-center space-x-2 bg-slate-800 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium w-fit">
+            <svg width="20" height="15" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[25px] sm:h-[19px]">
+              <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
+              <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
+            </svg>
+            <span>Meet the Visionaries</span>
+          </div>
 
-      </style>
-      <div className="relative  min-h-screen overflow-hidden px-4 sm:px-6 md:px-12 lg:px-20">
-        {/* Background decorative elements */}
-        {/* <div className="absolute top-10 right-10 w-32 h-32 bg-blue-100 rounded-full opacity-60"></div>
-            <div className="absolute bottom-20 left-10 w-24 h-24 bg-yellow-100 rounded-full opacity-50"></div>
-            <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-gray-100 rounded-full opacity-40"></div> */}
+          {/* Main Heading */}
+          <div className="space-y-4 w-full">
+            <ScrollTypingEffect
+              text="From education pioneers to value-driven leaders - our speakers will inspire change and connection"
+              className="text-[40px] sm:text-3xl font-bold leading-[40px] text-[#33333366]"
+            />
+          </div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+          {/* Carousel */}
+          <div className="w-full flex items-center justify-center py-4">
+            <ImageStackk className="scale-75 sm:scale-90" />
+          </div>
 
-            {/* Left Content Section */}
-            <div className="space-y-6 sm:space-y-8 lg:pr-8 order-2 lg:order-1">
-              {/* Header Badge */}
-              <div className="inline-flex items-center space-x-2 bg-slate-800 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
-                <svg width="20" height="15" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[25px] sm:h-[19px]">
-                  <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
-                  <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
-                </svg>
-                <span>Meet the Visionaries</span>
-              </div>
-
-              {/* Main Heading */}
-              <div className="space-y-4 w-full">
-                {/* <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-bold leading-tight">
-                  <span className="text-slate-800">From education pioneers to value-driven leaders - our speakers </span>
-                  <span className="text-gray-400">will inspire change and connection</span>
-                </h1> */}
-                <ScrollTypingEffect
-                  text={` From education pioneers to value-driven leaders - our speakers will inspire change and connection`}
-                  className={"text-[40px] sm:text-3xl lg:text-[40px] font-bold leading-relaxed"}
-                />
-              </div>
-
-              {/* Description */}
-              <div className="space-y-4 sm:space-y-6">
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800">
-                  Lorem Ipsum
-                </h2>
-                <p
-                  className="text-2xl leading-relaxed max-w-2xl transition-colors duration-300"
-
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                {/* CTA Button */}
-                <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#FED543] hover:bg-yellow-500 text-slate-800 font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
-                  Pre-Register Now
-                </button>
-              </div>
-            </div>
-
-            {/* Right Visual Section */}
-            <div className="relative order-1 lg:order-2">
-              {/* Image Carousel Container */}
-              <div className="relative h-[500px] sm:h-96 lg:h-[500px]   rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center ">
-
-                <ImageStackk className="scale-75 sm:scale-90 lg:scale-100" />
-              </div>
-            </div>
+          {/* Description */}
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-800">
+              Lorem Ipsum
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            {/* CTA Button */}
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#FED543] hover:bg-yellow-500 text-slate-800 font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+              Pre-Register Now
+            </button>
           </div>
         </div>
 
-        {/* Additional decorative background elements */}
-        {/* <div className="absolute top-0 right-0 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-gradient-to-bl from-blue-100/30 to-transparent rounded-full"></div>
-      <div className="absolute bottom-0 left-0 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80 bg-gradient-to-tr from-yellow-100/20 to-transparent rounded-full"></div> */}
-      </div>
-    </>
+        {/* Desktop Layout - Grid container - 2 columns on large screens */}
+        <div className="hidden lg:grid grid-cols-12 gap-12 items-start min-h-[80vh]">
+          
+          {/* Left Content Section - spans 5 columns on large screens */}
+          <div className="col-span-5 space-y-8">
+            {/* Header Badge */}
+            <div className="inline-flex items-center space-x-2 bg-slate-800 text-white px-4 py-2 rounded-full text-sm font-medium">
+              <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
+                <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
+              </svg>
+              <span>Meet the Visionaries</span>
+            </div>
 
+            {/* Main Heading */}
+            <div className="space-y-4 w-full">
+              <ScrollTypingEffect
+                text="From education pioneers to value-driven leaders - our speakers will inspire change and connection"
+                className="text-[40px] font-bold leading-[40px] text-[#33333366]"
+              />
+            </div>
+
+            {/* Description */}
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-slate-800 mt-10">
+                Lorem Ipsum
+              </h2>
+              <p className="text-2xl leading-normal max-w-2xl transition-colors duration-300">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+              {/* CTA Button */}
+              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#FED543] hover:bg-yellow-500 text-slate-800 font-semibold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+                Pre-Register Now
+              </button>
+            </div>
+          </div>
+
+          {/* Right Visual Section - spans 7 columns on large screens */}
+          <div className="col-span-7 flex items-center justify-end">
+            {/* Image Carousel Container with proper spacing */}
+            <div className="w-full flex items-center justify-end">
+              <ImageStackk className="scale-100" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-
-
-// import { useRef, } from "react";
-
-
-
-// function ScrollTypingEffect(
-//   { text, className }: { text: string, className: string }) {
-//   const paragraphRef = useRef<HTMLParagraphElement>(null);
-//   const lastScrollYRef = useRef<number>(0);
-//   const currentIndexRef = useRef<number>(0);
-//   const spansRef = useRef<HTMLElement[]>([]);
-//   const [isVisible, setIsVisible] = useState(false)
-//   useEffect(() => {
-//     if (!isVisible) {
-//       lastScrollYRef.current = 0;
-//       currentIndexRef.current = 0
-//       return
-//     }
-
-//   }, [isVisible])
-
-//   useEffect(() => {
-//     const paragraph = paragraphRef.current;
-
-//     if (!paragraph) return;
-//     const observer = new IntersectionObserver((entries) => {
-//       entries.forEach((entry) => {
-//         setIsVisible(entry.isIntersecting)
-//       })
-//     }, { threshold: 0.1 })
-//     observer.observe(paragraph)
-
-//     const text = paragraph.textContent || "";
-//     paragraph.textContent = "";
-
-//     const spanArray: HTMLElement[] = [];
-//     for (let char of text) {
-//       const span = document.createElement("span");
-//       span.textContent = char;
-//       paragraph.appendChild(span);
-//       spanArray.push(span);
-//       span.style.fontSize = "40px"
-//     }
-//     spansRef.current = spanArray;
-
-
-//     lastScrollYRef.current = 0;
-//     const handleScroll = () => {
-//       if (!isVisible) {
-
-//         return
-//       }
-//       const scrollY = window.scrollY;
-//       const spans = spansRef.current;
-//       let idx = currentIndexRef.current;
-
-//       if (scrollY > lastScrollYRef.current) {
-//         // scroll up → reveal next character
-//         if (idx < spans.length) {
-//           spans[idx].classList.add("visible");
-//           currentIndexRef.current += 1;
-//         }
-//       } else {
-//         // scroll down → hide last character
-//         if (idx > 0) {
-//           spans[idx - 1].classList.remove("visible");
-//           currentIndexRef.current -= 1;
-//         }
-//       }
-
-//       lastScrollYRef.current = scrollY;
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => {
-//       window.removeEventListener("scroll", handleScroll)
-//       observer.disconnect()
-//     }
-//   }, [isVisible]);
-
-//   return (
-//     <>
-
-//       <div className={`${className}  sticky top-20 text-[#33333366] w-full `}
-//         ref={paragraphRef}
-//         id="desc"
-//       >
-//         {text}
-//       </div>
-
-
-
-//     </>
-//   );
-// }

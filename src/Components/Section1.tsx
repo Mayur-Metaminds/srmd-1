@@ -4,9 +4,26 @@ export default function HeroSection() {
     return (
         <>
         <div className="flex flex-col">
+            
+        {/* Logo Section */}
+        <div id="logo-section" className="flex justify-center items-center flex-col gap-10   px-4 py-8 sm:py-12 lg:py-16 ">
+            <div className=" w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[386.59px] h-[273px]">
+                <Image
+                    src="/HeroSection/logo11.png"
+                    width={386.59}
+                    height={273}
+                    alt="Company Logo"
+                    className="w-full h-full object-contain"
+                    priority
+                />
+            </div>
+            {/* <div className="text-sm sm:text-base md:text-lg lg:text-[20px] text-center px-4 text-gray-700 max-w-2xl">
+                An immersive experience of timeless values
+            </div> */}
+        </div>
         {/* Responsive decorative SVG background */}
         <svg
-            className="absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto min-w-full"
+            className="hidden sm:block absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto min-w-full"
             width="1440"
             height="396"
             viewBox="0 0 1440 396"
@@ -22,34 +39,29 @@ export default function HeroSection() {
             <path d="M1400.35 249.333L1412.67 263.667L1416.12 246H1420.88L1424.82 263.667L1436.16 249.333L1440.1 251.667L1434.52 269.667L1451.93 263.667L1454.39 267.167L1441.91 279.833L1458.5 283.667L1458.34 288L1440.1 291.667L1454.39 304.5L1451.93 308.333L1434.52 302L1440.1 319.833L1436.16 322.5L1424.82 308.333L1420.88 326H1416.12L1412.67 308.333L1400.35 322.5L1396.73 319.833L1402.65 302L1384.74 308.333L1382.77 304.5L1396.73 291.667L1378.5 288V283.667L1396.73 279.833L1382.77 267.167L1385.07 263.5L1402.65 269.667L1396.73 251.667L1400.35 249.333Z" fill="#293464" />
             <path d="M1326.25 336.25L1334.56 345.925L1336.89 334H1340.11L1342.77 345.925L1350.42 336.25L1353.08 337.825L1349.31 349.975L1361.06 345.925L1362.73 348.287L1354.3 356.837L1365.5 359.425L1365.39 362.35L1353.08 364.825L1362.73 373.488L1361.06 376.075L1349.31 371.8L1353.08 383.837L1350.42 385.638L1342.77 376.075L1340.11 388H1336.89L1334.56 376.075L1326.25 385.638L1323.81 383.837L1327.8 371.8L1315.71 376.075L1314.38 373.488L1323.81 364.825L1311.5 362.35V359.425L1323.81 356.837L1314.38 348.287L1315.94 345.813L1327.8 349.975L1323.81 337.825L1326.25 336.25Z" fill="#FED543" />
         </svg>
+        <svg width="375" height="188" viewBox="0 0 375 188" fill="none" xmlns="http://www.w3.org/2000/svg"
+        className="block sm:hidden w-full h-auto -mt-8 mb-4"
+        >
+<path d="M-26 145.5C-26 145.5 164 20.3053 244.5 116.298C325 212.29 497 79 497 79" stroke="#FED543" strokeWidth="32"/>
+<path d="M225.695 24.3284L231.726 31.0486L233.415 22.7656H235.747L237.677 31.0486L243.225 24.3284L245.155 25.4224L242.421 33.8616L250.945 31.0486L252.151 32.6895L246.039 38.6283L254.161 40.4255L254.081 42.4572L245.155 44.1763L252.151 50.1931L250.945 51.9904L242.421 49.021L245.155 57.3821L243.225 58.6324L237.677 51.9904L235.747 60.2733H233.415L231.726 51.9904L225.695 58.6324L223.926 57.3821L226.821 49.021L218.056 51.9904L217.091 50.1931L223.926 44.1763L215 42.4572V40.4255L223.926 38.6283L217.091 32.6895L218.217 30.9704L226.821 33.8616L223.926 25.4224L225.695 24.3284Z" fill="#AF212B"/>
+<path d="M289.47 4.41667L306.514 23.4083L311.287 0H317.877L323.331 23.4083L339.012 4.41667L344.466 7.50833L336.739 31.3583L360.828 23.4083L364.237 28.0458L346.965 44.8292L369.918 49.9083L369.691 55.65L344.466 60.5083L364.237 77.5125L360.828 82.5917L336.739 74.2L344.466 97.8292L339.012 101.363L323.331 82.5917L317.877 106H311.287L306.514 82.5917L289.47 101.363L284.471 97.8292L292.652 74.2L267.881 82.5917L265.154 77.5125L284.471 60.5083L259.246 55.65V49.9083L284.471 44.8292L265.154 28.0458L268.336 23.1875L292.652 31.3583L284.471 7.50833L289.47 4.41667Z" fill="#0B5399"/>
+<path d="M115.74 118.47L124.454 131.803L129.722 117.697L133.814 118.293L134.897 133.321L146.504 122.944L149.586 125.356L142.44 139.469L158.182 136.707L159.842 139.895L147.465 148.757L161.218 153.984L160.511 157.529L144.369 158.268L154.972 170.613L152.355 173.459L138.223 166.073L140.695 181.444L136.96 183.145L129.071 170.073L123.379 184.116L119.287 183.521L118.628 168.554L106.196 178.671L103.439 176.026L110.846 162.091L94.6375 165.065L93.4441 161.665L107.113 152.85L91.9272 147.555L92.4925 143.99L108.657 143.114L98.3138 130.947L100.768 128.218L115.063 135.487L112.331 119.938L115.74 118.47Z" fill="#C8AD6E"/>
+<path d="M62.4196 143.518L68.3018 152.517L71.8576 142.996L74.62 143.398L75.3507 153.542L83.1853 146.538L85.266 148.166L80.4425 157.692L91.0679 155.828L92.1886 157.98L83.8339 163.962L93.1172 167.49L92.6404 169.883L81.7442 170.382L88.9015 178.714L87.1352 180.635L77.5957 175.65L79.2643 186.025L76.7433 187.174L71.418 178.35L67.5764 187.829L64.814 187.427L64.3691 177.325L55.9776 184.154L54.1167 182.368L59.1161 172.962L48.1756 174.97L47.37 172.674L56.5967 166.724L46.3461 163.15L46.7277 160.744L57.6386 160.152L50.6571 151.94L52.3135 150.097L61.9629 155.005L60.1185 144.509L62.4196 143.518Z" fill="#1CB377"/>
+</svg>
 
-        {/* Logo Section */}
-        <div id="logo-section" className="flex justify-center items-center flex-col gap-10   px-4 py-8 sm:py-12 lg:py-16 ">
-            <div className=" w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[386.59px] h-[144px]">
-                <Image
-                    src="/logo.png"
-                    width={386.59}
-                    height={144}
-                    alt="Company Logo"
-                    className="w-full h-fit object-contain"
-                    priority
-                />
-            </div>
-            <div className="text-sm sm:text-base md:text-lg lg:text-[20px] text-center px-4 text-gray-700 max-w-2xl">
-                An immersive experience of timeless values
-            </div>
-        </div>
+
 
         {/* Main Image Section */}
-        <div className="w-[95%] sm:w-[92%] lg:w-[90%] border-[10px] border-gray-300 sm:border-2 rounded-lg m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px]   overflow-hidden relative z-10">
+        {/* <div className="w-[95%] sm:w-[92%] lg:w-[90%] border-[10px] border-gray-300 sm:border-2 rounded-lg m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px]   overflow-hidden relative z-10 mb-10">
             <Image
-                src="/section1.jpg"
+                src="/image.png"
                 alt="Main section image"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 95vw, (max-width: 1200px) 92vw, 90vw"
             />
-        </div>
+        </div> */}
+        <VideoSection />
         </div>
         
         </>
@@ -58,5 +70,58 @@ export default function HeroSection() {
 
 
 )}
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Play } from 'lucide-react';
 
+function VideoSection() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+  };
+
+  return (
+    <div className="w-[95%] sm:w-[92%] lg:w-[90%] border-[10px] border-gray-300 rounded-lg m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10">
+      {/* Iframe */}
+      <iframe
+        className="w-full h-full"
+        src={`https://www.youtube.com/embed/dQw4w9WgXcQ${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
+        title="Video Player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+      
+      {/* Play Button Overlay */}
+      {!isPlaying && (
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer z-20"
+          onClick={handlePlay}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+        >
+          <motion.div
+            className="bg-white rounded-full p-6 sm:p-8 shadow-2xl"
+            animate={{ 
+              scale: isHovering ? 1.15 : 1 
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 20 
+            }}
+          >
+            <Play 
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-gray-800 overflow-hidden" 
+              fill="currentColor"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </div>
+  );
+}

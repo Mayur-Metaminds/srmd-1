@@ -1,6 +1,6 @@
-import { useEffect,useRef,useState } from "react";
+import { useEffect, useRef, useState } from "react";
 export default function ScrollTypingEffect(
-  { text, className }: { text: string, className: string }) {
+  { text, className, colorChange = "#333333" }: { text: string, className: string, colorChange?: string }) {
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const lastScrollYRef = useRef<number>(0);
   const currentIndexRef = useRef<number>(0);
@@ -33,9 +33,10 @@ export default function ScrollTypingEffect(
     for (const char of text) {
       const span = document.createElement("span");
       span.textContent = char;
+   
       paragraph.appendChild(span);
       spanArray.push(span);
-    //   span.style.fontSize = "40px"
+      //   span.style.fontSize = "40px"
     }
     spansRef.current = spanArray;
 
@@ -53,6 +54,7 @@ export default function ScrollTypingEffect(
       if (scrollY > lastScrollYRef.current) {
         // scroll up → reveal next character
         if (idx < spans.length) {
+            spans[idx].style.color = colorChange
           spans[idx].classList.add("visible");
           currentIndexRef.current += 1;
         }
@@ -77,7 +79,7 @@ export default function ScrollTypingEffect(
   return (
     <>
 
-      <div className={`${className}   text-[#33333366]`}
+      <div className={`${className} `}
         ref={paragraphRef}
         id="desc"
       >

@@ -1,6 +1,6 @@
 "use client";
-import { Play } from "lucide-react";
 import ScrollTypingEffect from "./ScrollTextFilling";
+import { useEffect } from "react";
 
 export default function TimelineGallery() {
   const cards = [
@@ -12,8 +12,50 @@ export default function TimelineGallery() {
     { title: "Lorem ipsum non", year: "2025" },
   ];
 
+  const cards1 = [
+    {
+      col11: { title: "Lorem ipsum non", year: "2025" },
+      col12: { title: "Lorem ipsum non", year: "2025" },
+    },
+    {
+      col21: { title: "Lorem ipsum non", year: "2025" },
+      col22: { title: "Lorem ipsum non", year: "2025" },
+
+    },
+    {
+      col3: { title: "Lorem ipsum non", year: "2025" },
+      col32: { title: "Lorem ipsum non", year: "2025" },
+    }
+
+  ];
+
+  // const [isVisible, setIsVisible] = useState(false)
+  // useEffect(() => {
+  //   if (!isVisible) {
+  //     lastScrollYRef.current = 0;
+  //     currentIndexRef.current = 0
+  //     return
+  //   }
+
+  // }, [isVisible])
+
+  // useEffect(() => {
+  //   if (!paragraph) return;
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       setIsVisible(entry.isIntersecting)
+  //     })
+  //   }, { threshold: 0.1 })
+  //   observer.observe(paragraph)
+
+  //   return () => {
+  //     observer.disconnect()
+  //   }
+  // }, [isVisible]);
+
+
   return (
-    <section className="relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20">
+    <section className="relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative Wave Background */}
       <svg
         className="absolute top-1/2 left-0 w-full h-auto min-w-full -z-10"
@@ -32,11 +74,11 @@ export default function TimelineGallery() {
 
       {/* Top Text Section */}
       <div className="w-[90%]   mb-12 flex  items-start flex-col ">
-        <div className=" bg-[#1D2B53] text-white text-xs md:text-sm  py-1 rounded-full mb-4 flex justify-between gap-x-1 px-3">
-           <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
-                            <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
-                        </svg>
+        <div className=" bg-[#1D2B53] text-white text-[16px]  py-3 rounded-full mb-4 flex justify-between gap-x-1 px-3">
+          <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
+            <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
+          </svg>
           The Ripple Has Already Begun
         </div>
         {/* <h2 className="text-2xl md:text-3xl font-semibold leading-snug">
@@ -47,36 +89,84 @@ export default function TimelineGallery() {
           </span>
         </h2> */}
         <ScrollTypingEffect
-          className="text-2xl md:text-3xl font-semibold leading-snug"
+          className="text-[26px] sm:text-[26px] lg:text-[40px] xl:text-[40px]
+           leading-snug text-[#33333366]"
           text={
             `Witness the build-up. From practice rehearsals to sneak peeks at
           booths   — this is your front-row seat to the movement.`
           }
         />
-        <p className="mt-3 text-gray-600 font-medium text-sm md:text-base">
+        <p className="mt-3 text-[16px] sm:text-[16px] lg:text-[32px] xl:text-[32px] md:text-[20px]">
           @SRMD.Divinetouch #QuestForHappiness
         </p>
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl  z-10 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8  w-[90%]  z-10 pt-5 m-auto">
         {cards.map((card, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col items-center  bg-white shadow-sm rounded-lg overflow-hidden"
-          >
-            {/* Video Thumbnail */}
-            <div className={` w-full aspect-[4/5] bg-gray-200 flex items-center justify-center relative `}>
-              <Play size={40} className="text-gray-500" />
-            </div>
-            {/* Caption */}
-            <div className="flex justify-between w-full px-2 py-2 text-sm text-gray-700">
-              <span>{card.title}</span>
-              <span className="text-gray-500">{card.year}</span>
-            </div>
-          </div>
+          // <div
+          //   key={idx}
+          //   className="flex flex-col items-center  bg-white shadow-sm rounded-lg overflow-hidden "
+          // >
+          //   {/* Video Thumbnail */}
+          //   <div className={` w-full aspect-[4/5] bg-gray-200 flex items-center justify-center relative `}>
+          //     <Play size={40} className="text-gray-500" />
+          //   </div>
+          //   {/* Caption */}
+          //   <div className="flex justify-between w-full px-2 py-2 text-sm text-gray-700">
+          //     <span>{card.title}</span>
+          //     <span className="text-gray-500">{card.year}</span>
+          //   </div>
+          // </div>
+          <AnimatedCard card={card} idx={idx} />
         ))}
       </div>
     </section>
   );
 }
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Play } from 'lucide-react';
+
+interface Card {
+  title: string;
+  year: string | number;
+}
+
+interface AnimatedCardProps {
+  card: Card;
+  idx: number;
+}
+
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once:false, amount: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      key={idx}
+      className="flex flex-col items-center bg-white shadow-sm rounded-lg overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: idx * 0.1,
+        ease: "easeOut"
+      }}
+    >
+      {/* Video Thumbnail */}
+      <div className="w-full aspect-[4/5] bg-gray-200 flex items-center justify-center relative">
+        <Play size={40} className="text-gray-500" />
+      </div>
+      {/* Caption */}
+      <div className="flex justify-between w-full px-2 py-2 text-sm text-gray-700">
+        <span>{card.title}</span>
+        <span className="text-gray-500">{card.year}</span>
+      </div>
+    </motion.div>
+  );
+};
+
+// Usage in your parent component:
+// <AnimatedCard card={card} idx={idx} />

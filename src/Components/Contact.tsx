@@ -3,7 +3,7 @@ import LocationCard from "./LocationCard";
 export default function Contact() {
     return (
         <>
-            <div className="flex justify-center mt-3 flex-col items-center relative overflow-hidden">
+            <div className="flex justify-center mt-28 flex-col items-center relative overflow-hidden">
                 {/* Top decorative wave - responsive */}
                 <svg 
                     width="100%" 
@@ -47,12 +47,12 @@ export default function Contact() {
                     <button className="w-fit p-3 rounded-[100px] min-w-[167.68px] min-h-[43px] hover:scale-95 duration-500 bg-[#293464] text-white flex justify-center items-center gap-2 mx-auto mb-10">
                         <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
-                            <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
+                            <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
                         </svg>
                         <span>Contact us</span>
                     </button>
-
-                    <div className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto">
+{/* 
+                    <div className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto ">
                         <LocationCard />
                         <LocationCard />
                         <LocationCard />
@@ -63,7 +63,8 @@ export default function Contact() {
                         <LocationCard />
                         <LocationCard />
                         <LocationCard />
-                    </div>
+                    </div> */}
+                    <AnimatedCard />
 
                     <div className="text-center mt-10">
                          <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
@@ -75,3 +76,38 @@ export default function Contact() {
         </>
     )
 }
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+
+const AnimatedCard: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once:false, amount: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+    //   key={idx}
+      className="w-[95%] flex flex-wrap   justify-center gap-5  mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ 
+        duration: 0.5, 
+        delay:  0.1,
+        ease: "easeOut"
+      }}
+    >
+      {/* Video Thumbnail */}
+
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+                        <LocationCard />
+    </motion.div>
+  );
+};

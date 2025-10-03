@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import NumberFlow from "@number-flow/react";
-import { CalendarDays, LocateFixed, MapPin } from "lucide-react";
-
+import { CalendarDays, MapPin } from "lucide-react";
 
 export default function CountDown() {
     return (
         <>
-            <div id="count-down" className="w-full m-auto flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[621px] p-2 sm:p-4 lg:p-2 gap-4 sm:gap-6 lg:gap-10 justify-center relative overflow-hidden" style={{background:"linear-gradient(#293464B2), url('/countdownbg.jpg')"}}>
-                <svg width="1282" height="549" viewBox="0 0 1282 549" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-[-12px] hidden sm:block">
+            <div id="count-down" className="w-full m-auto flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[621px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-center relative overflow-hidden" style={{background:"linear-gradient(#293464B2), url('/countdownbg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                <svg width="1282" height="549" viewBox="0 0 1282 549" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-[-12px] left-0 w-full h-auto max-w-none z-0 pointer-events-none" preserveAspectRatio="xMidYMid slice">
                     <path d="M30.5145 431.638L24.6313 432.552L27.4185 427.614L26.2773 426.64L21.7192 430.066L21.9357 424.313L20.514 424.066L18.1702 429.52L15.2261 424.521L13.9199 424.856L14.3198 430.444L9.56119 427.969L8.71419 429.04L12.3323 433.648L6.28369 433.799L6.08989 435.222L11.5567 437.266L6.57101 440.396L6.97001 441.841L12.583 440.766L9.91387 445.804L11.0551 446.779L15.4951 443.252L15.5488 449.166L16.96 449.266L19.191 443.785L22.1849 448.964L23.4412 448.449L22.7213 442.519L27.8394 445.37L28.7257 444.332L25.1417 439.684L31.0775 439.506L31.2766 438.157L25.8045 436.039L30.903 432.937L30.5145 431.638Z" fill="#C8AD6E"/>
                     <circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-1 0 0 1 513.266 0.109375)" fill="#6982C1" fillOpacity="0.4"/>
                     <circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-1 0 0 1 438.199 84.0078)" fill="#C8AD6E"/>
@@ -35,21 +34,21 @@ export default function CountDown() {
 
                 <AnimatedNumberCountdown
                     endDate={new Date("2025-11-16")}
-                    className="my-2 sm:my-4"
+                    className="my-2 sm:my-4 z-10"
                     compactPreview={true}
                 />
-                <div className="text-white  flex flex-col items-center w-full sm:w-3/4 md:w-2/3  gap-1 sm:gap-2 lg:gap-1 text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[37px] px-4">
-                    <div className="flex  sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
-                        <CalendarDays width={20} height={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-[37px] xl:h-[37px]"/>
-                        <span>Sunday,16 November, 2025</span>
+                <div className="text-white flex flex-col items-center w-full max-w-4xl gap-2 sm:gap-3 lg:gap-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[37px] px-4 z-10">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                        <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0"/>
+                        <span className="leading-tight">Sunday, 16 November, 2025</span>
                     </div>
-                    <div className="flex sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
-                        <MapPin width={20} height={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 xl:w-[37px] xl:h-[37px]" />
-                        <span>Lorem ipsum dolor sit amet consectetur .</span>
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                        <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0" />
+                        <span className="leading-tight">Lorem ipsum dolor sit amet consectetur.</span>
                     </div>
                 </div>
 
-                <button className="bg-[#FED543] rounded-md hover:scale-95 duration-500 w-full max-w-[240px] sm:max-w-[280px] h-[52px] font-bold z-100 mx-4">
+                <button className="bg-[#FED543] rounded-md hover:scale-95 transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[48px] sm:h-[52px] font-bold z-10 mx-4 text-sm sm:text-base">
                    <span>Know More</span>
                 </button>
 
@@ -111,43 +110,43 @@ export function AnimatedNumberCountdown({
 
     if (compactPreview) {
         return (
-            <div className="  min-h-14 flex items-center justify-center gap-3  w-full p-1 text-white ">
-                <div className="flex flex-col items-center w-24 text-black p-2 border-2 bg-white rounded-md border-yellow-300">
+            <div className="min-h-14 flex items-center justify-center gap-2 sm:gap-3 w-full max-w-full px-2 text-white">
+                <div className="flex flex-col items-center w-16 sm:w-20 md:w-24 text-black p-1.5 sm:p-2 border-2 bg-white rounded-md border-yellow-300">
                     <NumberFlow
                         value={timeLeft.days}
-                        className="text-4xl font-medium text-foreground leading-none"
+                        className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground leading-none"
                         format={{ minimumIntegerDigits: 2 }}
                     />
-                    <span>Days</span>
+                    <span className="text-xs sm:text-sm mt-0.5">Days</span>
                 </div>
-                <span className="text-4xl font-bold text-muted-foreground mx-0.5">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-muted-foreground">
                     :
                 </span>
-                <div className="flex flex-col items-center w-24 text-black p-2 border-2 bg-white rounded-md border-yellow-300 ">
+                <div className="flex flex-col items-center w-16 sm:w-20 md:w-24 text-black p-1.5 sm:p-2 border-2 bg-white rounded-md border-yellow-300">
                     <NumberFlow
                         value={timeLeft.hours}
-                        className="text-4xl font-medium text-foreground leading-none"
+                        className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground leading-none"
                         format={{ minimumIntegerDigits: 2 }}
                     />
-                     <span>Hour</span>
+                     <span className="text-xs sm:text-sm mt-0.5">Hour</span>
                 </div>
-                <span className="text-3xl font-medium text-muted-foreground">:</span>
-                <div className="flex flex-col items-center w-24 text-black p-2 border-2 bg-white rounded-md border-yellow-300">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-medium text-muted-foreground">:</span>
+                <div className="flex flex-col items-center w-16 sm:w-20 md:w-24 text-black p-1.5 sm:p-2 border-2 bg-white rounded-md border-yellow-300">
                     <NumberFlow
                         value={timeLeft.minutes}
-                        className="text-4xl font-medium text-foreground leading-none"
+                        className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground leading-none"
                         format={{ minimumIntegerDigits: 2 }}
                     />
-                     <span>Min</span>
+                     <span className="text-xs sm:text-sm mt-0.5">Min</span>
                 </div>
-                <span className="text-3xl font-bold text-muted-foreground">:</span>
-                <div className="flex flex-col items-center w-24 text-black p-2 border-2 bg-white rounded-md border-yellow-300">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-muted-foreground">:</span>
+                <div className="flex flex-col items-center w-16 sm:w-20 md:w-24 text-black p-1.5 sm:p-2 border-2 bg-white rounded-md border-yellow-300">
                     <NumberFlow
                         value={timeLeft.seconds}
-                        className="text-4xl font-medium text-foreground leading-none"
+                        className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground leading-none"
                         format={{ minimumIntegerDigits: 2 }}
                     />
-                     <span>Sec</span>
+                     <span className="text-xs sm:text-sm mt-0.5">Sec</span>
                 </div>
             </div>
         );
@@ -261,4 +260,3 @@ export function AnimatedNumberCountdown({
         </div>
     );
 }
-
