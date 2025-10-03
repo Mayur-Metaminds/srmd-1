@@ -54,7 +54,7 @@ export default function TimelineGallery() {
         </h2> */}
         <ScrollTypingEffect
           className="text-[26px] sm:text-[40px] lg:text-[40px] xl:text-[40px]
-           leading-[32px] text-[#33333366]"
+           leading-[32px] sm:leading-tight text-[#33333366]"
           text={
             `Witness the build-up. From practice rehearsals to sneak peeks at
           booths   — this is your front-row seat to the movement.`
@@ -107,7 +107,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   return (
     <motion.div
       ref={ref}
-      className={`min-w-[20%] max-w-[100%] w-[100%] sm:w-[30%] lg:w-[30%] md:w-[70%] xl:w-[20%] break-inside-avoid mb-10  ${idx%2===0?"mt-10":"mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
+      className={`min-w-[24%] max-w-full w-full sm:w-[30%] lg:w-[30%] md:w-[70%] xl:w-[24%] break-inside-avoid mb-10  ${idx%2===0?"mt-10":"mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ 

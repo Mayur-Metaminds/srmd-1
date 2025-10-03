@@ -117,7 +117,7 @@ export default function Timeline() {
                 </div>
             </div> */}
       <div
-        className="w-full flex justify-center items-center h-screen overflow-hidden self-center sm:self-end"
+        className="w-full flex justify-center items-center h-screen overflow-hidden self-center sm:self-end "
         onWheel={handleWheel}
       >
         <AnimatePresence mode="wait">
@@ -230,7 +230,7 @@ const TimelineCard = ({ item }: { item: any }) => {
         />
         <div className="w-full flex flex-col justify-start sm:justify-end gap-2 self-start sm:self-end">
           <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">Lorem Ipsum</h1>
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[22px]">{item.description}</p>
+          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px]">{item.description}</p>
         </div>
       </div>
 
