@@ -42,3 +42,12 @@ span.visible {
 .scroller {
   animation: scrollX 8s linear forwards;
 }
+/* For modern browsers */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}

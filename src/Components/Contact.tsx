@@ -87,7 +87,7 @@ import { motion, useInView } from 'framer-motion';
 
 const AnimatedCard = ({ idx }: { idx: number }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: false, amount: 0.2 });
+    const isInView = useInView(ref, { once:true, amount: 0.2 });
 
     return (
         <motion.div

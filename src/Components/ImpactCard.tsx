@@ -126,7 +126,7 @@ export default function ImpactCard() {
 
   return (
     <div
-      className=" mt-5 min-h-screen flex-col flex items-center justify-center p-8 relative overflow-hidden w-full gap-y-36  "
+      className=" mt-5 min-h-screen flex-col flex items-center justify-center p-8 relative overflow-hidden w-full gap-y-20  "
     >
       <div className="absolute  left-8 bottom-5 h-[60%] hidden sm:block">
       <img src="/impactcard/bgprop.png" alt="" className="h-full" />
@@ -146,10 +146,10 @@ export default function ImpactCard() {
                     </button>
                     </div>
 
-     <div className="w-full sm:w-[80%] h-[330px] ">
+     <div className="w-full sm:w-[80%] h-[330px]  ">
 
-     {/* <CardStackContainer cards={cards} /> */}
-     <CardStackWheel />
+     <CardStackContainer  />
+     {/* <CardStackWheel /> */}
 
      </div>
   

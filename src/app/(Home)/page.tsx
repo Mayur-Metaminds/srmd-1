@@ -15,19 +15,14 @@ import Image from "next/image";
 import TimelineTrain from "@/Components/demo2";
 export default function Home() {
   return (
-    <div className="w-full h-full m-0 p-0 relative">
+    <div className="w-full h-full m-0 p-0 relative overflow-hidden">
       
       {/* Responsive decorative SVG background */}
       <HeroSection />
-      {/* Component Sections */}
       <CountDown />
-      {/* <CardStackDemo /> */}
-      {/* <CardStackWheel /> */}
       <ImpactCard />
-      {/* <EventSection /> */}
       <VisionariesHero />
       <AudienceSection />
-  {/* <TimelineTrain /> */}
             <Timeline />
       <Contact />
       

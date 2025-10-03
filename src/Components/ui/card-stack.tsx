@@ -53,7 +53,7 @@ export default function CardStackWheel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false); // 👈 new state for visibility
-  const [direction, setDirection] = useState<"up" | "down">("down");
+  const direction = useRef<"up" | "down">("down");
   const [visibleCards, setVisibleCards] = useState<Card[]>([])
   const config = {
     offset: 32,
@@ -65,7 +65,7 @@ export default function CardStackWheel() {
 
   // useEffect(() => {
   //   if(currentIndex>=0 && currentIndex<cards.length){
-      
+
   //     setVisibleCards((prev)=>{
   //       return([...prev,cards[currentIndex]])
   //     })
@@ -76,12 +76,12 @@ export default function CardStackWheel() {
     if (animating) return;
     setAnimating(true);
 
-    setCards((prevCards) => {
+    setVisibleCards((prevCards) => {
       const newCards = [...prevCards];
-      const first = newCards.shift()!;
-      newCards.push(first);
+      newCards.unshift(cards[currentIndex + 1]);
       return newCards;
     });
+
 
     setCurrentIndex((prev) => (prev + 1));
     setTimeout(() => setAnimating(false), 500);
@@ -92,10 +92,10 @@ export default function CardStackWheel() {
     if (animating) return;
     setAnimating(true);
 
-    setCards((prevCards) => {
+
+    setVisibleCards((prevCards) => {
       const newCards = [...prevCards];
-      const last = newCards.pop()!;
-      newCards.unshift(last);
+      newCards.shift();
       return newCards;
     });
 
@@ -131,48 +131,30 @@ export default function CardStackWheel() {
   //   const handleWheel = (e: WheelEvent) => {
   //     if (animating) return;
 
-  //     // Middle cards → always block browser scroll
-  //     if (currentIndex > 0 && currentIndex < cards.length - 1) {
-  //       e.preventDefault();
-  //     }
+  //     if (!isVisible) return
+  //     e.preventDefault()
+  //     if (currentIndex >= 0 && currentIndex < cards.length) {
+  //       if ((visibleCards.length === cards.length) && (e.deltaY < -20)) {
+  //         direction.current="up"
+  //         prevCard()
+  //         return
+  //       }
+  //       if ((visibleCards.length >= 0) && (e.deltaY > 20)) {
 
-  //     // Scroll down
-  //     if (e.deltaY > 20) {
-  //       if (currentIndex < cards.length - 1) {
-  //         setDirection("down");
-  //         nextCard();
-  //       } else {
-  //         // last card → allow natural scroll
-  //         document.body.style.overflow = "";
+  //         direction.current="down"
+  //         nextCard()
+  //         return
   //       }
   //     }
-
-  //     // Scroll up
-  //     else if (e.deltaY < -20) {
-  //       if (currentIndex > 0) {
-  //         setDirection("up");
-  //         prevCard();
-  //       } else {
-  //         // first card → allow natural scroll
-  //         document.body.style.overflow = "";
-  //       }
-  //     }
-  //   };
-
-  //   // Disable browser scroll for middle cards
-  //   if (currentIndex > 0 && currentIndex < cards.length - 1) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "";
   //   }
 
-  //   window.addEventListener("wheel", handleWheel, { passive: false, capture: true });
+  //   window.addEventListener("wheel", handleWheel, { passive: false});
 
   //   return () => {
-  //     window.removeEventListener("wheel", handleWheel, { capture: true });
+  //     window.removeEventListener("wheel", handleWheel);
   //     // restore scroll on unmount
   //   };
-  // }, [animating, currentIndex, isVisible, cards]);
+  // }, [animating, currentIndex, isVisible]);
 
 
 
@@ -204,7 +186,7 @@ export default function CardStackWheel() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center gap-x-32 w-full relative h-full">
+    <div className="flex flex-col lg:flex-row justify-around items-center gap-x-10 w-full relative h-full mb-10">
       <div className="hidden lg:block">
         <VerticalDots activeIndex={currentIndex} cards={cards} />
       </div>
@@ -232,9 +214,9 @@ export default function CardStackWheel() {
       </div> */}
 
         {/* Card Stack */}
-        <div className="relative xl:h-full lg:h-full h-56 sm:h-56 md:h-60 w-full flex items-center justify-center" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="relative xl:h-full lg:h-full h-60 sm:h-60 md:h-60 w-full flex items-center justify-center" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <AnimatePresence>
-            {cards.map((card, i) => {
+            {visibleCards.map((card, i) => {
               if (i >= config.maxVisibleCards) return null;
 
               const yOffset = i * config.offset;
@@ -242,30 +224,36 @@ export default function CardStackWheel() {
               const rotation = i % 2 === 0 ? -config.rotationAngle : config.rotationAngle;
               const zIndex = cards.length - i;
 
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ y: direction === "down" ? -200 : 200, opacity: 0, rotateZ: rotation }}
-                  animate={{
-                    y: yOffset,
-                    scale,
-                    rotateZ: i === 0 ? 0 : rotation,
-                    opacity: 1
-                  }}
-                  exit={{ opacity: 0, y: direction === "down" ? 200 : -200 }}
- transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}                  className={`absolute  sm:border-4 h-48 sm:h-56 md:h-60 w-full sm:w-[90%] rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between ${i === 0 ? "border-amber-300" : "border-[#28365F]"
-                    }`}
-                  style={{ zIndex, background: card.gradient }}
-                >
-                  {i === 0 ? (
+              if (i === 0) {
+                // Only animate the top card
+                return (
+                  <motion.div
+                    key={card.title}
+                    initial={{ y: direction.current === "down" ? -500 : 100, opacity: 0, rotateZ: rotation }}
+                    animate={{ y: yOffset, scale, rotateZ: 0, opacity: 1 }}
+                    exit={{ opacity: 0, y: direction.current === "down" ? 100 : -500 }}
+                    transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
+                    className={`absolute sm:border-4 h-48 sm:h-56 md:h-60 w-full sm:w-[90%] rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between border-amber-300`}
+                    style={{ zIndex, background: card.gradient }}
+                  >
                     <CardContent card={card} />
-                  ) : (
+                  </motion.div>
+                );
+              } else {
+                // Other cards are static
+                return (
+                  <div
+                    key={card.title + i}
+                    className={`absolute sm:border-4 h-48 sm:h-56 md:h-60 w-full sm:w-[90%] rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between border-[#28365F]`}
+                    style={{ zIndex, transform: `translateY(${yOffset}px) scale(${scale}) rotateZ(${rotation}deg)`, background: card.gradient }}
+                  >
                     <div className="w-full h-full bg-white rounded-2xl sm:rounded-3xl"></div>
-                  )}
-                </motion.div>
-              );
+                  </div>
+                );
+              }
             })}
           </AnimatePresence>
+
         </div>
 
         {/* Scroll Indicator

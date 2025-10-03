@@ -129,7 +129,7 @@ export function ImageStackk({
           height: dimensions.containerHeight,
         }}
       >
-        <img src="/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover" />
+        <img src="/Visionaries/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover" />
         <img src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover" />
 
         <button
