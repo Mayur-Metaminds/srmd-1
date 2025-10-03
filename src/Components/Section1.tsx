@@ -83,7 +83,7 @@ function VideoSection() {
   };
 
   return (
-    <div className="w-[95%] sm:w-[92%] lg:w-[90%] border-[10px] border-gray-300 rounded-lg m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10">
+    <div className="w-[95%] sm:w-[92%] lg:w-[90%] border-[10px] border-[#C8AD6E] rounded-lg m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10">
       {/* Iframe */}
       <iframe
         className="w-full h-full"
@@ -97,7 +97,7 @@ function VideoSection() {
       {/* Play Button Overlay */}
       {!isPlaying && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer z-20"
+          className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer z-20 rounded-2xl"
           onClick={handlePlay}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}

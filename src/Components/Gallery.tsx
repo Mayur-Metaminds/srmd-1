@@ -12,22 +12,6 @@ export default function TimelineGallery() {
     { title: "Lorem ipsum non", year: "2025" },
   ];
 
-  const cards1 = [
-    {
-      col11: { title: "Lorem ipsum non", year: "2025" },
-      col12: { title: "Lorem ipsum non", year: "2025" },
-    },
-    {
-      col21: { title: "Lorem ipsum non", year: "2025" },
-      col22: { title: "Lorem ipsum non", year: "2025" },
-
-    },
-    {
-      col3: { title: "Lorem ipsum non", year: "2025" },
-      col32: { title: "Lorem ipsum non", year: "2025" },
-    }
-
-  ];
 
   // const [isVisible, setIsVisible] = useState(false)
   // useEffect(() => {
@@ -118,7 +102,7 @@ export default function TimelineGallery() {
           //     <span className="text-gray-500">{card.year}</span>
           //   </div>
           // </div>
-          <AnimatedCard card={card} idx={idx} />
+          <AnimatedCard card={card} idx={idx}  />
         ))}
       </div>
     </section>
