@@ -45,31 +45,33 @@ export default function AudienceSection() {
                         <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
                         <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
                     </svg>
-                    <span className="text-sm sm:text-[16px]">This is for you if ...</span>
+                    <span className="text-sm sm:text-[16px] font-semibold">This is for you if ...</span>
                 </div>
 
                 {/* Heading */}
-                <div className=" w-full  sm:w-[70%] h-full flex flex-col justify-between">
+                <div className=" w-full  sm:w-[80%] h-full flex flex-col justify-between">
                     <div>
-{/* 
+                        {/* 
                     <h2 className="font-[400] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] leading-tight">
                         Lorem typesetting
                     </h2>
                     <p className="text-[#22222266] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[40px] mt-2">
                         industry. Lorem Ipsum
                     </p> */}
-                    <ScrollTypingEffect text="Lorem typesetting industry. Lorem Ipsum"  className="font-[400] text-[26px] sm:text-[40px] md:text-[30px]  lg:text-[40px] xl:[40px] leading-tight  text-[#22222266] w-full "/>
+                        <ScrollTypingEffect
+                            text="Lorem typesetting industry. Lorem Ipsum"
+                            className="font-normal text-[26px] sm:text-[40px] md:text-[30px]  lg:text-[36px] xl:[40px] leading-tight  text-[#22222266] w-full " />
                     </div>
-   {/* Decorative Image - positioned differently on mobile */}
-                <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-2/4 ">
-                    <img src="/audience/leftimage.png" alt="Decorative element" className="w-full object-contain" />
+                    {/* Decorative Image - positioned differently on mobile */}
+                    <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-[90%] h-full sm:h-[225px] md:h-[230px]  min-w-44 flex items-end justify-start">
+                        <img src="/audience/leftimage.png" alt="Decorative element" className="w-full object-contain" />
+                    </div>
                 </div>
-                </div>
-             
+
             </div>
 
             {/* Right Section - Audience List */}
-            <div className="w-full lg:w-[50%] max-w-3xl space-y-4 sm:space-y-6 h-auto lg:h-[70%] flex flex-col justify-start lg:justify-end sm:self-end sm:justify-end">
+            <div className="w-full lg:w-[50%] max-w-3xl space-y-4 sm:space-y-6 h-auto lg:h-[70%] flex flex-col justify-start ">
                 <div className="">
                     <Accordion type="single" collapsible className="w-full">
                         {audience.map((item, i) => (
@@ -87,7 +89,7 @@ export default function AudienceSection() {
                 </button>
             </div>
 
-      
+
         </section>
     );
 }
@@ -129,20 +131,20 @@ function AudienceItem({
 }) {
     return (
         <AccordionItem value={`item-${idx}`} className=" border-b border-[#C8AD6E] pb-3 sm:pb-4 p-5" >
-            <AccordionTrigger  className="flex items-center gap-x-2  hover:no-underline  [&[data-state=open]>div>span]:text-yellow-500 [&[data-state=open]]:font-semibold [&[data-state=close]]:text-[#222222B2]
+            <AccordionTrigger className="flex items-center gap-x-2  hover:no-underline  [&[data-state=open]>div>span]:text-yellow-500 [&[data-state=open]]:font-semibold [&[data-state=open]]:text-[#333333]
              ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-<path d="M8.72279 0.5L6.87474 2.65L6.35729 0H5.64271L5.05134 2.65L3.35113 0.5L2.75975 0.85L3.59754 3.55L0.985626 2.65L0.616016 3.175L2.48871 5.075L0 5.65L0.0246407 6.3L2.75975 6.85L0.616016 8.775L0.985626 9.35L3.59754 8.4L2.75975 11.075L3.35113 11.475L5.05134 9.35L5.64271 12H6.35729L6.87474 9.35L8.72279 11.475L9.26489 11.075L8.37782 8.4L11.0637 9.35L11.3593 8.775L9.26489 6.85L12 6.3V5.65L9.26489 5.075L11.3593 3.175L11.0144 2.625L8.37782 3.55L9.26489 0.85L8.72279 0.5Z" fill="#C8AD6E"/>
-</svg>
+                    <path d="M8.72279 0.5L6.87474 2.65L6.35729 0H5.64271L5.05134 2.65L3.35113 0.5L2.75975 0.85L3.59754 3.55L0.985626 2.65L0.616016 3.175L2.48871 5.075L0 5.65L0.0246407 6.3L2.75975 6.85L0.616016 8.775L0.985626 9.35L3.59754 8.4L2.75975 11.075L3.35113 11.475L5.05134 9.35L5.64271 12H6.35729L6.87474 9.35L8.72279 11.475L9.26489 11.075L8.37782 8.4L11.0637 9.35L11.3593 8.775L9.26489 6.85L12 6.3V5.65L9.26489 5.075L11.3593 3.175L11.0144 2.625L8.37782 3.55L9.26489 0.85L8.72279 0.5Z" fill="#C8AD6E" />
+                </svg>
                 <div className="flex-1 text-left">
-                    <p className=" text-[#333333] font-[400] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] leading-tight  transition-all duration-500 ease-in-out">
+                    <p className="  font-[400] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] leading-tight  transition-all duration-500 ease-in-out">
                         {title}
                     </p>
                 </div>
             </AccordionTrigger>
             {desc && (
-                <AccordionContent  className="pb-0 pt-0 pl-6 sm:pl-7 md:pl-8 lg:pl-9 xl:pl-10 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all duration-700 ease-in-out">
-                    <p className="text-[#222222] font-[400] text-[16px] sm:text-base md:text-lg lg:text-xl xl:text-[24px] mt-1 leading-relaxed">
+                <AccordionContent className="pb-0 pt-0 pl-6 sm:pl-7 md:pl-8 lg:pl-9 xl:pl-10 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all duration-700 ease-in-out">
+                    <p className="font-normal text-[16px] sm:text-base md:text-lg lg:text-xl xl:text-[24px] mt-1 leading-relaxed">
                         {desc}
                     </p>
                 </AccordionContent>

@@ -98,7 +98,7 @@ function VideoSection() {
       {/* Play Button Overlay */}
       {!isPlaying && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer z-20 "
+          className="absolute inset-0 flex items-center justify-center  cursor-pointer z-20 "
           onClick={handlePlay}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -117,8 +117,9 @@ function VideoSection() {
             }}
           >
             <Play
-              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden"
-              fill="currentColor"
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[#AF212B]"
+              fill="#AF212B"
+              
             />
           </motion.div>
         </motion.div>

@@ -188,13 +188,13 @@ export default function CardStackWheel() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-around items-center gap-x-10 w-full relative h-full mb-10">
+    <div className="flex flex-col lg:flex-row justify-center  items-center gap-x-10 w-full relative h-full mb-10">
       <div className="hidden lg:block">
         <VerticalDots activeIndex={currentIndex} cards={cards} />
       </div>
 
       <div
-        className="flex flex-col lg:flex-row justify-between items-center gap-x-32 w-full relative h-full"
+        className="flex flex-col lg:flex-row justify-between items-center gap-x-32 w-full sm:w-[70%]  relative h-full"
         ref={stackRef} // 👈 attach observer
       >
         {/* Progress Dots */}
@@ -216,7 +216,7 @@ export default function CardStackWheel() {
       </div> */}
 
         {/* Card Stack */}
-        <div className="relative xl:h-full lg:h-full h-60 sm:h-60 md:h-60 w-full flex items-center justify-center" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="relative xl:h-full lg:h-full h-60 sm:h-60 md:h-60 w-full flex items-center justify-center mb-20" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <AnimatePresence>
             {visibleCards.map((card, i) => {
               if (i >= config.maxVisibleCards) return null;
@@ -266,9 +266,7 @@ export default function CardStackWheel() {
         </svg>
       </div> */}
       </div>
-      <div className="lg:hidden mt-6">
-        <HorizontalDots activeIndex={currentIndex} cards={cards} />
-      </div>
+     
       {/* Desktop buttons - right side */}
       <div className="hidden lg:flex  flex-col  gap-3 z-20">
         <button
@@ -279,10 +277,16 @@ export default function CardStackWheel() {
         </button>
         <button
           onClick={nextCard}
-          className="w-10 h-10 md:w-12 md:h-12 bg-blue-900 hover:bg-blue-800 rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer hover:scale-110"
+          className="w-10 h-10 md:w-12 md:h-12  bg-[#293464]  rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer hover:scale-110"
         >
           <div className="w-0 h-0 border-l-[5px] md:border-l-[6px] border-l-transparent border-r-[5px] md:border-r-[6px] border-r-transparent border-t-[8px] md:border-t-[10px] border-t-white"></div>
         </button>
+      </div>
+
+      <div className="flex justify-between w-full lg:hidden">
+
+       <div className="lg:hidden mt-6">
+        <HorizontalDots activeIndex={currentIndex} cards={cards} />
       </div>
 
       {/* Mobile buttons - bottom */}
@@ -295,11 +299,12 @@ export default function CardStackWheel() {
         </button>
         <button
           onClick={nextCard}
-          className="w-12 h-12 bg-blue-900 hover:bg-blue-800 rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer active:scale-95"
-        >
+          className="w-12 h-12 bg-[#293464] hover:bg-[#293464]/20 rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer active:scale-95"
+          >
           <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-r-[8px] border-r-gray-600"></div>
           {/* <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent "></div> */}
         </button>
+          </div>
       </div>
     </div>
 
@@ -309,7 +314,7 @@ function CardContent({ card }: { card: any }) {
   return (
     <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl h-full w-full overflow-hidden">
 
-      <div className="h-[120px] absolute text-[28px] z-10 w-full -bottom-10 rounded-t-3xl" style={{ background: "linear-gradient(#293464B2), url('/countdownbg.jpg')" }}></div>
+      <div className="h-[120px] w-[200%] absolute text-[28px] z-10  -bottom-10" style={{ background: "linear-gradient(#293464B2), url('/countdownbg.jpg')" }}></div>
 
       <div
         className={`bg-gradient-to-br ${card.gradient} w-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 relative h-full flex flex-col justify-between`}
@@ -356,7 +361,7 @@ function CardContent({ card }: { card: any }) {
 function VerticalDots({ activeIndex = 0, cards }: { activeIndex?: number, cards: Card[] }) {
   return (
     <div className="flex items-center justify-center">
-      <div className="flex flex-col items-center justify-around w-6 h-40 rounded-full border-2 border-yellow-400 p-7">
+      <div className="flex flex-col items-center justify-around w-6 h-40 rounded-full border-2 border-[#FED543] p-7">
         {cards.map((i, index) => (
           <div
             key={index}
@@ -374,13 +379,13 @@ function VerticalDots({ activeIndex = 0, cards }: { activeIndex?: number, cards:
 function HorizontalDots({ activeIndex = 0, cards }: { activeIndex?: number, cards: Card[] }) {
   return (
     <div className="flex items-center justify-center">
-      <div className="flex flex-row items-center justify-around h-6 w-40 rounded-full border-2 border-yellow-400 px-7">
+      <div className="flex flex-row items-center justify-around h-10 w-40 rounded-full border-2 border-yellow-400 px-7">
         {cards.map((i, index) => (
           <div
             key={index}
             className={`rounded-full transition-all duration-300 ${activeIndex === index
-              ? "w-4 h-4 bg-blue-900 scale-125"
-              : "w-2 h-2 border border-gray-300"
+              ? "w-4 h-4 bg-[#293464] scale-125"
+              : "w-1 h-1 border border-gray-300"
               }`}
           />
         ))}

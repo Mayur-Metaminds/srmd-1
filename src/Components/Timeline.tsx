@@ -65,13 +65,13 @@ export default function Timeline() {
   return (
     <div
       id="count-down"
-      className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[820px] xl:h-[820px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
+      className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[585px] sm:min-h-[585px] lg:h-[820px] xl:h-[820px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
       style={{
         background: "linear-gradient(#293464B2, #293464B2), url('/countdownbg.jpg')",
         backgroundSize: "contain",
         backgroundRepeat:"repeat",
         backgroundPosition: "center",
-        clipPath: "polygon( 0 15px,50% 0,100% 15px,100% calc(100% - 15px), 50% 100%,  0 calc(100% - 15px) )"
+        clipPath: "polygon( 0 10px,50% 0,100% 15px,100% calc(100% - 10px), 50% 100%,  0 calc(100% - 10px) )"
 
       }}
     >
@@ -100,17 +100,17 @@ export default function Timeline() {
       </svg>
 
       {/* Top Section - Badge and Text */}
-      <div className="text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start lg:w-[40%]">
+      <div className="mt-10 text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start lg:w-[40%]">
         <div className="p-2 sm:p-3 rounded-[100px] w-auto max-w-fit bg-white text-[#222222] flex justify-center items-center gap-x-2 text-[14px] sm:text-[16px] px-4 sm:px-5">
           <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">
             <ellipse cx="16.8946" cy="10.7153" rx="7.78622" ry="7.78556" fill="#0B5399" />
             <path d="M11.3216 1.1488L8.92333 3.93862L8.25183 0.5H7.32452L6.55709 3.93862L4.35072 1.1488L3.58329 1.60295L4.67049 5.10646L1.281 3.93862L0.80136 4.61986L3.23156 7.08529L0.00195312 7.83141L0.0339294 8.67484L3.58329 9.38852L0.80136 11.8864L1.281 12.6325L4.67049 11.3998L3.58329 14.8709L4.35072 15.3899L6.55709 12.6325L7.32452 16.0711H8.25183L8.92333 12.6325L11.3216 15.3899L12.025 14.8709L10.8739 11.3998L14.3593 12.6325L14.743 11.8864L12.025 9.38852L15.5744 8.67484V7.83141L12.025 7.08529L14.743 4.61986L14.2953 3.90618L10.8739 5.10646L12.025 1.60295L11.3216 1.1488Z" fill="#C8AD6E" />
           </svg>
-          <span className="whitespace-nowrap">From Roots to Wings</span>
+          <span className="whitespace-nowrap font-semibold text-[12px] md:text-[14px] sm:text-[16px]">From Roots to Wings</span>
         </div>
 
 
-        <ScrollTypingEffect className="text-[#7F85A2] text-[20px] sm:text-[26px] md:text-[32px] lg:text-[40px] leading-tight font-[400] sm:leading-snug" colorChange="white" text="Evolved over 20 years, and loved by lakhs of children across the world" />
+        <ScrollTypingEffect className="text-[#7F85A2] text-[26px] sm:text-[40px] md:text-[32px] lg:text-[36px] xl:text-[40px] leading-tight font-[400] sm:leading-snug" colorChange="white" text="Evolved over 20 years, and loved by lakhs of children across the world" />
       </div>
 
       {/* Timeline Card Section */}
@@ -137,7 +137,7 @@ export default function Timeline() {
                 
          
       <div
-        className="w-full flex justify-center items-center relative flex-1 overflow-hidden"
+        className="w-full flex justify-center items-center relative flex-1"
         onWheel={handleWheel}
       >
 
@@ -165,7 +165,7 @@ export default function Timeline() {
       {/* Skip Button */}
       <div className=" hidden sm:block absolute  bottom-20 border-t-4 border-dotted  border-t-white  w-[200%] z-20"></div>
       <div className=" flex justify-center pt-4 mt-auto z-20">
-        <button className="text-white underline rounded-md hover:scale-95 duration-500 w-full max-w-[240px] sm:max-w-[280px] h-[52px] font-bold text-[18px] sm:text-[20px]">
+        <button className="text-white underline rounded-md hover:scale-95 duration-500 w-full max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px]">
           <span>skip</span>
         </button>
       </div>

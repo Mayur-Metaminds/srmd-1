@@ -178,7 +178,7 @@ export default function VisionariesHero() {
         {/* Mobile Layout - Stack vertically */}
         <div className="lg:hidden flex flex-col space-y-6">
           {/* Header Badge */}
-          <div className="inline-flex items-center space-x-2 bg-slate-800 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium w-fit">
+          <div className="inline-flex items-center space-x-2 bg-[#293464] text-white px-3 sm:px-4 py-2 rounded-full text-[12px] font-semibold w-fit">
             <svg width="20" height="15" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[25px] sm:h-[19px]">
               <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
               <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
@@ -210,7 +210,7 @@ export default function VisionariesHero() {
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             {/* CTA Button */}
-            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center">
               Pre-Register Now
             </button>
           </div>
@@ -222,7 +222,7 @@ export default function VisionariesHero() {
           {/* Left Content Section - spans 5 columns on large screens */}
           <div className="col-span-5 space-y-8">
             {/* Header Badge */}
-            <div className="inline-flex items-center space-x-2 bg-slate-800 text-white px-4 py-2 rounded-full text-sm font-medium">
+            <div className="inline-flex items-center space-x-2 bg-[#293464] text-white px-4 py-2 rounded-full text-sm font-semibold  text-[14px] md:text-[16px]">
               <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
                 <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
@@ -240,16 +240,16 @@ export default function VisionariesHero() {
 
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-medium text-slate-[#222222] mt-10">
+              <h2 className=" text-[30px] md:text-[40px] font-medium text-slate-[#222222] mt-10">
                 Lorem Ipsum
               </h2>
-              <p className="text-2xl leading-normal font-light max-w-2xl transition-colors duration-300">
+              <p className="text-[18] md:text-[20px] leading-[28px] font-[400]  w-full transition-colors duration-300">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               {/* CTA Button */}
-              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
+              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-bold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center">
                 Pre-Register Now
               </button>
             </div>

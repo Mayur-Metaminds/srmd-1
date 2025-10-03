@@ -43,7 +43,7 @@ export default function Contact() {
                 </svg>
 
                 {/* Content Layer */}
-                <div className="relative z-10 w-full ">
+                <div className="relative z-10 w-full font-semibold text-[12px] sm:text-[16px] ">
                     <button className="w-fit p-3 rounded-[100px] min-w-[167.68px] min-h-[43px] hover:scale-95 duration-500 bg-[#293464] text-white flex justify-center items-center gap-2 mx-auto mb-10">
                         <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />

@@ -81,7 +81,7 @@ export default function Footer() {
                 <img
                     src="/footer/footer-props.png"
                     alt="Footer decoration"
-                    className="object-cover h-24 sm:h-32 md:h-48 lg:h-64 xl:max-h-[298px] w-auto opacity-80"
+                    className="object-cover h-24 sm:h-32 md:h-48 lg:h-64 xl:max-h-[298px] w-auto"
                 />
             </div>
 
