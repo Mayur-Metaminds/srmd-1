@@ -127,7 +127,8 @@ export default function Timeline() {
 
       {/* <TimelineCard /> */}
       {/* Skip Button */}
-      <div className="border-t-4 border-dotted w-full border-t-white flex justify-center pt-4 mt-auto z-20">
+      <div className=" hidden sm:block absolute  bottom-20 border-t-4 border-dotted  border-t-white  w-[200%] z-20"></div>
+      <div className=" flex justify-center pt-4 mt-auto z-20">
         <button className="text-white underline rounded-md hover:scale-95 duration-500 w-full max-w-[240px] sm:max-w-[280px] h-[52px] font-bold text-[18px] sm:text-[20px]">
           <span>skip</span>
         </button>
