@@ -72,6 +72,7 @@ export default function CardStackWheel() {
   //   }
   // }, [currentIndex])
   const nextCard = () => {
+    direction.current="down"
     if (currentIndex === cards.length - 1) return
     if (animating) return;
     setAnimating(true);
@@ -88,6 +89,7 @@ export default function CardStackWheel() {
   };
 
   const prevCard = () => {
+     direction.current="up"
     if (currentIndex <= 0) return;
     if (animating) return;
     setAnimating(true);
@@ -295,6 +297,7 @@ export default function CardStackWheel() {
           onClick={nextCard}
           className="w-12 h-12 bg-blue-900 hover:bg-blue-800 rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer active:scale-95"
         >
+          <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-r-[8px] border-r-gray-600"></div>
           {/* <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent "></div> */}
         </button>
       </div>
