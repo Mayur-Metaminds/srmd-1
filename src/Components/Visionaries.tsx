@@ -190,7 +190,7 @@ export default function VisionariesHero() {
           <div className="space-y-4 w-full">
             <ScrollTypingEffect
               text="From education pioneers to value-driven leaders - our speakers will inspire change and connection"
-              className="text-[40px] sm:text-3xl font-[400] leading-[48px] text-[#33333366]"
+              className="text-[26px] md:text-[30px] sm:text-[40px] font-[400] leading-[48px] text-[#33333366]"
             />
           </div>
 

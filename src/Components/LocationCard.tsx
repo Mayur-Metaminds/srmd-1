@@ -32,7 +32,7 @@ export default function LocationCard() {
                 </div>
                 
                 {/* Address */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-start gap-2">
                     {/* <MapPin className=" text-white" fill="#00000" height={20} /> */}
                     <Image src={"/mappin.png"} alt="ff" width={24} height={24} />
                     <span className="text-[#222222]  leading-relaxed">
