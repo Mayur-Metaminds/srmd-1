@@ -13,37 +13,37 @@ export default function CardStackWheel() {
     {
       title: "A breathtaking\nmusical production",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
       title: "An inspiring\ntheatre experience",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
       title: "A memorable\ncultural journey",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
       title: "A powerful\nartistic vision",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
       title: "An unforgettable\nperformance",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
       title: "A transformative\nexperience",
       image:
-        "/impactcard/f.png",
+        "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
   ];;

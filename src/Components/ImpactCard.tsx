@@ -129,10 +129,10 @@ export default function ImpactCard() {
       className=" mt-1  min-h-screen flex-col flex items-center  p-4 relative overflow-hidden w-full gap-y-10  "
     >
       <div className="absolute  left-2 bottom-20 h-[65%] hidden sm:block">
-      <img src="/impactcard/bgprop.png" alt="" className="h-full" />
+      <img src="/impactCard/bgprop.png" alt="" className="h-full" />
       </div>
          <div className="absolute  right-10 top-4 h-[65%] hidden sm:block">
-      <img src="/impactcard/bgpropright1.png" alt="" className="h-full" />
+      <img src="/impactCard/bgpropright1.png" alt="" className="h-full" />
       </div>
         
         
