@@ -7,6 +7,8 @@ import ImpactCard from "@/Components/ImpactCard";
 import Timeline from "@/Components/Timeline";
 import VisionariesHero from "@/Components/Visionaries";
 import HeroSection from "@/Components/Section1";
+import  ImprovedCarousel from "@/Components/Demot";
+import Caroussel from "@/Components/carusal";
 export default function Home() {
   return (
     <div className="w-full h-full m-0 p-0 relative overflow-hidden">
@@ -17,8 +19,11 @@ export default function Home() {
       <ImpactCard />
       <VisionariesHero />
       <AudienceSection />
+    {/* <Caroussel /> */}
             <Timeline />
       <Contact />
+    {/* <ImprovedCarousel /> */}
+    
       
       <TimelineGallery />
     </div>

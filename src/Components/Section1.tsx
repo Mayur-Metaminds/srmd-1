@@ -10,21 +10,22 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="flex flex-col"
+      <div className="flex flex-col "
   
       >
 
         {/* Logo Section */}
-        <div id="logo-section" className="flex justify-center items-center flex-col gap-10   px-4 py-8 sm:py-12 lg:py-16 ">
-          <div className=" w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[386.59px] h-[273px]">
+        <div id="logo-section" className="justify-end flex items-center flex-col gap-10   mb-20 ">
+          <div className=" w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[610.59px] h-[329px]">
             <Image
-              src="/HeroSection/logo11.png"
-              width={386.59}
-              height={273}
+              src="/HeroSection/logo.svg"
+              width={610.59}
+              height={329}
               alt="Company Logo"
               className="w-full h-full object-contain"
               priority
             />
+            
           </div>
           {/* <div className="text-sm sm:text-base md:text-lg lg:text-[20px] text-center px-4 text-gray-700 max-w-2xl">
                 An immersive experience of timeless values

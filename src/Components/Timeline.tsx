@@ -35,7 +35,7 @@ export default function Timeline() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleWheel = (e: any) => {
+  const handleWheel = (e: WheelEvent) => {
     if (isAnimating) return;
     setIsAnimating(true);
 
