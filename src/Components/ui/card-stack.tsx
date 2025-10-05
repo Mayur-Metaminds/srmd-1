@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 type Card = {
   title: string;
   image: string;
@@ -197,24 +198,6 @@ export default function CardStackWheel() {
         className="flex flex-col lg:flex-row justify-between items-center gap-x-32 w-full sm:w-[70%]  relative h-full"
         ref={stackRef} // 👈 attach observer
       >
-        {/* Progress Dots */}
-        {/* <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-        {cards.map((_, i) => (
-          <div
-            key={i}
-            className={`w-2.5 h-2.5 rounded-full transition-transform duration-300 cursor-pointer ${i === currentIndex ? "bg-white scale-125" : "bg-white/30"
-              }`}
-            onClick={() => {
-              if (i > currentIndex) {
-                Array.from({ length: i - currentIndex }).forEach(() => nextCard());
-              } else if (i < currentIndex) {
-                Array.from({ length: currentIndex - i }).forEach(() => prevCard());
-              }
-            }}
-          />
-        ))}
-      </div> */}
-
         {/* Card Stack */}
         <div className="relative xl:h-full lg:h-full h-60 sm:h-60 md:h-60 w-full flex items-center justify-center mb-20" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <AnimatePresence>
@@ -258,13 +241,6 @@ export default function CardStackWheel() {
 
         </div>
 
-        {/* Scroll Indicator
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 animate-bounce">
-        <span className="text-xs">Scroll to explore</span>
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div> */}
       </div>
      
       {/* Desktop buttons - right side */}
@@ -302,7 +278,8 @@ export default function CardStackWheel() {
           className="w-12 h-12 bg-[#293464] hover:bg-[#293464]/20 rounded-full flex items-center justify-center transition-all shadow-lg cursor-pointer active:scale-95"
           >
           <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-r-[8px] border-r-gray-600"></div>
-          {/* <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent "></div> */}
+    
+          {/* <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent  "></div> */}
         </button>
           </div>
       </div>
@@ -310,7 +287,7 @@ export default function CardStackWheel() {
 
   );
 }
-function CardContent({ card }: { card: any }) {
+function CardContent({ card }: { card: Card }) {
   return (
     <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl h-full w-full overflow-hidden">
 

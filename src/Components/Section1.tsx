@@ -10,27 +10,20 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="flex flex-col "
-  
-      >
-
+      <div className="flex flex-col overflow-hidden ">
         {/* Logo Section */}
-        <div id="logo-section" className="justify-end flex items-center flex-col gap-10   mb-20 ">
-          <div className=" w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[610.59px] h-[329px]">
-            <Image
-              src="/HeroSection/logo.svg"
-              width={610.59}
-              height={329}
-              alt="Company Logo"
-              className="w-full h-full object-contain"
-              priority
-            />
-            
-          </div>
-          {/* <div className="text-sm sm:text-base md:text-lg lg:text-[20px] text-center px-4 text-gray-700 max-w-2xl">
-                An immersive experience of timeless values
-            </div> */}
-        </div>
+<div id="logo-section" className="justify-end flex items-center flex-col gap-10 mb-20">
+  <div className="w-screen sm:w-full sm:max-w-[250px] md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px] -ml-[50vw] left-[50%] relative sm:ml-0 sm:left-0">
+    <Image
+      src="/HeroSection/logo.svg"
+      width={610.59}
+      height={329}
+      alt="Company Logo"
+      className="w-full h-auto object-contain"
+      priority
+    />
+  </div>
+</div>
         {/* Responsive decorative SVG background */}
         <svg width="1440" height="396" viewBox="0 0 1440 396" fill="none" xmlns="http://www.w3.org/2000/svg"
           className="hidden sm:block absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto min-w-full"
