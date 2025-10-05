@@ -48,19 +48,7 @@ export default function Timeline() {
     setTimeout(() => setIsAnimating(false), 800);
   };
 
-  const handleNext = () => {
-    if (isAnimating || currentIndex >= timelineData.length - 1) return;
-    setIsAnimating(true);
-    setCurrentIndex(currentIndex + 1);
-    setTimeout(() => setIsAnimating(false), 800);
-  };
 
-  const handlePrev = () => {
-    if (isAnimating || currentIndex <= 0) return;
-    setIsAnimating(true);
-    setCurrentIndex(currentIndex - 1);
-    setTimeout(() => setIsAnimating(false), 800);
-  };
 
   return (
     <div

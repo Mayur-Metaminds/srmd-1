@@ -7,7 +7,7 @@ import { CalendarDays, MapPin } from "lucide-react";
 export default function CountDown() {
     return (
         <>
-            <div id="count-down" className="w-full m-auto flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[621px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-center relative overflow-hidden" style={{background:"linear-gradient(#293464B2), url('/countdownbg.jpg')", backgroundPosition: 'center',
+            <div  className="w-full m-auto flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[400px] sm:min-h-[500px] lg:h-[621px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-center relative overflow-hidden" style={{background:"linear-gradient(#293464B2), url('/countdownbg.jpg')", backgroundPosition: 'center',
    backgroundSize: "contain",
         backgroundRepeat:"repeat",
  clipPath: "polygon( 0 15px,50% 0,100% 15px,100% calc(100% - 15px), 50% 100%,  0 calc(100% - 15px) )"

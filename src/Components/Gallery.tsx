@@ -82,7 +82,7 @@ export default function TimelineGallery() {
           //     <span className="text-gray-500">{card.year}</span>
           //   </div>
           // </div>
-          <AnimatedCard card={card} idx={idx}  />
+          <AnimatedCard card={card} idx={idx} key={`${card.title}-${idx}`}  />
         ))}
       </div>
            <div className="text-center mt-10">
