@@ -30,6 +30,7 @@ const audience = [
 export default function AudienceSection() {
     return (
         <section
+        id="#before-carausal"
             className="relative  w-full overflow-hidden min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px] py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap"
             style={{
                 background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",

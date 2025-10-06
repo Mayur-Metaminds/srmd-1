@@ -182,7 +182,7 @@ function WindowCaroussel() {
 
     // You can set this ref by prop or selector on mount:
     useEffect(() => {
-        topSectionRef.current = document.querySelector("#count-down1") // Replace with your actual top component selector
+        topSectionRef.current = document.querySelector("#before-carausal") // Replace with your actual top component selector
     }, [])
 
     useEffect(() => {
@@ -319,7 +319,7 @@ function WindowCaroussel() {
                 </div>
 
             </div>
-                    
+
             <div className=" absolute bottom-20 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px]">
                 <span>skip</span>
             </div>
