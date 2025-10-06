@@ -303,7 +303,7 @@ function CardContent({ card }: { card: Card }) {
         </div>
 
         {/* Card Title */}
-        <h2 className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-800 leading-tight whitespace-pre-line max-w-[60%] sm:max-w-[55%] text-center z-20">
+        <h2 className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl  leading-tight font-normal whitespace-pre-line max-w-[60%] sm:max-w-[55%] text-center z-20">
           {card.title}
         </h2>
 
