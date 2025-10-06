@@ -26,18 +26,19 @@ export default function ScrollTypingEffect(
     }, { threshold: 0.1 })
     observer.observe(paragraph)
 
-    const text = paragraph.textContent || "";
+
+    const words = (paragraph.textContent || "").split(" ");
     paragraph.textContent = "";
 
     const spanArray: HTMLElement[] = [];
-    for (const char of text) {
+
+    words.forEach((word, index) => {
       const span = document.createElement("span");
-      span.textContent = char;
-   
+      span.textContent = word + (index < words.length - 1 ? " " : "");
       paragraph.appendChild(span);
       spanArray.push(span);
-      //   span.style.fontSize = "40px"
-    }
+    });
+
     spansRef.current = spanArray;
 
 
@@ -54,7 +55,7 @@ export default function ScrollTypingEffect(
       if (scrollY > lastScrollYRef.current) {
         // scroll up → reveal next character
         if (idx < spans.length) {
-            spans[idx].style.color = colorChange
+          spans[idx].style.color = colorChange
           spans[idx].classList.add("visible");
           currentIndexRef.current += 1;
         }

@@ -1,0 +1,98 @@
+[
+    {
+        "city": "Mumbai",
+        "town": "Goregaon",
+        "name": "Krina Gala",
+        "mobile": 9821141777,
+        "email": "goregaon@divinetouch.srmd.org",
+        "Address": "B40/158 Siddharth Nagar Opp Trento Restaurant, Near Ozone, Goregaon West, Mumbai - 400104"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Hughes Road",
+        "name": "Payal Javeri",
+        "mobile": 9820190230,
+        "email": "hughesroad@divinetouch.srmd.org",
+        "Address": "Shrimad Rajchandra Divinetouch, 12, Dharam Palace, Opp Rolex Showroom, Hughes Road, Mumbai - 400007"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Kandivali",
+        "name": "Nimisha Meghani",
+        "mobile": 9821654433,
+        "email": "kandivali@divinetouch.srmd.org",
+        "Address": "101 Sai Krupa plot no. 66, Datta Mandir Rd, above Aquamax, Kandivali, Dahanukar Wadi, Kandivali West, Mumbai - 400067"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Matunga",
+        "name": "Gracy Shah ",
+        "mobile": 9930972999,
+        "email": "matunga@divinetouch.srmd.org",
+        "Address": "250, Leela Baug, 2nd floor, Telang Road, Matunga East, Mumbai - 400019"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Mulund",
+        "name": "Nirali Shah",
+        "mobile": 9819201257,
+        "email": "mulund@divinetouch.srmd.org",
+        "Address": "R. Z. Shah’s Trust NEXT School, Park Road, Off Devi Dayal Road, Mulund West, Mumbai - 400080"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Parel",
+        "name": "Dr. Nehal Sabadra / Jai Shah ",
+        "mobile": 9821490661,
+        "email": "parel@divinetouch.srmd.org",
+        "Address": "8, Narayan Udyog Bhavan, Gully, Dinshaw Petit Rd, near lalbaugcha Raja, Shree Ganesh Nagar, Lal Baug, Parel, Mumbai - 400012"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Thane ",
+        "name": "Pooja Mehta",
+        "mobile": 8879082266,
+        "email": "thane@divinetouch.srmd.org",
+        "Address": "Bright Beginnings International Pre school  5th floor, Vardhaman Sthanak, Opp Talao Pali, Boating Entrance, Naupada, Thane West, Thane - 400602"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Vasai",
+        "name": "Komal Desai",
+        "mobile": 9545128914,
+        "email": "vasai@divinetouch.srmd.org",
+        "Address": "B-106, Kamal Mandir, 60 feet Road, Near K T Wadi Vasai West - 401202"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Vashi",
+        "name": "Shilpa Panchali",
+        "mobile": 8169042167,
+        "email": "vashi@divinetouch.srmd.org",
+        "Address": "Kidzee Play School and Day Care, Unit No.2,Gopi Niwas, Plot No 2, Sec 28, Behind Hotel Blue Diamond, Vashi"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Kharghar",
+        "name": "Trupti Modi",
+        "mobile": 8356992411,
+        "email": "vashi@divinetouch.srmd.org",
+        "Address": "Indo Scots Preschool, 26, G+2, row house, Plot no A, behind Pranaam Hotel, Sector 12, Kharghar, Navi Mumbai - 410210"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Vile Parle ",
+        "name": "Shefali shah",
+        "mobile": 9967506078,
+        "email": "vileparle@divinetouch.srmd.org",
+        "Address": "101, Navkar Plaza, Bajaj Road, Vile Parle West, Mumbai - 400056"
+    },
+    {
+        "city": "Mumbai",
+        "town": "Worli - Prabhadevi",
+        "name": "Dr. Nehal Sabadra / Jai Shah ",
+        "mobile": 9821490661,
+        "email": "worli@divinetouch.srmd.org",
+        "Address": "Pandurang Budhkar Marg, next to Shree Simandhar Swami Jain Temple, Worli, Mumbai - 400018"
+    }
+]

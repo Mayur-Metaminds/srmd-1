@@ -18,31 +18,19 @@ export default function CardStackWheel() {
       gradient: "bg-[#FED543]",
     },
     {
-      title: "An inspiring\ntheatre experience",
+      title: "An interactive exhibit exploring the world of values",
       image:
         "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
-      title: "A memorable\ncultural journey",
+      title: "A celebration of 21 years of a global movement",
       image:
         "/impactCard/f.png",
       gradient: "bg-[#FED543]",
     },
     {
-      title: "A powerful\nartistic vision",
-      image:
-        "/impactCard/f.png",
-      gradient: "bg-[#FED543]",
-    },
-    {
-      title: "An unforgettable\nperformance",
-      image:
-        "/impactCard/f.png",
-      gradient: "bg-[#FED543]",
-    },
-    {
-      title: "A transformative\nexperience",
+      title: "The unveiling of the next chapter together",
       image:
         "/impactCard/f.png",
       gradient: "bg-[#FED543]",
