@@ -273,7 +273,7 @@ function WindowCaroussel() {
                         >
                             {index === 0 && (
                                 <div className="absolute left-[102px] flex items-center md:top-[70px] lg:top-[55px]">
-                                    <p className="arrow h-[6px] min-w-[78px] max-w-[700] rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF] z-20" />
+                                    <p className="arrow h-[6px] min-w-[78px] max-w-[700] rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
                                     <svg
                                         width="21"
                                         height="20"
