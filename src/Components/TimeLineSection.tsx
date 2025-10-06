@@ -557,7 +557,7 @@ export function MobileCaroussel() {
                                 </div>
                             )}
                             <div className=" text-white flex flex-col items-start gap-4 justify-center">
-                                <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
+                                <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
                                     <span className="text-[14px] sm:text-[16px]">{obj.date}</span>
                                 </div>
                                 <div className="w-full mt-10">
