@@ -12,18 +12,18 @@ export default function Footer() {
                         <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-4xl font-bold leading-tight">
                             Creating a global community of purpose-driven children through value education and life skills
                         </h2>
-                        <button className="text-base sm:text-lg lg:text-[20px] bg-white text-slate-800 px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center gap-2 font-medium hover:bg-gray-100 transition-colors w-fit">
+                        <button className="text-base sm:text-lg lg:text-[20px] bg-white text-[#222222] px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center gap-2 font-bold hover:bg-gray-100 transition-colors w-fit">
                             Know More
                             <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 p-1 bg-[#C8AD6E] text-white rounded-full flex-shrink-0" />
                         </button>
                     </div>
 
                     {/* Right Section - Social Media and Other Websites */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-1">
+                    <div className="flex gap-6 flex-col sm:flex-row sm:gap-10 justify-between">
                         {/* Social Media */}
                         <div className="space-y-4 sm:space-y-6">
-                            <h3 className="text-lg sm:text-xl font-medium">Social Media</h3>
-                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[14px] xl:text-[20px]">
+                            <h3 className="text-lg sm:text-[24px] font-medium">Social Media</h3>
+                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px]">
                                 <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Instagram
                                 </div>
@@ -38,8 +38,8 @@ export default function Footer() {
 
                         {/* Other Websites */}
                         <div className="">
-                            <h3 className="text-lg sm:text-xl font-medium">Other Websites</h3>
-                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[14px] xl:text-[18px]">
+                            <h3 className="text-lg sm:text-[24px] font-medium">Other Websites</h3>
+                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px] font-normal">
                                 <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Shrimad Rajchandra Mission Dharampur
                                 </div>

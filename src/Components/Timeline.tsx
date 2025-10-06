@@ -35,7 +35,7 @@ export default function Timeline() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleWheel = (e: WheelEvent) => {
+  const handleWheel = (e: React.WheelEvent) => {
     if (isAnimating) return;
     setIsAnimating(true);
 
@@ -57,7 +57,7 @@ export default function Timeline() {
       style={{
         background: "linear-gradient(#293464B2, #293464B2), url('/countdownbg.jpg')",
         backgroundSize: "contain",
-        backgroundRepeat:"repeat",
+        backgroundRepeat: "repeat",
         backgroundPosition: "center",
         clipPath: "polygon( 0 10px,50% 0,100% 15px,100% calc(100% - 10px), 50% 100%,  0 calc(100% - 10px) )"
 
@@ -119,11 +119,11 @@ export default function Timeline() {
                     </div>
                 </div>
             </div> */}
-          {/* Timeline Card Section with Scroll Navigation */}
-                  {/* Animated Arrow Indicator */}
-  
-                
-         
+      {/* Timeline Card Section with Scroll Navigation */}
+      {/* Animated Arrow Indicator */}
+
+
+
       <div
         className="w-full flex justify-center items-center relative flex-1"
         onWheel={handleWheel}
@@ -133,15 +133,15 @@ export default function Timeline() {
           key={`arrow-${currentIndex}`}
           className="absolute top-0 left-0 z-30 flex items-center gap-2 w-[100vw]"
           initial={{ x: "0%" }}
-          animate={{ x: "calc(100vw - 100px)"}}
-          transition={{  duration: 0.8,ease: "easeOut"} }
+          animate={{ x: "calc(100vw - 100px)" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <svg width="1000" height="20" viewBox="0 0 1000 20" fill="none" className="text-white w-[100vw]">
-            <path d="M0 10H38M38 10L28 2M38 10L28 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M0 10H38M38 10L28 2M38 10L28 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span className="text-white text-sm font-medium whitespace-nowrap">Next</span>
         </motion.div>
- 
+
         <AnimatePresence mode="wait">
           <TimelineCard key={currentIndex} item={timelineData[currentIndex]} />
         </AnimatePresence>
@@ -161,7 +161,7 @@ export default function Timeline() {
   )
 }
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, WheelEventHandler } from 'react';
 
 // Timeline Card Component with Scroll Animation
 // function TimelineCard() {

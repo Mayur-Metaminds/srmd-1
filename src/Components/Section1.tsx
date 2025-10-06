@@ -12,8 +12,8 @@ export default function HeroSection() {
     <>
       <div className="flex flex-col overflow-hidden ">
         {/* Logo Section */}
-<div id="logo-section" className="justify-end flex items-center flex-col gap-10 mb-20">
-  <div className="w-screen sm:w-full sm:max-w-[250px] md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px] -ml-[50vw] left-[50%] relative sm:ml-0 sm:left-0">
+<div id="logo-section" className="justify-center flex items-center flex-col gap-10 mb-20">
+  <div className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]   ">
     <Image
       src="/HeroSection/logo.svg"
       width={610.59}
