@@ -6,13 +6,25 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 export default function HeroSection() {
-
+  const logoRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(logoRef, { once: true, amount: 0.1 });
   return (
     <>
-      <div className="flex flex-col overflow-hidden ">
+      <div className="flex flex-col overflow-hidden "
+
+      >
         {/* Logo Section */}
         <div id="logo-section" className="justify-center flex items-center flex-col gap-10 mb-20">
-          <div className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]   ">
+          <motion.div
+            ref={logoRef}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{
+              duration: 0.5,
+              delay: 1.9,
+              ease: "easeOut"
+            }}
+            className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]   ">
             <Image
               src="/HeroSection/logo.svg"
               width={610.59}
@@ -21,7 +33,7 @@ export default function HeroSection() {
               className="w-full h-auto object-contain"
               priority
             />
-          </div>
+          </motion.div>
         </div>
         <SnakeReveal />
         {/* Responsive decorative SVG background */}
@@ -44,15 +56,10 @@ export default function HeroSection() {
           <path d="M62.4196 143.518L68.3018 152.517L71.8576 142.996L74.62 143.398L75.3507 153.542L83.1853 146.538L85.266 148.166L80.4425 157.692L91.0679 155.828L92.1886 157.98L83.8339 163.962L93.1172 167.49L92.6404 169.883L81.7442 170.382L88.9015 178.714L87.1352 180.635L77.5957 175.65L79.2643 186.025L76.7433 187.174L71.418 178.35L67.5764 187.829L64.814 187.427L64.3691 177.325L55.9776 184.154L54.1167 182.368L59.1161 172.962L48.1756 174.97L47.37 172.674L56.5967 166.724L46.3461 163.15L46.7277 160.744L57.6386 160.152L50.6571 151.94L52.3135 150.097L61.9629 155.005L60.1185 144.509L62.4196 143.518Z" fill="#1CB377" />
         </svg> */}
         <MobileVersionSnakeReveal />
-
-
         <VideoSection />
       </div>
 
     </>
-
-
-
 
   )
 }
@@ -122,16 +129,14 @@ function VideoSection() {
   );
 }
 
-
-
-
 import { useAnimation, } from "framer-motion";
 import { useEffect, } from "react";
 import { useParallax } from "@/hooks/paralllelx";
 
 function SnakeReveal() {
+  const { ref, y } = useParallax({ speed: 0.2 })
   const controls = useAnimation();
-  const ref = useRef(null);
+  // const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   //   useEffect(() => {
@@ -151,7 +156,7 @@ function SnakeReveal() {
 
     <motion.div
       ref={ref}
-
+      style={{ y }}
       className="hidden sm:block absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
@@ -185,13 +190,25 @@ function SnakeReveal() {
         </defs>
 
         {/* --- static shapes --- */}
-        <path
+        <motion.path
           d="M280.382 44.8317L290.411 60.852L296.473 43.9034L301.183 44.6186L302.429 62.6769L315.787 50.2075L319.334 53.1062L311.11 70.0638L329.227 66.7457L331.137 70.5759L316.893 81.2249L332.721 87.5055L331.908 91.765L313.33 92.6529L325.533 107.486L322.521 110.906L306.257 102.031L309.102 120.5L304.803 122.545L295.724 106.837L289.174 123.712L284.464 122.997L283.705 105.013L269.398 117.169L266.225 113.99L274.749 97.2468L256.096 100.82L254.722 96.7346L270.454 86.1428L252.977 79.7804L253.627 75.4962L272.23 74.4435L260.327 59.8243L263.151 56.5444L279.603 65.2798L276.458 46.596L280.382 44.8317Z"
           fill="#C8AD6E"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         />
-        <path
+        <motion.path
           d="M219.073 74.8789L225.843 85.6927L229.935 74.2524L233.114 74.7351L233.955 86.9245L242.972 78.5076L245.366 80.4643L239.815 91.9106L252.044 89.6709L253.333 92.2563L243.718 99.4444L254.402 103.684L253.853 106.559L241.313 107.158L249.55 117.171L247.518 119.479L236.539 113.488L238.459 125.955L235.558 127.335L229.429 116.733L225.008 128.123L221.829 127.64L221.317 115.501L211.659 123.707L209.518 121.561L215.271 110.259L202.68 112.671L201.753 109.913L212.372 102.764L200.575 98.4694L201.014 95.5775L213.571 94.867L205.536 84.999L207.442 82.7851L218.548 88.6814L216.425 76.0699L219.073 74.8789Z"
           fill="#1CB377"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         />
 
         {/* --- the yellow snake --- */}
@@ -201,13 +218,25 @@ function SnakeReveal() {
           clipPath="url(#snakeClip)"
         />
 
-        <path
+        <motion.path
           d="M1003.25 81.7083L1013.26 93.3542L1016.06 79H1019.94L1023.14 93.3542L1032.35 81.7083L1035.55 83.6042L1031.01 98.2292L1045.16 93.3542L1047.16 96.1979L1037.02 106.49L1050.5 109.604L1050.37 113.125L1035.55 116.104L1047.16 126.531L1045.16 129.646L1031.01 124.5L1035.55 138.99L1032.35 141.156L1023.14 129.646L1019.94 144H1016.06L1013.26 129.646L1003.25 141.156L1000.32 138.99L1005.12 124.5L990.572 129.646L988.97 126.531L1000.32 116.104L985.5 113.125V109.604L1000.32 106.49L988.97 96.1979L990.839 93.2188L1005.12 98.2292L1000.32 83.6042L1003.25 81.7083Z"
           fill="#0B5399"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         />
-        <path
+        <motion.path
           d="M1400.35 249.333L1412.67 263.667L1416.12 246H1420.88L1424.82 263.667L1436.16 249.333L1440.1 251.667L1434.52 269.667L1451.93 263.667L1454.39 267.167L1441.91 279.833L1458.5 283.667L1458.34 288L1440.1 291.667L1454.39 304.5L1451.93 308.333L1434.52 302L1440.1 319.833L1436.16 322.5L1424.82 308.333L1420.88 326H1416.12L1412.67 308.333L1400.35 322.5L1396.73 319.833L1402.65 302L1384.74 308.333L1382.77 304.5L1396.73 291.667L1378.5 288V283.667L1396.73 279.833L1382.77 267.167L1385.07 263.5L1402.65 269.667L1396.73 251.667L1400.35 249.333Z"
           fill="#293464"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
         />
       </svg>
     </motion.div>

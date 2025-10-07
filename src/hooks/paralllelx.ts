@@ -6,7 +6,7 @@ interface ParallaxProps {
 }
 
 export function useParallax({ speed = 0.3 }: ParallaxProps = {}) {
-    const ref = useRef<HTMLDivElement | null>(null);
+    const ref = useRef<HTMLDivElement | SVGSVGElement | HTMLImageElement | null>(null);
     const { scrollY } = useScroll();
 
     const y: MotionValue<number> = useTransform(scrollY, (value) => {

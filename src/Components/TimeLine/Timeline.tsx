@@ -1,4 +1,4 @@
-import ScrollTypingEffect from "./ScrollTextFilling";
+import ScrollTypingEffect from "../Common/ScrollTextFilling";
 
 export default function Timeline() {
   const timelineData = [

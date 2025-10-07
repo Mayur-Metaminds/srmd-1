@@ -7,7 +7,7 @@ import { Observer } from "gsap/Observer"
 
 
 import { cn } from "@/lib/utils"
-import ScrollTypingEffect from "./ScrollTextFilling"
+import ScrollTypingEffect from "./Common/ScrollTextFilling"
 
 
 gsap.registerPlugin(Observer)

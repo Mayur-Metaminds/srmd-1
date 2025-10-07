@@ -1,28 +1,21 @@
 "use client"
-import AudienceSection from "@/Components/Audience";
-import Contact from "@/Components/Contact";
-import CountDown from "@/Components/CountDown";
-import TimelineGallery from "@/Components/Gallery";
+import AudienceSection from "@/Components/Audience/Audience";
+import Contact from "@/Components/Contact/Contact";
+import CountDown from "@/Components/CountDown/CountDown";
+import TimelineGallery from "@/Components/VideoGallery/Gallery";
 import ImpactCard from "@/Components/ImpactCard";
-import Timeline from "@/Components/Timeline";
-import VisionariesHero from "@/Components/Visionaries";
-import HeroSection from "@/Components/Section1";
-import TimeLineSection from "@/Components/TimeLineSection";
-import { Component } from "@/Components/ui/Demot";
-// import ScrollHijackDemo from "@/Components/use";
+import VisionariesHero from "@/Components/Visionaries/Visionaries";
+import HeroSection from "@/Components/HeroSection/Section1";
+import TimeLineSection from "@/Components/TimeLine/TimeLineSection";
 export default function Home() {
   return (
     <div className="w-full h-full m-0 p-0 relative overflow-hidden">
-
-      {/* Responsive decorative SVG background */}
-      {/* <Component /> */}
       <HeroSection />
       <CountDown />
       <ImpactCard />
       <VisionariesHero />
       <AudienceSection />
-      {/* <Timeline /> */}
-    <TimeLineSection />
+      <TimeLineSection />
       <Contact />
       <TimelineGallery />
     </div>
