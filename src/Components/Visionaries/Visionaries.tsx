@@ -9,14 +9,12 @@ interface CarouselProps {
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
 import { useParallax } from "@/hooks/paralllelx";
 import { motion } from 'framer-motion';
-import { useRotateScroll } from "@/hooks/useScrollRotate";
 export function ImageStackk({
   images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
   className = ""
 }: CarouselProps) {
 
   const { ref, y } = useParallax({ speed: 0.3 })
-  const { ref: ref1, rotate: rotate1 } = useRotateScroll()
   const { ref: circleRef, y: circley } = useParallax({ speed: 0.3 })
   const [currentIndex, setCurrentIndex] = useState<number>(Math.floor(images.length / 2));
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
@@ -135,21 +133,27 @@ export function ImageStackk({
           height: dimensions.containerHeight,
         }}
       >
-        <motion.div
-          ref={ref}
+
+        <motion.img
           style={{ y }}
-
-          className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover -z-20">
-          <motion.img
-            style={{ rotate: rotate1 }}
-            ref={ref1}
-            src="/Visionaries/visionaries1.png" alt="" className="w-full h-full" />
-        </motion.div>
-
+          ref={ref}
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          src="/Visionaries/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover -z-20" />
 
         <motion.img
           style={{ y: circley }}
           ref={circleRef}
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
           src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover -z-20" />
 
         <button
