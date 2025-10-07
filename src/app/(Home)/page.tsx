@@ -7,6 +7,7 @@ import ImpactCard from "@/Components/ImpactCard";
 import VisionariesHero from "@/Components/Visionaries/Visionaries";
 import HeroSection from "@/Components/HeroSection/Section1";
 import TimeLineSection from "@/Components/TimeLine/TimeLineSection";
+import Preview from "@/Components/ui/Demot";
 export default function Home() {
   return (
     <div className="w-full h-full m-0 p-0 relative overflow-hidden">
@@ -18,6 +19,7 @@ export default function Home() {
       <TimeLineSection />
       <Contact />
       <TimelineGallery />
+      {/* <Preview /> */}
     </div>
   );
 }

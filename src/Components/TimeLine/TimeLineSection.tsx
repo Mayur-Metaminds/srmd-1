@@ -172,7 +172,7 @@ function WindowCaroussel() {
     // UNLOCK scroll and move to next section
     const moveToNextSection = () => {
         enableBodyScroll()
-        const nextSection = document.querySelector("#after-carousel")
+        const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
         }

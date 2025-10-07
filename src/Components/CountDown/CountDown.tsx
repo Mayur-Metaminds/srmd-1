@@ -26,6 +26,12 @@ export default function CountDown() {
     const { ref: ref16, rotate: rotate16 } = useRotateScroll();
     const { ref: ref17, rotate: rotate17 } = useRotateScroll();
     const { ref: ref18, rotate: rotate18 } = useRotateScroll();
+       const moveToNextSection = () => {
+        const nextSection = document.querySelector("#contact")
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" })
+        }
+    }
 
     return (
         <>
@@ -150,7 +156,7 @@ export default function CountDown() {
                     </div>
                 </div>
 
-                <button className="bg-[#EFB744] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[48px] sm:h-[52px]  z-10 mx-4 text-sm sm:text-[18px]">
+                <button className="bg-[#EFB744] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[48px] sm:h-[52px]  z-10 mx-4 text-sm sm:text-[18px]" onClick={moveToNextSection}>
                     <span>Know More</span>
                 </button>
 

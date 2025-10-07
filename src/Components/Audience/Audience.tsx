@@ -27,7 +27,12 @@ const audience = [
         desc: "You believe in raising not just smart kids, but good humans."
     }
 ];
-
+      const moveToNextSection = () => {
+        const nextSection = document.querySelector("#contact")
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" })
+        }
+    }
 export default function AudienceSection() {
     const { ref, y } = useParallax({ speed: 0.2 })
     const { ref: leftChakraRef, y: chakray } = useParallax({ speed: 0.2 })
@@ -122,7 +127,7 @@ export default function AudienceSection() {
 
             {/* CTA Button */}
             <div className="w-full flex justify-center h-auto lg:h-[30%] items-center mt-6 sm:mt-8 lg:mt-0">
-                <button className="bg-[#FED543]  font-[400] px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
+                <button className="bg-[#FED543]  font-[400] px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base" onClick={moveToNextSection}>
                     Know More
                 </button>
             </div>
