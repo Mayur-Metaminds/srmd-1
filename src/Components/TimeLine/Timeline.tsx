@@ -1,4 +1,4 @@
-import ScrollTypingEffect from "./ScrollTextFilling";
+import ScrollTypingEffect from "../Common/ScrollTextFilling";
 
 export default function Timeline() {
   const timelineData = [
@@ -161,7 +161,7 @@ export default function Timeline() {
   )
 }
 
-import { useEffect, useRef, useState, WheelEventHandler } from 'react';
+import {  useState } from 'react';
 
 // Timeline Card Component with Scroll Animation
 // function TimelineCard() {

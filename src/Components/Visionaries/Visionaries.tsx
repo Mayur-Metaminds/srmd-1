@@ -6,12 +6,18 @@ interface CarouselProps {
   className?: string;
 }
 
-import ScrollTypingEffect from "./ScrollTextFilling";
-
+import ScrollTypingEffect from "../Common/ScrollTextFilling";
+import { useParallax } from "@/hooks/paralllelx";
+import { motion } from 'framer-motion';
+import { useRotateScroll } from "@/hooks/useScrollRotate";
 export function ImageStackk({
   images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
   className = ""
 }: CarouselProps) {
+
+  const { ref, y } = useParallax({ speed: 0.3 })
+  const { ref: ref1, rotate: rotate1 } = useRotateScroll()
+  const { ref: circleRef, y: circley } = useParallax({ speed: 0.3 })
   const [currentIndex, setCurrentIndex] = useState<number>(Math.floor(images.length / 2));
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(0);
@@ -129,8 +135,22 @@ export function ImageStackk({
           height: dimensions.containerHeight,
         }}
       >
-        <img src="/Visionaries/visionaries1.png" alt="" className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover" />
-        <img src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover" />
+        <motion.div
+          ref={ref}
+          style={{ y }}
+
+          className="absolute w-[224px] -bottom-13 h-[224px] -right-15 object-cover -z-20">
+          <motion.img
+            style={{ rotate: rotate1 }}
+            ref={ref1}
+            src="/Visionaries/visionaries1.png" alt="" className="w-full h-full" />
+        </motion.div>
+
+
+        <motion.img
+          style={{ y: circley }}
+          ref={circleRef}
+          src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover -z-20" />
 
         <button
           onClick={handlePrev}
@@ -173,7 +193,7 @@ export function ImageStackk({
 
 export default function VisionariesHero() {
   return (
-    <div className="relative min-h-screen overflow-hidden px-4 sm:px-6 md:px-12 lg:px-20">
+    <div className="relative min-h-screen overflow-y-visible overflow-x-clip px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-20">
         {/* Mobile Layout - Stack vertically */}
         <div className="lg:hidden flex flex-col space-y-6">
@@ -181,7 +201,7 @@ export default function VisionariesHero() {
           <div className="inline-flex items-center space-x-2 bg-[#293464] text-white px-3 sm:px-4 py-2 rounded-full text-[12px] font-semibold w-fit">
             <svg width="20" height="15" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[25px] sm:h-[19px]">
               <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
-              <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
+              <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
             </svg>
             <span>Meet the Visionaries</span>
           </div>
@@ -204,7 +224,7 @@ export default function VisionariesHero() {
             <h2 className="text-xl sm:text-2xl font-medium">
               Lorem Ipsum
             </h2>
-            <p className="text-base sm:text-lg leading-relaxed">
+            <p className="text-base sm:text-lg leading-relaxed z-20">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -218,14 +238,14 @@ export default function VisionariesHero() {
 
         {/* Desktop Layout - Grid container - 2 columns on large screens */}
         <div className="hidden lg:grid grid-cols-12 gap-12 items-start min-h-[80vh]">
-          
+
           {/* Left Content Section - spans 5 columns on large screens */}
           <div className="col-span-5 space-y-8">
             {/* Header Badge */}
             <div className="inline-flex items-center space-x-2 bg-[#293464] text-white px-4 py-2 rounded-full text-sm font-semibold  text-[14px] md:text-[16px]">
               <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
-                <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#F6F4EC" />
+                <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
               </svg>
               <span>Meet the Visionaries</span>
             </div>
@@ -243,7 +263,7 @@ export default function VisionariesHero() {
               <h2 className=" text-[30px] md:text-[40px] font-medium text-slate-[#222222] mt-10">
                 Lorem Ipsum
               </h2>
-              <p className="text-[18] md:text-[20px] leading-[28px] font-[400]  w-full transition-colors duration-300">
+              <p className="text-[18] md:text-[20px] leading-[28px] font-[400]  w-full transition-colors duration-300 z-20">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
