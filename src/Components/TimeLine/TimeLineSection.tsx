@@ -54,12 +54,6 @@ function enableBodyScroll() {
 export default function TimeLineSection() {
     const { ref, y } = useParallax({ speed: 0.4 });
     const { ref: ref1, rotate: rotate1 } = useRotateScroll();
-    const { ref: ref2, rotate: rotate2 } = useRotateScroll();
-    const { ref: ref3, rotate: rotate3 } = useRotateScroll();
-    const { ref: ref4, rotate: rotate4 } = useRotateScroll();
-    const { ref: ref5, rotate: rotate5 } = useRotateScroll();
-    const { ref: ref6, rotate: rotate6 } = useRotateScroll();
-
 
     return (
         <>
