@@ -1,76 +1,71 @@
-
-
-
-
+"use client"
 import Gravity, { MatterBody } from "@/Components/fancy/physics/gravity"
+import { useEffect, useRef } from "react"
+import { motion } from "framer-motion"
 
+function Preview() {
+    const ref = useRef<HTMLDivElement>(null)
+    const footerRef = useRef<any>(null)
+    const hasStarted = useRef(false) // ensures startEngine runs only once
 
-export default function Preview() {
+    useEffect(() => {
+        if (!ref.current) return
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0]
+                if (entry && entry.isIntersecting && !hasStarted.current) {
+                    footerRef.current.start()
+                    hasStarted.current = true
+                }
+            },
+            { threshold: 0.1 }
+        )
+
+        io.observe(ref.current)
+
+        return () => {
+            io.disconnect()
+            // Don't stop engine here if you want drag to continue!
+        }
+    }, [])
+
     return (
-        <div className="w-dvw h-dvh flex flex-col relative font-azeret-mono bg-white">
-            <div className="pt-20 text-6xl sm:text-7xl md:text-8xl text-foreground dark:text-muted w-full text-center font-calendas italic">
-                fancy
-            </div>
-            <p className="pt-4 text-base sm:text-xl md:text-2xl text-foreground dark:text-muted w-full text-center">
-                components made with:
-            </p>
-            <Gravity gravity={{ x: 0, y: 1 }} className="w-full h-full">
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="30%"
-                    y="10%"
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#0015ff] text-white rounded-full hover:cursor-pointer px-8 py-4">
-                        react
+        <motion.div className="w-dvw h-dvh flex flex-col relative bg-transparent" ref={ref}>
+            <Gravity
+                gravity={{ x: 0, y: 0.9 }}
+                className="w-full h-full"
+                autoStart={false}
+                ref={footerRef}
+            >
+                <MatterBody matterBodyOptions={{ friction: 0.5, restitution: 0.5 }} x="80%" y="0%">
+                    <div className="hover:cursor-grab">
+                        <img src="/footer/ladder.svg" alt="" />
                     </div>
                 </MatterBody>
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="30%"
-                    y="30%"
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#e794da] text-white rounded-full hover:cursor-grab px-8 py-4 ">
-                        typescript
+                <MatterBody matterBodyOptions={{ friction: 0.5, restitution: 0.5 }} x="85%" y="0%" angle={10}>
+                    <div className="hover:cursor-grab">
+                        <img src="/footer/circle.svg" alt="" />
                     </div>
                 </MatterBody>
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="40%"
-                    y="20%"
-                    angle={10}
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#1f464d] text-white rounded-full hover:cursor-grab px-8 py-4 ">
-                        motion
+                <MatterBody matterBodyOptions={{ friction: 0.5, restitution: 0.5 }} x="83%" y="0%">
+                    <div className="hover:cursor-grab">
+                        <img src="/footer/chakra.svg" alt="" />
                     </div>
                 </MatterBody>
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="75%"
-                    y="10%"
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#ff5941] text-white rounded-full hover:cursor-grab px-8 py-4 ">
-                        tailwind
+                <MatterBody matterBodyOptions={{ friction: 0.5, restitution: 0.5 }} x="82%" y="0%">
+                    <div className="hover:cursor-grab">
+                        <img src="/footer/4line.svg" alt="" />
                     </div>
                 </MatterBody>
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="80%"
-                    y="20%"
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#f97316] text-white rounded-full hover:cursor-grab px-8 py-4 ">
-                        drei
-                    </div>
-                </MatterBody>
-                <MatterBody
-                    matterBodyOptions={{ friction: 0.5, restitution: 0.2 }}
-                    x="50%"
-                    y="10%"
-                >
-                    <div className="text-xl sm:text-2xl md:text-3xl bg-[#ffd726] text-white rounded-full hover:cursor-grab px-8 py-4 ">
-                        <img src="/footer/flower.svg" alt="" srcset="" />
+                <MatterBody matterBodyOptions={{ friction: 0.5, restitution: 0.5 }} x="81%" y="0%">
+                    <div className="hover:cursor-grab">
+                        <img src="/footer/flower.svg" alt="" />
                     </div>
                 </MatterBody>
             </Gravity>
-        </div>
+        </motion.div>
     )
 }
+
+export default Preview

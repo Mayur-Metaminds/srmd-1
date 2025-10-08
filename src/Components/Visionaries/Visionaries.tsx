@@ -5,11 +5,10 @@ interface CarouselProps {
   images?: string[];
   className?: string;
 }
-
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
 import { useParallax } from "@/hooks/paralllelx";
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRotateScroll } from "@/hooks/useScrollRotate";
+
 export function ImageStackk({
   images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
   className = ""
@@ -103,33 +102,43 @@ export function ImageStackk({
 
   const dimensions = getResponsiveDimensions();
 
-  const getSlideStyle = (index: number): React.CSSProperties => {
-    const diff = index - currentIndex;
-    const absIndex = Math.abs(diff);
-    const zIndex = images.length - absIndex;
-    let scale = 1 - absIndex * (dimensions.scale / 2);
-    let opacity = 100;
-    const translateX = diff * (dimensions.spacing + 10);
-    const translateY = absIndex * (windowWidth < 640 ? 8 : 12);
+const getSlideStyle = (index: number): React.CSSProperties => {
+  const diff = index - currentIndex;
+  const absIndex = Math.abs(diff);
+  const zIndex = images.length - absIndex;
 
-    if (absIndex >= dimensions.maxVisibleSlides) {
-      opacity = 100;
-      scale = Math.max(0.6, scale);
-    }
+  // Rotation & depth feel
+  const rotation = diff * 6; // tilt left/right
+  const translateX = diff * (dimensions.spacing + 30);
+  const translateY = absIndex * 12;
+  const scale = 1 - absIndex * 0.1;
+  const opacity = absIndex > 2 ? 0 : 1; // hide far ones
 
-    return {
-      position: 'absolute' as const,
-      top: '50%',
-      left: '50%',
-      transform: `translate(-50%, -50%) translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`,
-      zIndex,
-      opacity,
-      transition: isTransitioning ? 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-      cursor: index !== currentIndex ? 'pointer' : 'default',
-      width: dimensions.slideWidth,
-      height: dimensions.slideHeight,
-    };
+  return {
+    position: 'absolute' as const,
+    top: '50%',
+    left: '50%',
+    transform: `
+      translate(-50%, -50%)
+      translateX(${translateX}px)
+      translateY(${translateY}px)
+      scale(${scale})
+      rotateY(${rotation}deg)
+    `,
+    zIndex,
+    opacity,
+    transition: 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
+    cursor: index !== currentIndex ? 'pointer' : 'default',
+    width: dimensions.slideWidth,
+    height: dimensions.slideHeight,
+    boxShadow: absIndex === 0
+      ? '0 15px 25px rgba(0,0,0,0.3)'
+      : '0 5px 15px rgba(0,0,0,0.2)',
+    filter: absIndex === 0 ? 'none' : 'brightness(0.8) blur(0.5px)',
+    transformOrigin: 'center center',
   };
+};
+
 
   return (
     <div className={`w-full flex flex-col items-center ${className}`}>
@@ -143,7 +152,7 @@ export function ImageStackk({
         <motion.img
           ref={ref}
           style={{ y ,rotate}}
-          src="/Visionaries/visionaries1.png" alt="" className="absolute w-[224px] -bottom-0 h-[224px] -right-15 object-cover -z-20" />
+          src="/Visionaries/visionaries1.png" alt="" className="absolute w-[200px] -bottom-0 h-[224px] -right-15 object-cover -z-20" />
 
 
 
@@ -194,7 +203,7 @@ export function ImageStackk({
 export default function VisionariesHero() {
   return (
     <div className="relative min-h-screen overflow-y-visible overflow-x-clip px-4 sm:px-6 md:px-12 lg:px-20">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-20">
+      <div className="container mx-auto  py-8 sm:py-12 lg:py-20">
         {/* Mobile Layout - Stack vertically */}
         <div className="lg:hidden flex flex-col space-y-6">
           {/* Header Badge */}
@@ -230,7 +239,7 @@ export default function VisionariesHero() {
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             {/* CTA Button */}
-            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center">
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
               Pre-Register Now
             </button>
           </div>
@@ -269,14 +278,14 @@ export default function VisionariesHero() {
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               {/* CTA Button */}
-              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-bold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center">
+              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-bold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
                 Pre-Register Now
               </button>
             </div>
           </div>
 
           {/* Right Visual Section - spans 7 columns on large screens */}
-          <div className="col-span-7 flex items-center justify-end">
+          <div className="col-span-7 flex items-end justify-end  h-full">
             {/* Image Carousel Container with proper spacing */}
             <div className="w-full flex items-center justify-end">
               <ImageStackk className="scale-100" />

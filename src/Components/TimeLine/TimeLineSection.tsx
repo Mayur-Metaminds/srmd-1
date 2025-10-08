@@ -93,7 +93,7 @@ export default function TimeLineSection() {
 
 
                     {/* Top Section - Badge and Text */}
-                    <div className="mt-10 text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start lg:w-[40%]">
+                    <div className="mt-10 text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start lg:w-[50%]">
                         <div className="p-2 sm:p-3 rounded-[100px] w-auto max-w-fit bg-white text-[#222222] flex justify-center items-center gap-x-2 text-[14px] sm:text-[16px] px-4 sm:px-5">
                             <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">
                                 <ellipse cx="16.8946" cy="10.7153" rx="7.78622" ry="7.78556" fill="#0B5399" />
@@ -161,7 +161,7 @@ function WindowCaroussel() {
         })
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 78 : nextIndex * itemWidth,
+            width: nextIndex === 0 ? 78 : nextIndex * itemWidth + 170,
             duration: 0.9,
             ease: "power2.inOut",
         })
@@ -276,12 +276,12 @@ function WindowCaroussel() {
 
     return (
         <div
-            className="relative  hidden w-screen flex-col items-center gap-6 overflow-hidden  sm:flex md:min-h-[565px]  lg:min-h-[95vh] lg:gap-[10px] "
+            className="relative  hidden w-screen flex-col items-center gap-6 overflow-hidden  sm:flex md:min-h-[565px]  lg:min-h-[60vh] lg:gap-[10px] "
             ref={containerRef}
 
         >
 
-            <div className="relative h-[390px] w-full overflow-hidden  lg:h-[65vh]  border-b-4  mt-10 border-dotted  border-b-white   ">
+            <div className="relative h-[390px] w-full overflow-hidden  lg:h-[65vh]   mt-10    ">
                 <div className="scrollable-container flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] lg:gap-[190px] z-20 justify-center"
 
                 >
@@ -289,12 +289,41 @@ function WindowCaroussel() {
                         <div
                             key={index}
                             className={cn(
-                                "card relative max-h-[240px] w-[650px] flex-shrink-0 transition-opacity duration-700 ",
+                                "card relative max-h-[240px] w-[650px] flex-shrink-0 transition-opacity duration-700  ",
                                 currentIndex < index ? "opacity-0" : "block"
                             )}
                         >
-                            {index === 0 && (
-                                <div className="absolute left-[102px] flex items-center md:top-[70px] lg:top-[55px]">
+                           
+
+                            <div className="mb-[24px] flex justify-between gap-[30px] text-white ">
+                                <div className="w-[250px]">
+
+                                    <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
+                                        <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-start sm:items-end w-full max-w-full sm:max-w-[90%] md:max-w-[705px] text-white relative">
+                                {/* // eslint-disable-next-line @next/next/no-img-element */}
+                                <Image
+                                    src={obj.image}
+                                    alt="timeline"
+                                    width={132}
+                                    height={141}
+                                    className="object-cover w-full sm:w-[132px] md:w-[280px] lg:w-[360px] h-[200px] sm:h-[141px] md:h-[200px] lg:h-[274px] rounded-xl flex-shrink-0"
+                                />
+                                <div className="w-full flex flex-col justify-start sm:justify-end gap-2 self-start sm:self-end">
+                                    {/* <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">{obj.title}</h1> */}
+                                    <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px]">
+                                        {obj.description}
+                                    </p>
+                                </div>
+                            
+                             {index === 0 && (
+                                <div className="absolute left-[102px] flex 
+                                -bottom-14
+                                items-center ">
                                     <p className="arrow h-[6px] min-w-[78px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
                                     <svg
                                         width="21"
@@ -318,31 +347,6 @@ function WindowCaroussel() {
                                     </svg>
                                 </div>
                             )}
-
-                            <div className="mb-[74px] flex justify-between gap-[30px] text-white ">
-                                <div className="w-[250px]">
-
-                                    <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
-                                        <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-start sm:items-end w-full max-w-full sm:max-w-[90%] md:max-w-[705px] text-white">
-                                {/* // eslint-disable-next-line @next/next/no-img-element */}
-                                <Image
-                                    src={obj.image}
-                                    alt="timeline"
-                                    width={132}
-                                    height={141}
-                                    className="object-cover w-full sm:w-[132px] md:w-[280px] lg:w-[360px] h-[200px] sm:h-[141px] md:h-[200px] lg:h-[274px] rounded-xl flex-shrink-0"
-                                />
-                                <div className="w-full flex flex-col justify-start sm:justify-end gap-2 self-start sm:self-end">
-                                    {/* <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">{obj.title}</h1> */}
-                                    <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px]">
-                                        {obj.description}
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     ))}
@@ -373,7 +377,7 @@ function WindowCaroussel() {
 
             </div>
 
-            <div className=" absolute bottom-20 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
+            <div className=" absolute bottom-5 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
                 <span>skip</span>
             </div>
 

@@ -2,9 +2,31 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
+import Preview from "../ui/Demot";
+import { useEffect, useRef, useState } from "react";
 export default function Footer() {
+    const footerRef = useRef(null)
+    const [isInView, setIsInView] = useState(false)
+
+    useEffect(() => {
+        if (!footerRef.current) return
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0]
+                if (entry) {
+                    setIsInView(entry.isIntersecting ?? false)
+                }
+            },
+            { threshold: 0.95 }
+        )
+
+        io.observe(footerRef.current)
+
+        return () => io.disconnect()
+    }, [])
     return (
-        <footer className="min-h-[400px] sm:min-h-[500px] lg:h-[553px] block relative overflow-hidden bg-[#293464] text-white py-6 sm:py-8 lg:py-10 w-[96%] m-auto rounded-xl sm:rounded-2xl lg:rounded-3xl border-2">
+        <footer ref={footerRef} className="min-h-[400px] sm:min-h-[500px] lg:h-[553px] block relative overflow-hidden bg-[#293464] text-white py-6 sm:py-8 lg:py-10 w-[96%] m-auto rounded-xl sm:rounded-2xl lg:rounded-3xl border-2">
             <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                     {/* Left Section - Mission Statement */}
@@ -78,11 +100,11 @@ export default function Footer() {
             {/* Background decorative elements */}
             {/* Bottom right decoration - now visible on all devices */}
             <div className="absolute right-0 bottom-0 mr-1 sm:mr-2 lg:mr-3 mb-1 sm:mb-2 lg:mb-3">
-                <img
+                {/* <img
                     src="/footer/footer-props.png"
                     alt="Footer decoration"
                     className="object-cover h-24 sm:h-32 md:h-48 lg:h-64 xl:max-h-[298px] w-auto"
-                />
+                /> */}<Preview  />
             </div>
 
             {/* Top center star decoration */}
@@ -95,7 +117,7 @@ export default function Footer() {
                 <motion.svg
                     animate={{ rotate: 360 }}
                     transition={{
-                        duration: 10,
+                        duration: 30,
                         repeat: Infinity,
                         ease: "linear",
                     }}

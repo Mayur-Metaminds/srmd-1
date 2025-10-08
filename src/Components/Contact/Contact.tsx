@@ -96,7 +96,7 @@ export default function Contact() {
                     </div>
 
                     <div className="text-center mt-10">
-                        <button className="bg-[#EFB744] text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base" onClick={handleClick}>
+                        <button className="btn-hover bg-[#EFB744] text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base" onClick={handleClick}>
                             Know More
                         </button>
                     </div>

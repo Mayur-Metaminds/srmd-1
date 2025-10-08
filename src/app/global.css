@@ -52,13 +52,16 @@ html, body {
   -ms-overflow-style: none; /* IE & Edge */
 }
 
-button:hover {
+/* button:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* shadow on hover */
+  /* transform: translateY(-2px); subtle lift */
+/* } */ 
+
+.btn-hover {
+  transition: all 0.3s ease; /* smooth animation */
+}
+
+.btn-hover:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* shadow on hover */
   transform: translateY(-2px); /* subtle lift */
-}
-.Accordian:hover{
-  button:hover {
-  box-shadow: none; /* shadow on hover */
-  transform: none; /* subtle lift */
-}
 }

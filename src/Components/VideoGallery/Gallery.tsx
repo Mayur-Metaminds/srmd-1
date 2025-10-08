@@ -1,21 +1,43 @@
 "use client";
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
+
+  const reels:Card[] = [
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/DE7JssBygG4/?igsh=MWppZzRpdzIxNzMg==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/C6_Q0q0suMd/?igsh=MW4yYWIxbmhtODVmMA==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/C4NqCjmy8vD/?igsh=dGs0eGVtandncmd5" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/Cynv4pUSHRb/?igsh=MTJ5eGQwaWV4eWp4Mg==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/Cl0W3YXtTm6/?igsh=MTRzd2o0eHJtZGZldA==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/p/Cf8JKrroW22/?igsh=MXg1eDFneGV4MW8wcQ==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/ClWP07SqJpy/?igsh=MWc4dXNsZ3ZxYWV2OQ==" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/DAn9YS7yOmR/?igsh=Y3F2eWU0MzkwZGUy" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/DCWZQBNMS22/?igsh=dnFibmczZGtwZDN0" },
+{ title: "Lorem ipsum non", year: "2025", url: "https://www.instagram.com/reel/DJgwaDXs9Ec/?igsh=NmV3c2F2NmFzYms1" }
+];
 export default function TimelineGallery() {
-  const cards: Card[] = [
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
-    { title: "Lorem ipsum non", year: "2025" },
+    const [visibleData, setVisibleData] = useState<Card[]>([])
+    const visible = useRef(0)
+    useEffect(() => {
+        setVisibleData(reels.slice(0, 8))
+        visible.current = 8
+    }, [])
+    const handleClick = (e: MouseEvent) => {
+        const prevScroll = window.scrollY;
+        e.preventDefault()
+        const datas = reels.slice(visible.current, visible.current + 2)
+        setVisibleData((prev) => ([...prev, ...datas]))
+        visible.current += 2
 
-  ];
+        requestAnimationFrame(() => {
 
-
+            // Adjust scroll position so your view doesn't move
+            window.scrollTo({
+                top: prevScroll,
+                behavior: "instant" as ScrollBehavior,
+            });
+        });
+    }
 
 
   return (
@@ -68,7 +90,7 @@ export default function TimelineGallery() {
 
       {/* Gallery Grid */}
       <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 ">
-        {cards.map((card, idx) => (
+        {visibleData.map((card, idx) => (
           // <div
           //   key={idx}
           //   className="flex flex-col items-center  bg-white shadow-sm rounded-lg overflow-hidden "
@@ -86,11 +108,11 @@ export default function TimelineGallery() {
           <AnimatedCard card={card} idx={idx} key={`${card.title}-${idx}`} />
         ))}
       </div>
-      {/* <div className="text-center mt-10">
-        <button className="bg-[#EFB744] text-[#222222] font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base">
-          Know More
+     {(visibleData.length!==reels.length) && <div className="text-center mt-10">
+        <button className="bg-[#EFB744] text-[#222222] font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base cursor-pointer btn-hover" onClick={handleClick}>
+        Know More
         </button>
-      </div> */}
+      </div>}
     </section>
   );
 }
@@ -106,27 +128,43 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
 
 
   return (
-    <motion.div
-      ref={ref}
-      className={`min-w-[24%] max-w-full w-full sm:w-[30%] lg:w-[30%] md:w-[70%] xl:w-[24%] break-inside-avoid mb-10  ${idx % 2 === 0 ? "mt-10" : "mb-20"} bg-white shadow-lg rounded-lg overflow-hidden`}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-      transition={{
-        duration: 0.5,
-        delay: idx * 0.1,
-        ease: "easeOut"
-      }}
-    >
-      {/* Video Thumbnail */}
-      <div className={`w-full min-h-[440px]   bg-gray-200 flex items-center justify-center relative`}>
-        <Play size={48} className="text-gray-500" />
+<motion.div
+  ref={ref}
+  className={`w-full sm:w-[48%] lg:w-[31%] xl:w-[23%] break-inside-avoid mb-10 ${idx % 2 === 0 ? "mt-10" : "mb-20"} bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border-2 border-gray-300 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:border-blue-400`}
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+  transition={{
+    duration: 0.5,
+    delay: idx * 0.1,
+    ease: "easeOut"
+  }}
+>
+  {/* Video Thumbnail */}
+  <div className="w-full relative overflow-hidden aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 group">
+    <iframe
+      className="absolute top-0 left-0 w-full h-full"
+      src={`${card.url.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/`}
+      title="Instagram Reel"
+      frameBorder="0"
+      scrolling="no"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      style={{ overflow: 'hidden' }}
+    />
+    
+    {/* Play Button Overlay */}
+    {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300">
+      <div className="w-20 h-20  flex items-center justify-center  shadow-2xl transform group-hover:scale-110 transition-transform duration-300 " >
+        <Play
+                      className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[white] "
+                      fill="#FFFFFF"
+        
+                    />
       </div>
-      {/* Caption */}
-      <div className="flex justify-between w-full px-2 py-2 text-sm text-gray-700">
-        <span>{card.title}</span>
-        <span className="text-gray-500">{card.year}</span>
-      </div>
-    </motion.div>
+    </div> */}
+    
+  </div>
+</motion.div>
   );
 };
 
@@ -136,6 +174,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
 interface Card {
   title: string;
   year: string | number;
+  url:string
 
 }
 
