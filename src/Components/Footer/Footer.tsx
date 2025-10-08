@@ -2,7 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from 'framer-motion';
-import Preview from "../ui/Demot";
+import Preview from "./GravityProp";
 import { useEffect, useRef, useState } from "react";
 export default function Footer() {
     const footerRef = useRef(null)
@@ -104,7 +104,8 @@ export default function Footer() {
                     src="/footer/footer-props.png"
                     alt="Footer decoration"
                     className="object-cover h-24 sm:h-32 md:h-48 lg:h-64 xl:max-h-[298px] w-auto"
-                /> */}<Preview  />
+                /> */}
+            <Preview />
             </div>
 
             {/* Top center star decoration */}

@@ -78,7 +78,7 @@ export default function AudienceSection() {
                     {/* Decorative Image - positioned differently on mobile */}
                     <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-[90%] h-full sm:h-[225px] md:h-[230px]  min-w-44 flex items-end justify-start relative -z-10">
                         <motion.svg
-                             className="opacity-70 sm:opacity-100"
+                             className="opacity-70 sm:opacity-100 md:opacity-70"
                             ref={ref}
                             style={{ y }}
                             width="284" height="224" viewBox="0 0 284 224" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -103,7 +103,7 @@ export default function AudienceSection() {
                             ref={leftChakraRef}
 
 
-                            className="absolute left-0 bottom-28 opacity-70 sm:opacity-100"
+                            className="absolute left-0 bottom-28 opacity-70 sm:opacity-100 md:opacity-70"
                             width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <motion.path opacity="0.9" d="M79.5051 5.5L62.8727 24.85L58.2156 1H51.7844L46.462 24.85L31.1602 5.5L25.8378 8.65L33.3778 32.95L9.87064 24.85L6.54415 29.575L23.3984 46.675L1 51.85L1.22177 57.7L25.8378 62.65L6.54415 79.975L9.87064 85.15L33.3778 76.6L25.8378 100.675L31.1602 104.275L46.462 85.15L51.7844 109H58.2156L62.8727 85.15L79.5051 104.275L84.384 100.675L76.4004 76.6L100.573 85.15L103.234 79.975L84.384 62.65L109 57.7V51.85L84.384 46.675L103.234 29.575L100.129 24.625L76.4004 32.95L84.384 8.65L79.5051 5.5Z" fill="#FED543"
                                 ref={audRef1}
