@@ -149,7 +149,6 @@ function AudienceItem({
     return (
         <AccordionItem value={`item-${idx}`} className=" border-b border-[#C8AD6E] pb-3 sm:pb-4 p-5 z-20" >
             <AccordionTrigger  className="flex items-center gap-x-2  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333] [&[data-state=open]>div>p]:font-semibold
-
             hover:!shadow-none hover:!transform-none
               ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
