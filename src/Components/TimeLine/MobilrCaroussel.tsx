@@ -5,8 +5,14 @@ import Image from "next/image"
 import gsap from "gsap"
 import { Observer } from "gsap/Observer"
 import timeLineData from "@/lib/data/TimeLineSectionData.json"
-import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
+
 gsap.registerPlugin(Observer)
+function disableBodyScroll() {
+    document.body.style.overflow = "hidden"
+}
+function enableBodyScroll() {
+    document.body.style.overflow = ""
+}
 
 export function MobileCaroussel() {
     // Item width calculation (carousel item width + gap, adjust as needed)
@@ -79,13 +85,13 @@ export function MobileCaroussel() {
             scrollDirection === "down"
 
         if (isInView && !atFirstAndGoingUp && !atLastAndGoingDown) {
-            disableBodyScroll(containerRef.current)
+            disableBodyScroll()
         } else {
-            enableBodyScroll(containerRef.current)
+            enableBodyScroll()
         }
 
         // Cleanup: always unlock scroll on unmount or dependency change
-        return () => clearAllBodyScrollLocks()
+        return () => enableBodyScroll()
     }, [isInView, currentIndex, scrollDirection, timeLineData])
 
     // Update carousel horizontal position using gsap, animate smooth transition
@@ -116,7 +122,7 @@ export function MobileCaroussel() {
 
     // Scroll to next section and unlock vertical scroll
     const moveToNextSection = () => {
-        enableBodyScroll(containerRef.current)
+        enableBodyScroll()
         const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
@@ -164,7 +170,7 @@ export function MobileCaroussel() {
                 } else {
                     // At first card, exit carousel and scroll to top section
                     observerRef.current?.kill()
-                    enableBodyScroll(containerRef.current)
+                    enableBodyScroll()
                     const topSection = document.querySelector("#audience") // replace with your top section's selector!
                     if (topSection) {
                         topSection.scrollIntoView({ behavior: "smooth" })
@@ -177,7 +183,6 @@ export function MobileCaroussel() {
 
         return () => {
             observerRef.current?.kill()
-            clearAllBodyScrollLocks()
         }
     }, [timeLineData, isInView])
 
