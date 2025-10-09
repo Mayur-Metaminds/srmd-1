@@ -122,7 +122,7 @@ export function MobileCaroussel() {
     // Scroll to next section and unlock vertical scroll
     const moveToNextSection = () => {
         enableBodyScroll()
-        const nextSection = document.querySelector("#after-carousel")
+        const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
         }
@@ -202,8 +202,8 @@ export function MobileCaroussel() {
                             {index === 0 && (
                                 <div className="absolute -bottom-7 left-[113px] flex origin-left items-center">
                                     <p className="arrow h-[3px] min-w-[78px] rounded-tl-[10px] rounded-bl-[10px] bg-[white]" />
-                                       <img src="/TimeLine/white.svg" alt="" width={20} height={20}  />
-                                   
+                                    <img src="/TimeLine/white.svg" alt="" width={20} height={20} />
+
                                 </div>
                             )}
                             <div className=" text-white flex flex-col items-start gap-4 justify-center">
@@ -226,14 +226,16 @@ export function MobileCaroussel() {
                                         {obj.description}
                                     </p>
                                 </div>
+                                
 
-
+ 
                             </div>
-
                         </div>
                     ))}
                 </div>
-
+           <div className=" absolute -bottom-20 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md   h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
+                <span>skip</span>
+            </div>
             </div>
 
         </section>

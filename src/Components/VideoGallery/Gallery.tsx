@@ -38,11 +38,10 @@ export default function TimelineGallery() {
       });
     });
   }
-
-
   return (
     <section className="relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative Wave Background */}
+      
       <SnakeReveal />
       {/* Top Text Section */}
       <div className="w-[90%]   mb-12 flex  items-start flex-col  ">
@@ -82,7 +81,7 @@ export default function TimelineGallery() {
 }
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Play } from 'lucide-react';
+import { LoaderCircle, Play } from 'lucide-react';
 import SnakeReveal from "./SnakeProp";
 
 

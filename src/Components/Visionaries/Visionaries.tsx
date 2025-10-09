@@ -8,197 +8,198 @@ interface CarouselProps {
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
 import { useParallax } from "@/hooks/paralllelx";
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ImageStackk from "./ImageStack";
 
-export function ImageStackk({
-  images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
-  className = ""
-}: CarouselProps) {
+// export function ImageStackk({
+//   images = ["/Visionaries/f1.jpg", "/Visionaries/f2.jpg", "/Visionaries/f3.jpg", "/Visionaries/f4.jpg", "/Visionaries/f5.jpg"],
+//   className = ""
+// }: CarouselProps) {
 
-  const { ref, y } = useParallax({ speed: 0.3 })
-     const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"], // start/end triggers
-    });
-    const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
+//   const { ref, y } = useParallax({ speed: 0.3 })
+//      const { scrollYProgress } = useScroll({
+//         target: ref,
+//         offset: ["start end", "end start"], // start/end triggers
+//     });
+//     const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
 
-  const { ref: circleRef, y: circley } = useParallax({ speed: 0.3 })
-  const [currentIndex, setCurrentIndex] = useState<number>(Math.floor(images.length / 2));
-  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+//   const { ref: circleRef, y: circley } = useParallax({ speed: 0.3 })
+//   const [currentIndex, setCurrentIndex] = useState<number>(Math.floor(images.length / 2));
+//   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+//   const [windowWidth, setWindowWidth] = useState<number>(0);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setWindowWidth(window.innerWidth);
+//     };
+//     setWindowWidth(window.innerWidth);
+//     window.addEventListener('resize', handleResize);
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
 
-  const handleNext = (): void => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    setTimeout(() => setIsTransitioning(false), 400);
-  };
+//   const handleNext = (): void => {
+//     if (isTransitioning) return;
+//     setIsTransitioning(true);
+//     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+//     setTimeout(() => setIsTransitioning(false), 400);
+//   };
 
-  const handlePrev = (): void => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    setTimeout(() => setIsTransitioning(false), 400);
-  };
+//   const handlePrev = (): void => {
+//     if (isTransitioning) return;
+//     setIsTransitioning(true);
+//     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+//     setTimeout(() => setIsTransitioning(false), 400);
+//   };
 
-  const handleSlideClick = (index: number): void => {
-    if (isTransitioning || index === currentIndex) return;
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 400);
-  };
+//   const handleSlideClick = (index: number): void => {
+//     if (isTransitioning || index === currentIndex) return;
+//     setIsTransitioning(true);
+//     setCurrentIndex(index);
+//     setTimeout(() => setIsTransitioning(false), 400);
+//   };
 
-  const getResponsiveDimensions = () => {
-    if (windowWidth < 640) {
-      return {
-        containerWidth: 280,
-        containerHeight: 280,
-        slideWidth: 160,
-        slideHeight: 220,
-        maxVisibleSlides: 2,
-        spacing: 15,
-        scale: 0.15
-      };
-    } else if (windowWidth < 768) {
-      return {
-        containerWidth: 320,
-        containerHeight: 320,
-        slideWidth: 180,
-        slideHeight: 260,
-        maxVisibleSlides: 2,
-        spacing: 20,
-        scale: 0.12
-      };
-    } else if (windowWidth < 1024) {
-      return {
-        containerWidth: 360,
-        containerHeight: 360,
-        slideWidth: 200,
-        slideHeight: 280,
-        maxVisibleSlides: 3,
-        spacing: 25,
-        scale: 0.1
-      };
-    } else {
-      return {
-        containerWidth: 400,
-        containerHeight: 400,
-        slideWidth: 220,
-        slideHeight: 300,
-        maxVisibleSlides: 3,
-        spacing: 30,
-        scale: 0.1
-      };
-    }
-  };
+//   const getResponsiveDimensions = () => {
+//     if (windowWidth < 640) {
+//       return {
+//         containerWidth: 280,
+//         containerHeight: 280,
+//         slideWidth: 160,
+//         slideHeight: 220,
+//         maxVisibleSlides: 2,
+//         spacing: 15,
+//         scale: 0.15
+//       };
+//     } else if (windowWidth < 768) {
+//       return {
+//         containerWidth: 320,
+//         containerHeight: 320,
+//         slideWidth: 180,
+//         slideHeight: 260,
+//         maxVisibleSlides: 2,
+//         spacing: 20,
+//         scale: 0.12
+//       };
+//     } else if (windowWidth < 1024) {
+//       return {
+//         containerWidth: 360,
+//         containerHeight: 360,
+//         slideWidth: 200,
+//         slideHeight: 280,
+//         maxVisibleSlides: 3,
+//         spacing: 25,
+//         scale: 0.1
+//       };
+//     } else {
+//       return {
+//         containerWidth: 400,
+//         containerHeight: 400,
+//         slideWidth: 220,
+//         slideHeight: 300,
+//         maxVisibleSlides: 3,
+//         spacing: 30,
+//         scale: 0.1
+//       };
+//     }
+//   };
 
-  const dimensions = getResponsiveDimensions();
+//   const dimensions = getResponsiveDimensions();
 
-const getSlideStyle = (index: number): React.CSSProperties => {
-  const diff = index - currentIndex;
-  const absIndex = Math.abs(diff);
-  const zIndex = images.length - absIndex;
+// const getSlideStyle = (index: number): React.CSSProperties => {
+//   const diff = index - currentIndex;
+//   const absIndex = Math.abs(diff);
+//   const zIndex = images.length - absIndex;
 
-  // Rotation & depth feel
-  const rotation = diff * 6; // tilt left/right
-  const translateX = diff * (dimensions.spacing + 30);
-  const translateY = absIndex * 12;
-  const scale = 1 - absIndex * 0.1;
-  const opacity = absIndex > 2 ? 0 : 1; // hide far ones
+//   // Rotation & depth feel
+//   const rotation = diff * 6; // tilt left/right
+//   const translateX = diff * (dimensions.spacing + 30);
+//   const translateY = absIndex * 12;
+//   const scale = 1 - absIndex * 0.1;
+//   const opacity = absIndex > 2 ? 0 : 1; // hide far ones
 
-  return {
-    position: 'absolute' as const,
-    top: '50%',
-    left: '50%',
-    transform: `
-      translate(-50%, -50%)
-      translateX(${translateX}px)
-      translateY(${translateY}px)
-      scale(${scale})
-      rotateY(${rotation}deg)
-    `,
-    zIndex,
-    opacity,
-    transition: 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
-    cursor: index !== currentIndex ? 'pointer' : 'default',
-    width: dimensions.slideWidth,
-    height: dimensions.slideHeight,
-    boxShadow: absIndex === 0
-      ? '0 15px 25px rgba(0,0,0,0.3)'
-      : '0 5px 15px rgba(0,0,0,0.2)',
-    filter: absIndex === 0 ? 'none' : 'brightness(0.8) blur(0.5px)',
-    transformOrigin: 'center center',
-  };
-};
-
-
-  return (
-    <div className={`w-full flex flex-col items-center ${className}`}>
-      <div
-        className="relative mb-4 sm:mb-6"
-        style={{
-          width: dimensions.containerWidth,
-          height: dimensions.containerHeight,
-        }}
-      >
-        <motion.img
-          ref={ref}
-          style={{ y ,rotate}}
-          src="/Visionaries/visionaries1.png" alt="" className="absolute w-[200px] -bottom-0 h-[224px] -right-15 object-cover -z-20" />
+//   return {
+//     position: 'absolute' as const,
+//     top: '50%',
+//     left: '50%',
+//     transform: `
+//       translate(-50%, -50%)
+//       translateX(${translateX}px)
+//       translateY(${translateY}px)
+//       scale(${scale})
+//       rotateY(${rotation}deg)
+//     `,
+//     zIndex,
+//     opacity,
+//     transition: 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
+//     cursor: index !== currentIndex ? 'pointer' : 'default',
+//     width: dimensions.slideWidth,
+//     height: dimensions.slideHeight,
+//     boxShadow: absIndex === 0
+//       ? '0 15px 25px rgba(0,0,0,0.3)'
+//       : '0 5px 15px rgba(0,0,0,0.2)',
+//     filter: absIndex === 0 ? 'none' : 'brightness(0.8) blur(0.5px)',
+//     transformOrigin: 'center center',
+//   };
+// };
 
 
-
-        <motion.img
-          style={{ y: circley }}
-          ref={circleRef}
-          src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover -z-20" />
-
-        <button
-          onClick={handlePrev}
-          disabled={isTransitioning}
-          className="cursor-pointer flex absolute -left-6 sm:-left-8 md:-left-12 top-1/2 transform -translate-y-1/2 z-30 bg-[#1D2B53] hover:bg-[#1D2B53]/90 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
-          type="button"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={windowWidth < 768 ? 18 : 24} />
-        </button>
-
-        <button
-          onClick={handleNext}
-          disabled={isTransitioning}
-          className="cursor-pointer flex absolute -right-6 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 z-30 bg-slate-700 hover:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
-          type="button"
-          aria-label="Next slide"
-        >
-          <ChevronRight size={windowWidth < 768 ? 18 : 24} />
-        </button>
-
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="rounded-xl sm:rounded-2xl shadow-lg overflow-hidden bg-gray-200 flex items-center justify-center p-1"
-            style={getSlideStyle(index)}
-            onClick={() => handleSlideClick(index)}
-          >
-            <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold rounded-xl sm:rounded-2xl overflow-hidden">
-              <img src={src} alt="" className="w-full h-full" />
-            </div>
-          </div>
-        ))}
-      </div>
+//   return (
+//     <div className={`w-full flex flex-col items-center ${className}`}>
+//       <div
+//         className="relative mb-4 sm:mb-6"
+//         style={{
+//           width: dimensions.containerWidth,
+//           height: dimensions.containerHeight,
+//         }}
+//       >
+//         <motion.img
+//           ref={ref}
+//           style={{ y ,rotate}}
+//           src="/Visionaries/visionaries1.png" alt="" className="absolute w-[200px] -bottom-0 h-[224px] -right-15 object-cover -z-20" />
 
 
-    </div>
-  );
-}
+
+//         <motion.img
+//           style={{ y: circley }}
+//           ref={circleRef}
+//           src="/Visionaries/bg.png" alt="" className="absolute w-[100px] h-[100px] -right-10 top-7 object-cover -z-20" />
+
+//         <button
+//           onClick={handlePrev}
+//           disabled={isTransitioning}
+//           className="cursor-pointer flex absolute -left-6 sm:-left-8 md:-left-12 top-1/2 transform -translate-y-1/2 z-30 bg-[#1D2B53] hover:bg-[#1D2B53]/90 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
+//           type="button"
+//           aria-label="Previous slide"
+//         >
+//           <ChevronLeft size={windowWidth < 768 ? 18 : 24} />
+//         </button>
+
+//         <button
+//           onClick={handleNext}
+//           disabled={isTransitioning}
+//           className="cursor-pointer flex absolute -right-6 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 z-30 bg-slate-700 hover:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed items-center justify-center"
+//           type="button"
+//           aria-label="Next slide"
+//         >
+//           <ChevronRight size={windowWidth < 768 ? 18 : 24} />
+//         </button>
+
+//         {images.map((src, index) => (
+//           <div
+//             key={index}
+//             className="rounded-xl sm:rounded-2xl shadow-lg overflow-hidden bg-gray-200 flex items-center justify-center p-1"
+//             style={getSlideStyle(index)}
+//             onClick={() => handleSlideClick(index)}
+//           >
+//             <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold rounded-xl sm:rounded-2xl overflow-hidden">
+//               <img src={src} alt="" className="w-full h-full" />
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+
+//     </div>
+//   );
+// }
 
 export default function VisionariesHero() {
   return (

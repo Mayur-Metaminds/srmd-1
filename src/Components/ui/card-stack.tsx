@@ -385,10 +385,10 @@ type Card = {
 
 export default function CardStackContainer() {
   const initialCards: Card[] = [
-    { title: "A breathtaking\nmusical production", image: "/impactCard/card/f1.jpg", gradient: "bg-[#FED543]" },
-    { title: "An interactive exhibit\nexploring the world of values", image: "/impactCard/card/f2.jpg", gradient: "bg-[#FED543]" },
-    { title: "A celebration of\n21 years of a global movement", image: "/impactCard/card/f3.jpg", gradient: "bg-[#FED543]" },
-    { title: "The unveiling of\nthe next chapter together", image: "/impactCard/card/f4.jpg", gradient: "bg-[#FED543]" },
+    { title: "A breathtaking\nmusical production", image: "/impactCard/card/f1.avif", gradient: "bg-[#FED543]" },
+    { title: "An interactive exhibit\nexploring the world of values", image: "/impactCard/card/f2.avif", gradient: "bg-[#FED543]" },
+    { title: "A celebration of\n21 years of a global movement", image: "/impactCard/card/f3.avif", gradient: "bg-[#FED543]" },
+    { title: "The unveiling of\nthe next chapter together", image: "/impactCard/card/f4.avif", gradient: "bg-[#FED543]" },
   ];
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
