@@ -250,7 +250,7 @@ function MobileVersionSnakeReveal() {
   return (
     <motion.div
       ref={ref}
-      className="block sm:hidden w-full h-auto -mt-8 mb-4"
+      className="block sm:hidden w-full h-auto -mt-8 mb-4 absolute top-[300px]"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
