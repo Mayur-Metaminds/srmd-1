@@ -22,8 +22,6 @@ export function WindowCaroussel() {
     useEffect(() => {
         const handleResize = () => {
             computeItemWidth()
-            const newWidth = window.innerWidth > 768 ? 790 : 740
-            setItemWidth(newWidth)
         }
 
         window.addEventListener("resize", handleResize)
@@ -57,7 +55,7 @@ export function WindowCaroussel() {
         })
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 78 : nextIndex * itemWidth + 170,
+            width: nextIndex === 0 ? 78 : nextIndex * itemWidth,
             duration: 0.9,
             ease: "power2.inOut",
         })
@@ -182,10 +180,10 @@ export function WindowCaroussel() {
 
     return (
         <div
-            className="relative  hidden w-screen flex-col items-center gap-6  overflow-hidden  sm:flex md:min-h-[65vh]  lg:min-h-[70vh] xl:min-h-[70vh] lg:gap-[10px] "
+            className="relative  hidden w-screen flex-col items-center gap-6  overflow-hidden  sm:flex h-[50vh]  md:min-h-[65vh]   lg:min-h-[70vh] xl:min-h-[70vh] lg:gap-[10px] "
             ref={containerRef}>
             <div className="relative   w-full  h-full">
-                <div className="scrollable-container flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] z-20 "
+                <div className="scrollable-container ml-5 flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] z-20 "
 
                 >
                     {timeLineData?.map((obj, index) => (
@@ -199,8 +197,8 @@ export function WindowCaroussel() {
 
 
 
-                            <div className="flex flex-col sm:flex-row md:flex-col xl:flex-row lg:flex-row gap-3 sm:gap-4 justify-between items-start sm:items-end md:items-center xl:items-end lg:items-end w-full max-w-full sm:max-w-[90%] md:max-w-[705px] text-white relative">
-                                <div className="w-[60%] flex flex-col justify-between gap-[30px] text-white self-start ">
+                            <div className="flex flex-col  md:flex-col lg:flex-row xl:flex-row  gap-3 sm:gap-4 justify-between items-start  sm:items-end  w-full max-w-full sm:max-w-[90%]  text-white relative">
+                                <div className="w-[60%] flex flex-col justify-between gap-[30px] text-white  self-start ">
                                     <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
                                         <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
                                     </div>
@@ -215,8 +213,8 @@ export function WindowCaroussel() {
 
                                 </div>
 
-                                <div className="w-[40%] md:w-full xl:w-[40%] lg:w-[40%] flex">
-                                    {/* <h1 className="text-[24px] sm:text-[26px] md:text-[32px] font-semibold">{obj.title}</h1> */}
+                                <div className="w-full md:w-full xl:w-[40%] lg:w-[40%] flex self-start xl:self-end lg:self-end ">
+                                    
                                     <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px] ">
                                         {obj.description}
                                     </p>

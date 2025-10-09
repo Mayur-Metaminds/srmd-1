@@ -44,13 +44,13 @@ export default function TimeLineSection() {
 
                 <div
                     id="count-down1"
-                    className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[200px] sm:min-h-[300px] lg:h-[300px] xl:h-[300px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
+                    className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[200px] sm:min-h-[300px] lg:h-[300px] xl:h-[300px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden pb-0"
 
                 >
 
 
                     {/* Top Section - Badge and Text */}
-                    <div className="mt-10 text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start  sm:w-[50%] md:w-[90%] lg:w-[70%] xl:w-[50%]">
+                    <div className="mt-10 text-white w-full flex flex-col gap-3 sm:gap-6 z-20 self-start sm:self-start  sm:w-[100%] md:w-[90%] lg:w-[70%] xl:w-[50%]">
                         <div className="p-2 sm:p-3 rounded-[100px] w-auto max-w-fit bg-white text-[#222222] flex justify-center items-center gap-x-2 text-[14px] sm:text-[16px] px-4 sm:px-5">
                             <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">
                                 <ellipse cx="16.8946" cy="10.7153" rx="7.78622" ry="7.78556" fill="#0B5399" />
@@ -58,7 +58,7 @@ export default function TimeLineSection() {
                             </svg>
                             <span className="whitespace-nowrap font-semibold text-[12px] md:text-[14px] sm:text-[16px]">From Roots to Wings</span>
                         </div>
-                        <ScrollTypingEffect className="text-[#7F85A2] text-[26px] sm:text-[40px] md:text-[32px] lg:text-[36px] xl:text-[40px] leading-tight font-[400]  z-20  sm:leading-snug w-full" colorChange="white" text="Evolved over 20 years, and loved by lakhs of children across the world" />
+                        <ScrollTypingEffect className="text-[#7F85A2] text-[26px] sm:text-[26px] md:text-[32px] lg:text-[36px] xl:text-[40px] leading-tight font-[400]  z-20  sm:leading-snug w-full" colorChange="white" text="Evolved over 20 years, and loved by lakhs of children across the world" />
                     </div>
 
 

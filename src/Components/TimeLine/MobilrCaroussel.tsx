@@ -183,7 +183,7 @@ export function MobileCaroussel() {
     return (
         <section
             ref={containerRef}
-            className="relative flex h-[70vh] w-screen flex-col items-center  py-[10px] sm:hidden overflow-hidden"
+            className="relative flex  h-[85vh] sm:[70vh]   w-screen flex-col items-center   sm:hidden overflow-hidden"
         >
 
             <div className="relative w-full ">
