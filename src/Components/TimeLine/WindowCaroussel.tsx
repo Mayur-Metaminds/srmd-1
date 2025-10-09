@@ -221,7 +221,7 @@ export function WindowCaroussel() {
                                 -bottom-10
                                 items-center ">
                                         <p className="arrow h-[3px] min-w-[78px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
-                                        <img src="/TimeLine/white.svg" alt="" width={20} height={20} />
+                                        <img src="/TimeLine/white.svg" alt="" width={20} height={20}  />
                                     </div>
                                 )}
                             </div>
