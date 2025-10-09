@@ -5,14 +5,9 @@ import Image from "next/image"
 import gsap from "gsap"
 import { Observer } from "gsap/Observer"
 import timeLineData from "@/lib/data/TimeLineSectionData.json"
+import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 gsap.registerPlugin(Observer)
 
-function disableBodyScroll() {
-    document.body.style.overflow = "hidden"
-}
-function enableBodyScroll() {
-    document.body.style.overflow = ""
-}
 export function MobileCaroussel() {
     // Item width calculation (carousel item width + gap, adjust as needed)
     const [itemWidth, setItemWidth] = useState(() => {
@@ -84,13 +79,13 @@ export function MobileCaroussel() {
             scrollDirection === "down"
 
         if (isInView && !atFirstAndGoingUp && !atLastAndGoingDown) {
-            disableBodyScroll()
+            disableBodyScroll(containerRef.current)
         } else {
-            enableBodyScroll()
+            enableBodyScroll(containerRef.current)
         }
 
         // Cleanup: always unlock scroll on unmount or dependency change
-        return () => enableBodyScroll()
+        return () => clearAllBodyScrollLocks()
     }, [isInView, currentIndex, scrollDirection, timeLineData])
 
     // Update carousel horizontal position using gsap, animate smooth transition
@@ -121,7 +116,7 @@ export function MobileCaroussel() {
 
     // Scroll to next section and unlock vertical scroll
     const moveToNextSection = () => {
-        enableBodyScroll()
+        clearAllBodyScrollLocks()
         const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
@@ -169,7 +164,7 @@ export function MobileCaroussel() {
                 } else {
                     // At first card, exit carousel and scroll to top section
                     observerRef.current?.kill()
-                    enableBodyScroll()
+                    enableBodyScroll(containerRef.current)
                     const topSection = document.querySelector("#top-section-id") // replace with your top section's selector!
                     if (topSection) {
                         topSection.scrollIntoView({ behavior: "smooth" })
@@ -226,16 +221,16 @@ export function MobileCaroussel() {
                                         {obj.description}
                                     </p>
                                 </div>
-                                
 
- 
+
+
                             </div>
                         </div>
                     ))}
                 </div>
-           <div className=" absolute -bottom-20 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md   h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
-                <span>skip</span>
-            </div>
+                <div className=" absolute -bottom-20 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md   h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
+                    <span>skip</span>
+                </div>
             </div>
 
         </section>

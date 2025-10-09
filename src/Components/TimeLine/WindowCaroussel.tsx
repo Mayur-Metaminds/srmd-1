@@ -9,15 +9,10 @@ import { cn } from "@/lib/utils"
 import { useParallax } from "@/hooks/paralllelx"
 import { motion } from 'framer-motion';
 import { useRotateScroll } from "@/hooks/useScrollRotate"
-
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 gsap.registerPlugin(Observer)
 
-function disableBodyScroll() {
-    document.body.style.overflow = "hidden"
-}
-function enableBodyScroll() {
-    document.body.style.overflow = ""
-}
+
 
 
 export function WindowCaroussel() {
@@ -26,6 +21,7 @@ export function WindowCaroussel() {
     const [itemWidth, setItemWidth] = useState(790)
     useEffect(() => {
         const handleResize = () => {
+            computeItemWidth()
             const newWidth = window.innerWidth > 768 ? 790 : 740
             setItemWidth(newWidth)
         }
@@ -33,7 +29,7 @@ export function WindowCaroussel() {
         window.addEventListener("resize", handleResize)
         handleResize() // call once to set initial width
         return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    }, [timeLineData])
 
     const totalLength = timeLineData?.length ?? 1
 
@@ -71,7 +67,7 @@ export function WindowCaroussel() {
 
     // UNLOCK scroll and move to next section
     const moveToNextSection = () => {
-        enableBodyScroll()
+        clearAllBodyScrollLocks()
         const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
@@ -137,7 +133,7 @@ export function WindowCaroussel() {
                     observerRef.current?.kill()
 
                     // Unlock scroll so page can move normally
-                    enableBodyScroll()
+                    enableBodyScroll(containerRef.current)
 
                     if (topSectionRef.current) {
                         topSectionRef.current.scrollIntoView({ behavior: "smooth" })
@@ -156,15 +152,14 @@ export function WindowCaroussel() {
 
     // BODY SCROLL LOCK: handle vertical scroll lock/unlock, always correct even if scrolling up/down
     useEffect(() => {
-        if (isInView) {
-            disableBodyScroll()
+        if (!containerRef.current) return
+        if (isInView && containerRef.current) {
+            disableBodyScroll(containerRef.current)
         } else {
-            enableBodyScroll()
+            enableBodyScroll(containerRef?.current)
         }
         // Always cleanup when leaving/unmounting
-        return () => {
-            enableBodyScroll()
-        }
+        return () => clearAllBodyScrollLocks();
     }, [isInView])
 
 
@@ -173,13 +168,24 @@ export function WindowCaroussel() {
     const { ref: ref1, rotate: rotate1 } = useRotateScroll();
     const { ref: ref2, rotate: rotate2 } = useRotateScroll();
     const { ref: ref3, rotate: rotate3 } = useRotateScroll();
+    const computeItemWidth = () => {
+        const sc = containerRef.current?.querySelector('.scrollable-container');
+        const card = sc?.querySelector('.card');
+        if (card && sc) {
+            const style = getComputedStyle(sc);
+            const gap = parseFloat(style.gap || style.columnGap || '0'); // gap between cards
+            const width = card.getBoundingClientRect().width + gap;
+            setItemWidth(width);
+        }
+    };
+
 
     return (
         <div
             className="relative  hidden w-screen flex-col items-center gap-6  overflow-hidden  sm:flex md:min-h-[65vh]  lg:min-h-[70vh] xl:min-h-[70vh] lg:gap-[10px] "
             ref={containerRef}>
             <div className="relative   w-full  h-full">
-                <div className="scrollable-container flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] lg:gap-[190px] z-20 justify-center"
+                <div className="scrollable-container flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] z-20 "
 
                 >
                     {timeLineData?.map((obj, index) => (
@@ -221,7 +227,7 @@ export function WindowCaroussel() {
                                 -bottom-10
                                 items-center ">
                                         <p className="arrow h-[3px] min-w-[78px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
-                                        <img src="/TimeLine/white.svg" alt="" width={20} height={20}  />
+                                        <img src="/TimeLine/white.svg" alt="" width={20} height={20} />
                                     </div>
                                 )}
                             </div>
