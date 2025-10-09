@@ -172,9 +172,9 @@ export function WindowCaroussel() {
         const sc = containerRef.current?.querySelector('.scrollable-container');
         const card = sc?.querySelector('.card');
         if (card && sc) {
-            const style = getComputedStyle(sc);
+            const style = getComputedStyle(sc); //get all css properties
             const gap = parseFloat(style.gap || style.columnGap || '0'); // gap between cards
-            const width = card.getBoundingClientRect().width + gap;
+            const width = card.getBoundingClientRect().width + gap; //provide full detail of element
             setItemWidth(width);
         }
     };
