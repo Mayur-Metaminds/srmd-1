@@ -50,14 +50,14 @@ export function WindowCaroussel() {
         gsap.to(".scrollable-container", {
             x: -nextIndex * itemWidth,
             duration: 0.9,
-            ease: "power2.inOut",
+            ease: "linear",
             onComplete: () => setAnimating(false),
         })
 
         gsap.to(".arrow", {
             width: nextIndex === 0 ? 78 : nextIndex * itemWidth,
             duration: 0.9,
-            ease: "power2.inOut",
+            ease: "linear",
         })
 
         setCurrentIndex(nextIndex)
@@ -99,7 +99,7 @@ export function WindowCaroussel() {
 
     // You can set this ref by prop or selector on mount:
     useEffect(() => {
-        topSectionRef.current = document.querySelector("#before-carausal") // Replace with your actual top component selector
+        topSectionRef.current = document.querySelector("#audience") // Replace with your actual top component selector
     }, [])
 
     useEffect(() => {
@@ -214,7 +214,7 @@ export function WindowCaroussel() {
                                 </div>
 
                                 <div className="w-full md:w-full xl:w-[40%] lg:w-[40%] flex self-start xl:self-end lg:self-end ">
-                                    
+
                                     <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[20px] sm:leading-[24px] ">
                                         {obj.description}
                                     </p>

@@ -42,7 +42,7 @@ export default function AudienceSection() {
 
     return (
         <section
-            id="before-carausal"
+            id="audience"
             className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px] py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 "
             style={{
                 background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
@@ -150,7 +150,9 @@ function AudienceItem({
 }) {
     return (
         <AccordionItem value={`item-${idx}`} className=" border-b border-[#C8AD6E] pb-3 sm:pb-4 p-5 z-20" >
-            <AccordionTrigger  className="flex items-center gap-x-5  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333] [&[data-state=open]>div>p]:font-semibold
+            <AccordionTrigger  className="
+            transition-all duration-500 ease-in
+            flex items-center gap-x-5  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333] [&[data-state=open]>div>p]:font-semibold
             hover:!shadow-none hover:!transform-none  
               ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -165,7 +167,7 @@ function AudienceItem({
                 </div>
             </AccordionTrigger>
             {desc && (
-                <AccordionContent className="pb-0 pt-0 pl-6 sm:pl-7 md:pl-8 lg:pl-9 xl:pl-10 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all duration-700 ease-in-out">
+                <AccordionContent className="pb-0 pt-0 pl-9 sm:pl-7 md:pl-8 lg:pl-9 xl:pl-9 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all duration-700 ease-in-out">
                     <p className="font-normal text-[16px] sm:text-base md:text-lg lg:text-xl xl:text-[24px] mt-1 leading-relaxed">
                         {desc}
                     </p>

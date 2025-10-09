@@ -101,14 +101,14 @@ export function MobileCaroussel() {
         gsap.to(".scrollable-container", {
             x: -nextIndex * itemWidth,
             duration: 0.9,
-            ease: "power2.inOut",
+            ease: "linear",
             onComplete: () => setAnimating(false),
         })
 
         gsap.to(".arrow", {
             width: nextIndex === 0 ? 78 : nextIndex * itemWidth + 70,
             duration: 0.9,
-            ease: "power2.inOut",
+            ease: "linear",
         })
 
         setCurrentIndex(nextIndex)
@@ -116,7 +116,7 @@ export function MobileCaroussel() {
 
     // Scroll to next section and unlock vertical scroll
     const moveToNextSection = () => {
-        clearAllBodyScrollLocks()
+        enableBodyScroll(containerRef.current)
         const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
@@ -165,7 +165,7 @@ export function MobileCaroussel() {
                     // At first card, exit carousel and scroll to top section
                     observerRef.current?.kill()
                     enableBodyScroll(containerRef.current)
-                    const topSection = document.querySelector("#top-section-id") // replace with your top section's selector!
+                    const topSection = document.querySelector("#audience") // replace with your top section's selector!
                     if (topSection) {
                         topSection.scrollIntoView({ behavior: "smooth" })
                     } else {
@@ -177,6 +177,7 @@ export function MobileCaroussel() {
 
         return () => {
             observerRef.current?.kill()
+            clearAllBodyScrollLocks()
         }
     }, [timeLineData, isInView])
 
