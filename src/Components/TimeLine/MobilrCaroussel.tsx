@@ -208,16 +208,16 @@ export function MobileCaroussel() {
                                 </div>
                             )}
                             <div className=" text-white flex flex-col items-start gap-4 justify-center">
+                                <div className="mt-4 w-full flex  flex-col items-center gap-y-5">
                                 <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
                                     <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
                                 </div>
-                                <div className="w-full">
                                     <Image
                                         src={obj?.image}
                                         alt={obj?.image}
                                         width={505}
                                         height={231}
-                                        className="rounded-lg shadow-md"
+                                        className="rounded-lg shadow-md object-contain max-h-[246px]"
                                     />
                                 </div>
 
