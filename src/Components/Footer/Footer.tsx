@@ -14,11 +14,14 @@ export default function Footer() {
         const io = new IntersectionObserver(
             (entries) => {
                 const entry = entries[0]
-                if (entry) {
-                    setIsInView(entry.isIntersecting ?? false)
+                if (entry && !isInView) {
+                    console.log("TRUE",entry.isIntersecting)
+                    setTimeout(()=> setIsInView(entry.isIntersecting),500)
+                 
+                   
                 }
             },
-            { threshold: 0.95 }
+            { threshold: 0.01 }
         )
 
         io.observe(footerRef.current)
@@ -99,14 +102,17 @@ export default function Footer() {
 
             {/* Background decorative elements */}
             {/* Bottom right decoration - now visible on all devices */}
-            <div className="absolute right-0 bottom-0 mr-1 sm:mr-2 lg:mr-3 mb-1 sm:mb-2 lg:mb-3">
+           { <div className="absolute right-0 bottom-0 mr-1 sm:mr-2 lg:mr-3 mb-1 sm:mb-2 lg:mb-3">
                 {/* <img
                     src="/footer/footer-props.png"
                     alt="Footer decoration"
                     className="object-cover h-24 sm:h-32 md:h-48 lg:h-64 xl:max-h-[298px] w-auto"
-                /> */}
-            <Preview />
-            </div>
+                    /> */}
+                    
+
+                    <Preview isInView={isInView} />
+                    
+            </div>}
 
             {/* Top center star decoration */}
             <div className="absolute -top-20 sm:-top-32 lg:-top-48 xl:-top-48 w-full flex justify-center h-48 sm:h-72 lg:h-80 xl:h-[417px] pointer-events-none ">
