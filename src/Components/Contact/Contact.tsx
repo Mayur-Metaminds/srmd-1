@@ -42,16 +42,24 @@ export default function Contact() {
     const [visibleData, setVisibleData] = useState<ContactData[]>([])
     const visible = useRef(0)
     useEffect(() => {
-        setVisibleData(data.slice(0, 10))
-        visible.current = 10
+        if (window.innerWidth > 768) {
+
+            visible.current = 10
+        }
+        else {
+            visible.current = 4
+        }
+        setVisibleData(data.slice(0, visible.current))
     }, [])
+
     const handleClick = (e: MouseEvent) => {
+        console.log("AAA")
         const prevScroll = window.scrollY;
         e.preventDefault()
-        const datas = data.slice(visible.current, visible.current + 10)
+        const nextCount = window.innerWidth > 768 ? 10 : 2;
+        const datas = data.slice(visibleData.length,  visible.current + nextCount)
         setVisibleData((prev) => ([...prev, ...datas]))
-        visible.current += 10
-
+        visible.current+=nextCount
         requestAnimationFrame(() => {
 
             // Adjust scroll position so your view doesn't move
