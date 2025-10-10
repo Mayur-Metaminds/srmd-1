@@ -1,195 +1,134 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import gsap from "gsap"
-import { Observer } from "gsap/Observer"
-import timeLineData from "@/lib/data/TimeLineSectionData.json"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { Observer } from "gsap/Observer";
+import timeLineData from "@/lib/data/TimeLineSectionData.json";
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from "body-scroll-lock-upgrade";
 
-gsap.registerPlugin(Observer)
-function disableBodyScroll() {
-    document.body.style.overflow = "hidden"
-}
-function enableBodyScroll() {
-    document.body.style.overflow = ""
-}
+gsap.registerPlugin(Observer);
 
 export function MobileCaroussel() {
-    // Item width calculation (carousel item width + gap, adjust as needed)
-    const [itemWidth, setItemWidth] = useState(() => {
-        if (typeof window !== "undefined") return window.innerWidth + 240
-        return 0
-    })
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const observerRef = useRef<Observer | null>(null);
+    const animatingRef = useRef(false);
+    const indexRef = useRef(0);
 
-    // State to track current card index and animation lock
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [animating, setAnimating] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemWidth, setItemWidth] = useState(
+        typeof window !== "undefined" ? window.innerWidth + 240 : 0
+    );
+    const [isInView, setIsInView] = useState(false);
 
-    // Refs for fresh state in Observer callbacks to avoid stale closure traps
-    const currentIndexRef = useRef(currentIndex)
-    const animatingRef = useRef(animating)
-
-    // Carousel container ref and gsap observer ref
-    const containerRef = useRef<HTMLElement | null>(null)
-    const observerRef = useRef<Observer | null>(null)
-
-    // Scroll direction for scroll lock logic: 'up' or 'down'
-    const [scrollDirection, setScrollDirection] = useState<
-        "up" | "down" | undefined
-    >(undefined)
-
-    // Track if carousel is in the viewport for scroll lock behavior
-    const [isInView, setIsInView] = useState(false)
-
-    // Keep refs updated with latest state
+    // Update itemWidth on resize
     useEffect(() => {
-        currentIndexRef.current = currentIndex
-        animatingRef.current = animating
-    }, [currentIndex, animating])
+        const updateWidth = () => setItemWidth(window.innerWidth + 240);
+        window.addEventListener("resize", updateWidth);
+        return () => window.removeEventListener("resize", updateWidth);
+    }, []);
 
-    // Handle window resize to update carousel item widths
+    // IntersectionObserver to detect if carousel is visible
     useEffect(() => {
-
-        const updateWidth = () => setItemWidth(window.innerWidth + 240)
-        if (typeof window !== "undefined") {
-            updateWidth()
-            window.addEventListener("resize", updateWidth)
-        }
-        return () => window.removeEventListener("resize", updateWidth)
-    }, [])
-
-    // IntersectionObserver to set isInView whenever carousel container is sufficiently visible
-    useEffect(() => {
-        if (!containerRef.current) return
-
+        if (!containerRef.current) return;
         const io = new IntersectionObserver(
-            ([entry]) => {
-                setIsInView(entry?.isIntersecting ?? false)
-            },
-            { threshold: 0.95 }
-        )
+            ([entry]) => setIsInView(entry.isIntersecting),
+            { threshold: 0.9 }
+        );
+        io.observe(containerRef.current);
+        return () => io.disconnect();
+    }, []);
 
-        io.observe(containerRef.current)
-
-        return () => io.disconnect()
-    }, [])
-
-    // Lock/unlock body scroll based on isInView and if user at edges trying to scroll past
+    // Lock body scroll when carousel is in view
     useEffect(() => {
-        const atFirstAndGoingUp =
-            isInView && currentIndex === 0 && scrollDirection === "up"
-        const atLastAndGoingDown =
-            isInView &&
-            timeLineData &&
-            currentIndex === timeLineData.length - 1 &&
-            scrollDirection === "down"
-
-        if (isInView && !atFirstAndGoingUp && !atLastAndGoingDown) {
-            disableBodyScroll()
-        } else {
-            enableBodyScroll()
+        if (containerRef.current) {
+            if (isInView) disableBodyScroll(containerRef.current, { allowTouchMove: () => true });
+            else enableBodyScroll(containerRef.current);
         }
+        return () => clearAllBodyScrollLocks();
+    }, [isInView]);
 
-        // Cleanup: always unlock scroll on unmount or dependency change
-        return () => enableBodyScroll()
-    }, [isInView, currentIndex, scrollDirection, timeLineData])
-
-    // Update carousel horizontal position using gsap, animate smooth transition
     const updateIndex = (newIndex: number) => {
-        // Prevent overlapping animations
-        if (animatingRef.current) return
+        if (animatingRef.current) return;
 
-        const length = timeLineData?.length ?? 1
-        const nextIndex = Math.min(Math.max(0, newIndex), length - 1)
-
-        setAnimating(true)
+        const clampedIndex = Math.max(0, Math.min(newIndex, timeLineData.length - 1));
+        animatingRef.current = true;
 
         gsap.to(".scrollable-container", {
-            x: -nextIndex * itemWidth,
-            duration: 0.9,
+            x: -clampedIndex * itemWidth,
+            duration: 0.7,
             ease: "linear",
-            onComplete: () => setAnimating(false),
-        })
+            onComplete: () => (animatingRef.current = false),
+        });
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 78 : nextIndex * itemWidth + 70,
-            duration: 0.9,
+            width: clampedIndex === 0 ? 78 : clampedIndex * itemWidth + 70,
+            duration: 0.7,
             ease: "linear",
-        })
+        });
 
-        setCurrentIndex(nextIndex)
-    }
+        setCurrentIndex(clampedIndex);
+        indexRef.current = clampedIndex;
+    };
 
-    // Scroll to next section and unlock vertical scroll
     const moveToNextSection = () => {
-        enableBodyScroll()
-        const nextSection = document.querySelector("#contact")
-        if (nextSection) {
-            nextSection.scrollIntoView({ behavior: "smooth" })
-        }
-    }
+        // 1️⃣ Unlock body scroll first
+        clearAllBodyScrollLocks();
+        setTimeout(() => {
+            const nextSection = document.querySelector("#contact");
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 50);
+    };
 
-    // GSAP Observer to handle wheel/touch/pointer events for horizontal carousel navigation
+
+    // GSAP Observer for wheel/touch navigation
     useEffect(() => {
-        if (!containerRef.current) return
+        if (!containerRef.current || !isInView) return;
 
-        // If the carousel is NOT in view, kill observer and do nothing else
-        if (!isInView) {
-            observerRef.current?.kill()
-            return
-        }
-
-        // Otherwise, carousel is in view: create and setup observer
-        observerRef.current?.kill() // Kill previous observer if any
-
+        observerRef.current?.kill();
         observerRef.current = Observer.create({
             target: containerRef.current,
-            type: "wheel,touch,pointer",
+            type: "touch,pointer",
             wheelSpeed: -1,
             preventDefault: true,
             tolerance: 10,
             onUp: () => {
-                setScrollDirection("down")
-                if (animatingRef.current || !timeLineData) return
-
-                const total = timeLineData.length
-                if (currentIndexRef.current + 1 < total) {
-                    updateIndex(currentIndexRef.current + 1)
-                } else {
-                    // At last card, exit carousel and scroll to next section
-                    observerRef.current?.kill()
+                const next = indexRef.current + 1;
+                if (next < timeLineData.length) updateIndex(next);
+                else {
                     moveToNextSection()
-                }
+                };
             },
             onDown: () => {
-                setScrollDirection("up")
-                if (animatingRef.current || !timeLineData) return
-
-                if (currentIndexRef.current > 0) {
-                    updateIndex(currentIndexRef.current - 1)
-                } else {
-                    // At first card, exit carousel and scroll to top section
-                    observerRef.current?.kill()
-                    enableBodyScroll()
-                    const topSection = document.querySelector("#audience") // replace with your top section's selector!
+                const prev = indexRef.current - 1;
+                if (prev >= 0) updateIndex(prev);
+                else {
+                    clearAllBodyScrollLocks()
+                    const topSection = document.querySelector("#audience");
                     if (topSection) {
-                        topSection.scrollIntoView({ behavior: "smooth" })
-                    } else {
-                        window.scrollTo({ top: 0, behavior: "smooth" })
+                        setTimeout(() => topSection.scrollIntoView({ behavior: "smooth" }), 50)
+
                     }
+                    else window.scrollTo({ top: 0, behavior: "smooth" });
                 }
             },
-        })
+        });
 
         return () => {
-            observerRef.current?.kill()
-        }
-    }, [timeLineData, isInView])
-
+            observerRef.current?.kill();
+            clearAllBodyScrollLocks();
+        };
+    }, [isInView, itemWidth]);
     return (
-        <section
+        <div
             ref={containerRef}
-            className="relative flex  h-[85vh] sm:[70vh]   w-screen flex-col items-center   sm:hidden overflow-hidden"
+            className="relative flex  h-[80vh] sm:[70vh]   w-screen flex-col items-center   sm:hidden overflow-hidden"
         >
 
             <div className="relative w-full ">
@@ -209,9 +148,9 @@ export function MobileCaroussel() {
                             )}
                             <div className=" text-white flex flex-col items-start gap-4 justify-center">
                                 <div className="mt-4 w-full flex  flex-col items-center gap-y-5">
-                                <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
-                                    <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
-                                </div>
+                                    <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
+                                        <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
+                                    </div>
                                     <Image
                                         src={obj?.image}
                                         alt={obj?.image}
@@ -239,6 +178,6 @@ export function MobileCaroussel() {
                 </div>
             </div>
 
-        </section>
+        </div>
     )
 }

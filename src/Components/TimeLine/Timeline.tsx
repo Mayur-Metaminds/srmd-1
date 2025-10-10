@@ -53,7 +53,7 @@ export default function Timeline() {
   return (
     <div
       id="count-down"
-      className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[585px] sm:min-h-[585px] lg:h-[820px] xl:h-[820px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
+      className="w-[90%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[585px] sm:min-h-[585px] lg:h-[820px] xl:h-[820px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden"
       style={{
         background: "linear-gradient(#293464B2, #293464B2), url('/countdownbg.jpg')",
         backgroundSize: "contain",

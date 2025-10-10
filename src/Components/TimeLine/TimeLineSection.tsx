@@ -44,7 +44,7 @@ export default function TimeLineSection() {
 
                 <div
                     id="count-down1"
-                    className="w-[100%] flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[200px] sm:min-h-[300px] lg:h-[300px] xl:h-[300px] p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-10 justify-start sm:justify-center relative overflow-hidden pb-0"
+                    className="w-[90%]  m-auto flex flex-col items-center mt-4 sm:mt-6 lg:mt-10 min-h-[200px] sm:min-h-[300px] lg:h-[300px] xl:h-[300px]  justify-start sm:justify-center relative overflow-hidden pb-0"
 
                 >
 

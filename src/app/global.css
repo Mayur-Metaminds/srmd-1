@@ -4,8 +4,8 @@
 
 /* ---break--- */
 :root {
-   /* --background: #ffffff; */
-  --foreground: #333333; 
+  /* --background: #ffffff; */
+  --foreground: #333333;
 
   /* ✅ correct font-family */
   --font-sans: "Karla", sans-serif;
@@ -22,10 +22,12 @@
 
 /* Global body style */
 body {
-  font-family: var(--font-sans); /* ✅ apply globally */
+  font-family: var(--font-sans);
+  /* ✅ apply globally */
   /* /* background: var(--background); */
-  color: var(--foreground); 
+  color: var(--foreground);
 }
+
 span.visible {
   transition: color 0.3s ease;
 }
@@ -34,6 +36,7 @@ span.visible {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100vw);
   }
@@ -42,28 +45,48 @@ span.visible {
 .scroller {
   animation: scrollX 8s linear forwards;
 }
+
 /* For modern browsers */
 ::-webkit-scrollbar {
   display: none;
 }
 
-html, body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
+html,
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE & Edge */
+
+}
+
+.weightGrow {
+  text-shadow:
+    -1px -1px 0 #333333,
+    1px -1px 0 #333333,
+    -1px 1px 0 #333333,
+    1px 1px 0 #333333;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
 }
 
 /* button:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* shadow on hover */
-  /* transform: translateY(-2px); subtle lift */
-/* } */ 
+/* transform: translateY(-2px); subtle lift */
+/* } */
 
 .btn-hover {
-  transition: all 0.3s ease; /* smooth animation */
+  transition: all 0.3s ease;
+  /* smooth animation */
 }
 
 .btn-hover:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* shadow on hover */
-  transform: translateY(-2px); /* subtle lift */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  /* shadow on hover */
+  transform: translateY(-2px);
+  /* subtle lift */
 }
 
 /* html.lenis, html.lenis body {
@@ -81,3 +104,16 @@ html, body {
 .lenis.lenis-smooth iframe {
  pointer-events: none;
 } */
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:opsz,wght@8..144,100..800&display=swap');
+
+@keyframes fontWeightIncrease {
+  from { font-variation-settings: 'wght' 100; }
+  to { font-variation-settings: 'wght' 600; }
+}
+
+.fontWeightAnimate {
+  font-family: 'Karla', sans-serif;
+  font-variation-settings: 'wght' 100; /* initial weight */
+  animation: fontWeightIncrease 0.5s ease-in-out forwards;
+}

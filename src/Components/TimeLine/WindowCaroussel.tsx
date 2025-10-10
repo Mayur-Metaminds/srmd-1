@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 import { useParallax } from "@/hooks/paralllelx"
 import { motion } from 'framer-motion';
 import { useRotateScroll } from "@/hooks/useScrollRotate"
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock-upgrade";
 gsap.registerPlugin(Observer)
 
 
@@ -49,15 +49,15 @@ export function WindowCaroussel() {
 
         gsap.to(".scrollable-container", {
             x: -nextIndex * itemWidth,
-            duration: 0.9,
+            duration: 0.7,
             ease: "linear",
             onComplete: () => setAnimating(false),
         })
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 78 : nextIndex * itemWidth,
+            width: nextIndex === 0 ? 78 : nextIndex * itemWidth ,
             duration: 0.9,
-            ease: "linear",
+            ease: "power1.inOut",
         })
 
         setCurrentIndex(nextIndex)
@@ -182,7 +182,7 @@ export function WindowCaroussel() {
         <div
             className="relative  hidden w-screen flex-col items-center gap-6  overflow-hidden  sm:flex h-[50vh]  md:min-h-[65vh]   lg:min-h-[70vh] xl:min-h-[70vh] lg:gap-[10px] "
             ref={containerRef}>
-            <div className="relative   w-full  h-full">
+            <div className="relative   w-full  h-[80%] ">
                 <div className="scrollable-container ml-5 flex w-fit gap-[140px] px-[calc(50%-calc(700px/2))] z-20 "
 
                 >
@@ -258,7 +258,7 @@ export function WindowCaroussel() {
 
             </div>
 
-            <div className=" absolute bottom-1 flex justify-center pt-4 mt-auto z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
+            <div className=" flex justify-center pt-4  z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
                 <span>skip</span>
             </div>
 
