@@ -8,26 +8,45 @@ export default function Footer() {
     const footerRef = useRef(null)
     const [isInView, setIsInView] = useState(false)
 
-    useEffect(() => {
-        if (!footerRef.current) return
+    // useEffect(() => {
+    //     if (!footerRef.current) return
 
-        const io = new IntersectionObserver(
-            (entries) => {
-                const entry = entries[0]
-                if (entry && !isInView) {
-                    console.log("TRUE",entry.isIntersecting)
-                    setTimeout(()=> setIsInView(entry.isIntersecting),500)
+    //     const io = new IntersectionObserver(
+    //         (entries) => {
+    //             const entry = entries[0]
+    //             if (entry && !isInView) {
+    //                 console.log("TRUE",entry.isIntersecting)
+    //                 setTimeout(()=> setIsInView(entry.isIntersecting),500)
                  
                    
-                }
-            },
-            { threshold: 0.01 }
-        )
+    //             }
+    //         },
+    //         { threshold: 0.01 }
+    //     )
 
-        io.observe(footerRef.current)
+    //     io.observe(footerRef.current)
 
-        return () => io.disconnect()
-    }, [])
+    //     return () => io.disconnect()
+    // }, [])
+    useEffect(() => {
+    if (!footerRef.current || isInView) return;
+
+    const io = new IntersectionObserver(
+        (entries, observer) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+                setTimeout(() => setIsInView(true), 500);
+                observer.disconnect(); // ⬅ stop observing after first trigger
+            }
+        },
+        { threshold: 0.01 }
+    );
+
+    io.observe(footerRef.current);
+
+    return () => io.disconnect();
+}, [isInView]);  // ⬅ include dependency
+
     return (
         <footer ref={footerRef} className="min-h-[400px] sm:min-h-[500px] lg:h-[553px] block relative overflow-hidden bg-[#293464] text-white py-6 sm:py-8 lg:py-10 w-[96%] m-auto rounded-xl sm:rounded-2xl lg:rounded-3xl border-2">
             <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-30">

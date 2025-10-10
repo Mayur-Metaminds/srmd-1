@@ -16,7 +16,7 @@ function Preview({isInView}:{isInView:boolean}) {
         <div className="w-dvw h-dvh flex flex-col bg-transparent opacity-70  sm:opacity-100 relative  " >
             <Gravity
                 gravity={{ x: 0, y: 0.9 }}
-                className="w-full h-full"
+                className="w-full h-full pointer-events-none"
                 autoStart={false}
                 ref={containerRef}
             >
