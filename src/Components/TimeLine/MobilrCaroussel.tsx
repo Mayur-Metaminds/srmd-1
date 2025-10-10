@@ -148,7 +148,7 @@ export function MobileCaroussel() {
                             )}
                             <div className=" text-white flex flex-col items-start gap-4 justify-center">
                                 <div className="mt-4 w-full flex  flex-col items-center gap-y-5">
-                                    <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-center">
+                                    <div className="bg-[#DD723B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center  self-start">
                                         <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
                                     </div>
                                     <Image

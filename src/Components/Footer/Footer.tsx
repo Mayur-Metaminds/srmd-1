@@ -30,7 +30,7 @@ export default function Footer() {
     }, [])
     return (
         <footer ref={footerRef} className="min-h-[400px] sm:min-h-[500px] lg:h-[553px] block relative overflow-hidden bg-[#293464] text-white py-6 sm:py-8 lg:py-10 w-[96%] m-auto rounded-xl sm:rounded-2xl lg:rounded-3xl border-2">
-            <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-30">
+            <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                     {/* Left Section - Mission Statement */}
                     <div className="space-y-4 sm:space-y-6">
