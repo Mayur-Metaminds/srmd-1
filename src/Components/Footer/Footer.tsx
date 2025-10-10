@@ -30,7 +30,7 @@ export default function Footer() {
     }, [])
     return (
         <footer ref={footerRef} className="min-h-[400px] sm:min-h-[500px] lg:h-[553px] block relative overflow-hidden bg-[#293464] text-white py-6 sm:py-8 lg:py-10 w-[96%] m-auto rounded-xl sm:rounded-2xl lg:rounded-3xl border-2">
-            <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-10">
+            <div className="w-full px-4 sm:px-8 lg:px-18 mx-auto relative z-30">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                     {/* Left Section - Mission Statement */}
                     <div className="space-y-4 sm:space-y-6">
@@ -44,11 +44,11 @@ export default function Footer() {
                     </div>
 
                     {/* Right Section - Social Media and Other Websites */}
-                    <div className="flex gap-6 flex-col sm:flex-row sm:gap-10 justify-between">
+                    <div className="flex gap-6 flex-col sm:flex-row sm:gap-10 justify-between z-30 ">
                         {/* Social Media */}
                         <div className="space-y-4 sm:space-y-6">
                             <h3 className="text-lg sm:text-[24px] font-medium">Social Media</h3>
-                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px]">
+                            <div className=" text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px] flex flex-col gap-y-2">
                                 <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
                                     Instagram
                                 </div>
@@ -62,10 +62,10 @@ export default function Footer() {
                         </div>
 
                         {/* Other Websites */}
-                        <div className="">
+                        <div className="space-y-2 sm:space-y-6">
                             <h3 className="text-lg sm:text-[24px] font-medium">Other Websites</h3>
-                            <div className="space-y-3 sm:space-y-4 text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px] font-normal">
-                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">
+                            <div className="text-[14px] sm:text-[20px] xl:text-[20px] md:text-[16px] font-normal flex flex-col gap-y-3">
+                                <div className="text-gray-300 hover:text-white cursor-pointer transition-colors  ">
                                     Shrimad Rajchandra Mission Dharampur
                                 </div>
                                 <div className="text-gray-300 hover:text-white cursor-pointer transition-colors ">

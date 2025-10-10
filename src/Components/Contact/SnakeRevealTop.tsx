@@ -57,7 +57,7 @@ export default function SnakeRevealTop() {
                             variants={{
                                 visible: {
                                     width: "100%",
-                                    transition: { duration: 2.5, ease: "easeInOut" },
+                                    transition: { duration: 1.5, ease: "easeOut" },
                                 },
                             }}
                         />

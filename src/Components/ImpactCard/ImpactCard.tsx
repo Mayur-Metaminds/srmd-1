@@ -19,7 +19,7 @@ export default function ImpactCard() {
       <motion.div
         style={{ y }}
         ref={ref}
-        className="absolute  left-2 top-5 h-[65%] hidden sm:block">
+        className="absolute  left-2 top-5 h-[65%] hidden sm:block z-30">
 
 
 
@@ -64,7 +64,7 @@ export default function ImpactCard() {
 
       <motion.svg
 
-        className="absolute   right-10 top-1 h-[65%] hidden sm:block"
+        className="absolute   right-10 top-1 h-[65%] hidden sm:block z-30"
         width="269" height="576" viewBox="0 0 269 576" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         ref={rightRef}
         style={{ y: righty }}

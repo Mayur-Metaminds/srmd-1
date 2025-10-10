@@ -46,6 +46,7 @@ export default function CountDown() {
                 <motion.svg
                     ref={ref}
                     style={{ y }}
+                    opacity={0.6}
                     width="1282" height="549" viewBox="0 0 1282 549" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-[-12px] left-0 w-full h-[549px] max-w-none -z-20 pointer-events-none">
                     <motion.path d="M30.5145 431.638L24.6313 432.552L27.4185 427.614L26.2773 426.64L21.7192 430.066L21.9357 424.313L20.514 424.066L18.1702 429.52L15.2261 424.521L13.9199 424.856L14.3198 430.444L9.56119 427.969L8.71419 429.04L12.3323 433.648L6.28369 433.799L6.08989 435.222L11.5567 437.266L6.57101 440.396L6.97001 441.841L12.583 440.766L9.91387 445.804L11.0551 446.779L15.4951 443.252L15.5488 449.166L16.96 449.266L19.191 443.785L22.1849 448.964L23.4412 448.449L22.7213 442.519L27.8394 445.37L28.7257 444.332L25.1417 439.684L31.0775 439.506L31.2766 438.157L25.8045 436.039L30.903 432.937L30.5145 431.638Z" fill="#C8AD6E"
                         ref={ref1}
@@ -146,17 +147,17 @@ export default function CountDown() {
                     compactPreview={true}
                 />
                 <div className="text-white flex flex-col items-center w-full max-w-4xl gap-2 sm:gap-3 lg:gap-4 text-sm sm:text-base md:text-lg lg:text-[32px] xl:text-[32px] 2xl:text-[37px] px-4  font-bold z-20">
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                    <div className="flex sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
                         <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0" />
                         <span className="leading-tight">Sunday, 16 November, 2025</span>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                    <div className="flex  sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
                         <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0" />
                         <span className="leading-tight ">Jamshed Bhabha Theatre, NCPA, Mumbai</span>
                     </div>
                 </div>
 
-                <button className="bg-[#EFB744] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[48px] sm:h-[52px]  z-10 mx-4 text-sm sm:text-[18px] btn-hover" onClick={moveToNextSection}>
+                <button className="bg-[#FED543] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[52px] sm:h-[48px] max-h-[52px]  z-10 mx-4 text-sm sm:text-[18px] btn-hover" onClick={moveToNextSection}>
                     <span>Know More</span>
                 </button>
 

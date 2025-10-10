@@ -13,7 +13,7 @@ export default function Home() {
       <HeroSection />
       <CountDown />
       <ImpactCard />
-      <VisionariesHero />
+      {/* <VisionariesHero /> */}
       <AudienceSection />
       <TimeLineSection />
       <Contact />

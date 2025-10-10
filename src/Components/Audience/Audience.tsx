@@ -43,7 +43,7 @@ export default function AudienceSection() {
     return (
         <section
             id="audience"
-            className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px] py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 "
+            className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px]  sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 mt-28 "
             style={{
                 background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
                 backgroundSize: "cover",
@@ -51,9 +51,9 @@ export default function AudienceSection() {
             }}
         >
             {/* Left Section - Badge and Heading */}
-            <div className="relative w-full lg:w-[50%] max-w-4xl flex flex-col h-auto lg:h-[70%] justify-start items-start mb-6 sm:mb-8 gap-1">
+            <div className="relative w-full lg:w-[50%] max-w-4xl flex flex-col h-auto lg:h-[70%] justify-start items-start  sm:mb-8 gap-1 ">
                 {/* Badge */}
-                <div className="flex self-start gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-[#293464] text-white font-medium text-xs sm:text-sm mb-4 sm:mb-6">
+                <div className="flex self-start gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-[#293464] text-white font-medium text-xs sm:text-sm mb-4 sm:mb-6 z-40">
                     <svg width="20" height="15" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[25px] sm:h-[19px]">
                         <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
                         <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
@@ -62,7 +62,7 @@ export default function AudienceSection() {
                 </div>
 
                 {/* Heading */}
-                <div className=" w-full  sm:w-[80%] h-full flex flex-col justify-between">
+                <div className=" w-full  sm:w-[80%] h-full flex flex-col justify-start">
                     <div>
                         {/* 
                     <h2 className="font-[400] text-2xl sm:text-3xl md:text-4xl lg:text-[40px] leading-tight">
@@ -76,12 +76,15 @@ export default function AudienceSection() {
                             className="font-normal text-[26px] sm:text-[40px] md:text-[30px]  lg:text-[36px] xl:[40px] leading-tight  text-[#22222266] w-full " />
                     </div>
                     {/* Decorative Image - positioned differently on mobile */}
-                    <div className=" sm:w-44 md:w-64 lg:w-[300px] xl:w-[300px] w-[90%] h-full sm:h-[225px] md:h-[230px]  min-w-44 flex items-end justify-start relative -z-10">
+                    
+
+<div className="mt-10 w-full sm:w-44 md:w-64 lg:w-[80%] xl:w-full h-full sm:h-[225px] md:h-[230px] min-w-44 flex items-end justify-center relative -z-10 self-center">
+
                         <motion.svg
-                             className="opacity-70 sm:opacity-100 md:opacity-70"
+                             className="opacity-70 sm:opacity-100 md:opacity-70 "
                             ref={ref}
                             style={{ y }}
-                            width="284" height="224" viewBox="0 0 284 224" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                            width="300" height="300" viewBox="0 0 284 224" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                             <motion.path d="M155.842 223.932C147.145 208.637 143.986 200.623 153.818 191.31C140.391 193.278 135.192 188.01 128.91 170.398C145.182 160.69 152.313 160.286 161.57 168.328C159.659 154.999 164.897 149.859 182.228 143.575C192.992 160.652 192.284 167.183 184.487 175.881C199.619 173.977 203.339 181.748 209.16 197.108C193.279 206.373 185.57 208.158 176.497 197.999C178.59 213.215 171.849 217.782 155.842 223.932Z" fill="#1CB377" fillOpacity="0.7" ref={audRef2}
                                 style={{ rotate: audRotate2 }}
 
@@ -103,8 +106,8 @@ export default function AudienceSection() {
                             ref={leftChakraRef}
 
 
-                            className="absolute left-0 bottom-28 opacity-70 sm:opacity-100 md:opacity-70"
-                            width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            className="absolute left-5 xl:left-20 lg:left-20 -top-1 xl:-top-5 lg:-top-5 opacity-70 sm:opacity-100 md:opacity-70 "
+                            width="140" height="140" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <motion.path opacity="0.9" d="M79.5051 5.5L62.8727 24.85L58.2156 1H51.7844L46.462 24.85L31.1602 5.5L25.8378 8.65L33.3778 32.95L9.87064 24.85L6.54415 29.575L23.3984 46.675L1 51.85L1.22177 57.7L25.8378 62.65L6.54415 79.975L9.87064 85.15L33.3778 76.6L25.8378 100.675L31.1602 104.275L46.462 85.15L51.7844 109H58.2156L62.8727 85.15L79.5051 104.275L84.384 100.675L76.4004 76.6L100.573 85.15L103.234 79.975L84.384 62.65L109 57.7V51.85L84.384 46.675L103.234 29.575L100.129 24.625L76.4004 32.95L84.384 8.65L79.5051 5.5Z" fill="#FED543"
                                 ref={audRef1}
                                 style={{ rotate: audRotate1 }}
@@ -118,7 +121,7 @@ export default function AudienceSection() {
             {/* Right Section - Audience List */}
             <div className="w-full lg:w-[50%] max-w-3xl space-y-4 sm:space-y-6 h-auto lg:h-[70%] flex flex-col justify-start z-20 ">
                 <div className="">
-                    <Accordion type="single" collapsible className="w-full">
+                    <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
                         {audience.map((item, i) => (
 
                             <AudienceItem key={i} {...item} idx={i} />
@@ -128,8 +131,8 @@ export default function AudienceSection() {
             </div>
 
             {/* CTA Button */}
-            <div className="w-full flex justify-center h-auto lg:h-[30%] items-center mt-6 sm:mt-8 lg:mt-0">
-                <button className="bg-[#FED543] btn-hover  font-[400] px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base" onClick={moveToNextSection}>
+            <div className="mt-6 w-full flex justify-center h-auto lg:h-[30%] items-start ">
+                <button className="bg-[#FED543] btn-hover   px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition font-bold text-sm sm:text-base max-h-[52px]" onClick={moveToNextSection}>
                     Know More
                 </button>
             </div>
@@ -150,7 +153,7 @@ function AudienceItem({
 }) {
     return (
         <AccordionItem value={`item-${idx}`} className=" border-b border-[#C8AD6E] pb-3 sm:pb-4 p-5 z-20" >
-            <AccordionTrigger onClick={()=>console.log("SSSSSSSSSS")} className="
+            <AccordionTrigger  className="
             flex items-center gap-x-5  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333]   transition-all duration-700 ease-in-out
     [&[data-state=open]>div>p]:fontWeightAnimate [&[data-state=open]>div>p]:scale-[1.02]
               ">

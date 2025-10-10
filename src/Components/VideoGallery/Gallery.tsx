@@ -39,9 +39,9 @@ export default function TimelineGallery() {
     });
   }
   return (
-    <section className="relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Decorative Wave Background */}
-      
+
       <SnakeReveal />
       {/* Top Text Section */}
       <div className="w-[90%]   mb-12 flex  items-start flex-col  ">
@@ -53,7 +53,7 @@ export default function TimelineGallery() {
           The Ripple Has Already Begun
         </div>
         <ScrollTypingEffect
-          className="text-[26px] w-full md:w-full sm:w-[60%] sm:text-[40px] lg:text-[36px] md:text-[30px] xl:text-[40px]
+          className="text-[26px] w-full md:w-full  xl:w-[70%] lg:w-[70%] sm:text-[40px] lg:text-[36px] md:text-[30px] xl:text-[40px]
            leading-[32px] sm:leading-tight text-[#33333366]"
           text={
             `Witness the build-up. From practice rehearsals to sneak peeks at
@@ -72,7 +72,7 @@ export default function TimelineGallery() {
         ))}
       </div>
       {(visibleData.length !== reels.length) && <div className="text-center mt-10">
-        <button className="bg-[#EFB744] text-[#222222] font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base cursor-pointer btn-hover" onClick={handleClick}>
+        <button className="bg-[#FED543] text-[#222222] font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base cursor-pointer btn-hover max-h-[52px]" onClick={handleClick}>
           Load More
         </button>
       </div>}
@@ -89,8 +89,8 @@ import SnakeReveal from "./SnakeProp";
 const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-
+ const url=`${card.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/?autoplay=1`
+  const [play, setPlay] = useState(false)
   return (
     <motion.div
       ref={ref}
@@ -105,27 +105,28 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
     >
       {/* Video Thumbnail */}
       <div className="w-full relative overflow-hidden aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 group">
-        <iframe
+       <iframe
           className="absolute top-0 left-0 w-full h-full"
-          src={`${card.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/`}
+          src={url}
           title="Instagram Reel"
           frameBorder="0"
           scrolling="no"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="autoplay;  encrypted-media;"
           allowFullScreen
           style={{ overflow: 'hidden' }}
+
         />
 
         {/* Play Button Overlay */}
-        {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300">
-      <div className="w-20 h-20  flex items-center justify-center  shadow-2xl transform group-hover:scale-110 transition-transform duration-300 " >
-        <Play
-                      className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[white] "
-                      fill="#FFFFFF"
-        
-                    />
-      </div>
-    </div> */}
+        {/* {<div className="absolute inset-0 flex items-center justify-center  opacity-0 group-hover:opacity-100 transition-all duration-300" onClick={() => setPlay(true)}>
+          <motion.div className="w-20 h-20  flex items-center justify-center  shadow-2xl transform group-hover:scale-110 transition-transform duration-300 "  >
+            <Play
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[white] "
+              fill="#FFFFFF"
+
+            />
+          </motion.div>
+        </div>} */}
 
       </div>
     </motion.div>

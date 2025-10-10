@@ -55,8 +55,8 @@ export function WindowCaroussel() {
         })
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 78 : nextIndex * itemWidth ,
-            duration: 0.9,
+            width: nextIndex === 0 ? 50 : nextIndex * itemWidth ,
+            duration: 0.8,
             ease: "power1.inOut",
         })
 
@@ -198,7 +198,7 @@ export function WindowCaroussel() {
 
 
                             <div className="flex flex-col  md:flex-col lg:flex-row xl:flex-row  gap-3 sm:gap-4 justify-between items-start  sm:items-end  w-full max-w-full sm:max-w-[90%]  text-white relative">
-                                <div className="w-[60%] flex flex-col justify-between gap-[30px] text-white  self-start ">
+                                <div className="w-[60%] flex flex-col justify-between gap-[10px] text-white  self-start ">
                                     <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
                                         <span className="text-[14px] sm:text-[16px]">{obj.year}</span>
                                     </div>
@@ -224,7 +224,7 @@ export function WindowCaroussel() {
                                     <div className="absolute left-[102px] flex 
                                 -bottom-10
                                 items-center ">
-                                        <p className="arrow h-[3px] min-w-[78px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
+                                        <p className="arrow h-[3px] min-w-[50px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
                                         <img src="/TimeLine/white.svg" alt="" width={20} height={20} />
                                     </div>
                                 )}

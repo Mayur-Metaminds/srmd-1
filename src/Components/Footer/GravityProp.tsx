@@ -13,7 +13,7 @@ function Preview({isInView}:{isInView:boolean}) {
         
     }, [isInView])
     return (
-        <div className="w-dvw h-dvh flex flex-col bg-transparent opacity-70  sm:opacity-100 pointer-events-auto  " >
+        <div className="w-dvw h-dvh flex flex-col bg-transparent opacity-70  sm:opacity-100 relative  " >
             <Gravity
                 gravity={{ x: 0, y: 0.9 }}
                 className="w-full h-full"

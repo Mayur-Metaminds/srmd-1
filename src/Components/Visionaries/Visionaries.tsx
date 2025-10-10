@@ -240,7 +240,7 @@ export default function VisionariesHero() {
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
             {/* CTA Button */}
-            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#EFB744] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
+            <button className="text-base sm:text-lg min-w-[160px] sm:min-w-[184px] min-h-[38px] sm:min-h-[41px] bg-[#FED543] text-[#222222] font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
               Pre-Register Now
             </button>
           </div>
@@ -279,7 +279,7 @@ export default function VisionariesHero() {
                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               {/* CTA Button */}
-              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#EFB744] text-[#222222] font-bold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
+              <button className="text-lg min-w-[184px] min-h-[41px] bg-[#FED543] text-[#222222] font-bold px-8 py-3 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl text-center btn-hover">
                 Pre-Register Now
               </button>
             </div>
