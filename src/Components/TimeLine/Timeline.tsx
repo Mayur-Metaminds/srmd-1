@@ -161,7 +161,7 @@ export default function Timeline() {
   )
 }
 
-import {  useState } from 'react';
+import { useState } from 'react';
 
 // Timeline Card Component with Scroll Animation
 // function TimelineCard() {

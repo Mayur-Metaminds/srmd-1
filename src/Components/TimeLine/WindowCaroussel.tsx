@@ -19,16 +19,6 @@ export function WindowCaroussel() {
     const { ref, y } = useParallax({ speed: 0.4 });
     const { ref: otherref, y: othery } = useParallax({ speed: 0.4 });
     const [itemWidth, setItemWidth] = useState(790)
-    useEffect(() => {
-        const handleResize = () => {
-            computeItemWidth()
-        }
-
-        window.addEventListener("resize", handleResize)
-        handleResize() // call once to set initial width
-        return () => window.removeEventListener("resize", handleResize)
-    }, [timeLineData])
-
     const totalLength = timeLineData?.length ?? 1
 
     // Adjusted width based on the number of items
@@ -38,15 +28,21 @@ export function WindowCaroussel() {
     const observerRef = useRef<Observer | null>(null)
     const [isInView, setIsInView] = useState<boolean>(false)
 
+    // Add a ref or selector to previous section (the one before carousel)
+    const topSectionRef = useRef<HTMLElement | null>(null)
+    const scrollDirection = useRef<"up" | "down" | undefined>(undefined)
+
+    const { ref: ref1, rotate: rotate1 } = useRotateScroll();
+    const { ref: ref2, rotate: rotate2 } = useRotateScroll();
+    const { ref: ref3, rotate: rotate3 } = useRotateScroll();
+
     // const isEdgeCard =
     //     currentIndex === 0 || currentIndex === (timeLineData?.length || 1) - 1
 
     const updateIndex = (newIndex: number) => {
         if (animating) return
         setAnimating(true)
-
         const nextIndex = Math.min(Math.max(0, newIndex), totalLength - 1)
-
         gsap.to(".scrollable-container", {
             x: -nextIndex * itemWidth,
             duration: 0.7,
@@ -55,7 +51,7 @@ export function WindowCaroussel() {
         })
 
         gsap.to(".arrow", {
-            width: nextIndex === 0 ? 50 : nextIndex * itemWidth ,
+            width: nextIndex === 0 ? 50 : nextIndex * itemWidth + 70,
             duration: 0.8,
             ease: "power1.inOut",
         })
@@ -91,11 +87,7 @@ export function WindowCaroussel() {
         return () => io.disconnect()
     }, [])
 
-    // Add a ref or selector to previous section (the one before carousel)
-    const topSectionRef = useRef<HTMLElement | null>(null)
-    const [scrollDirection, setScrollDirection] = useState<
-        "up" | "down" | undefined
-    >(undefined)
+
 
     // You can set this ref by prop or selector on mount:
     useEffect(() => {
@@ -110,7 +102,7 @@ export function WindowCaroussel() {
             type: "wheel,touch,pointer",
             wheelSpeed: -1,
             onUp: () => {
-                setScrollDirection("down")
+                scrollDirection.current = "down"
                 if (animating || !timeLineData) return
                 const total = timeLineData.length
                 if (currentIndex + 1 < total) {
@@ -121,7 +113,7 @@ export function WindowCaroussel() {
                 }
             },
             onDown: () => {
-                setScrollDirection("up")
+                scrollDirection.current = "up"
                 if (animating || !timeLineData) return
 
                 if (currentIndex > 0) {
@@ -163,19 +155,26 @@ export function WindowCaroussel() {
 
 
 
-    const { ref: ref1, rotate: rotate1 } = useRotateScroll();
-    const { ref: ref2, rotate: rotate2 } = useRotateScroll();
-    const { ref: ref3, rotate: rotate3 } = useRotateScroll();
-    const computeItemWidth = () => {
-        const sc = containerRef.current?.querySelector('.scrollable-container');
-        const card = sc?.querySelector('.card');
-        if (card && sc) {
-            const style = getComputedStyle(sc); //get all css properties
-            const gap = parseFloat(style.gap || style.columnGap || '0'); // gap between cards
-            const width = card.getBoundingClientRect().width + gap; //provide full detail of element
-            setItemWidth(width);
+
+
+    useEffect(() => {
+        const computeItemWidth = () => {
+            const sc = containerRef.current?.querySelector('.scrollable-container');
+            const card = sc?.querySelector('.card');
+            if (card && sc) {
+                const style = getComputedStyle(sc); //get all css properties
+                const gap = parseFloat(style.gap || style.columnGap || '0'); // gap between cards
+                const width = card.getBoundingClientRect().width + gap; //provide full detail of element
+                setItemWidth(width);
+            }
+        };
+        const handleResize = () => {
+            computeItemWidth()
         }
-    };
+        window.addEventListener("resize", handleResize)
+        handleResize() // call once to set initial width
+        return () => window.removeEventListener("resize", handleResize)
+    }, [timeLineData])
 
 
     return (
@@ -194,9 +193,6 @@ export function WindowCaroussel() {
                                 currentIndex < index ? "opacity-0" : "block"
                             )}
                         >
-
-
-
                             <div className="flex flex-col  md:flex-col lg:flex-row xl:flex-row  gap-3 sm:gap-4 justify-between items-start  sm:items-end  w-full max-w-full sm:max-w-[90%]  text-white relative">
                                 <div className="w-[60%] flex flex-col justify-between gap-[10px] text-white  self-start ">
                                     <div className="bg-[#AF212B] w-auto max-w-fit flex justify-center items-center px-5 py-3 rounded-full text-center">
@@ -221,7 +217,7 @@ export function WindowCaroussel() {
                                 </div>
 
                                 {index === 0 && (
-                                    <div className="absolute left-[102px] flex 
+                                    <div className="absolute left-[5px]  flex 
                                 -bottom-10
                                 items-center ">
                                         <p className="arrow h-[3px] min-w-[50px]  rounded-tl-[10px] rounded-bl-[10px] bg-[#FFFFFF]" />
@@ -258,7 +254,7 @@ export function WindowCaroussel() {
 
             </div>
 
-            <div className=" flex justify-center pt-4  z-20 w-full text-white underline rounded-md  max-w-[240px] sm:max-w-[280px] h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
+            <div className=" flex justify-center pt-4 items-center  z-20 w-11/12 text-white underline rounded-md  h-[52px] font-normal text-[18px] sm:text-[20px] cursor-pointer" onClick={moveToNextSection}>
                 <span>skip</span>
             </div>
 

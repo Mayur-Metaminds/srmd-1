@@ -43,7 +43,7 @@ export default function AudienceSection() {
     return (
         <section
             id="audience"
-            className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px]  sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 mt-28 "
+            className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px]  sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 mt-28 mb-24 md:mb-0 "
             style={{
                 background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
                 backgroundSize: "cover",
@@ -131,7 +131,7 @@ export default function AudienceSection() {
             </div>
 
             {/* CTA Button */}
-            <div className="mt-6 w-full flex justify-center h-auto lg:h-[30%] items-start ">
+            <div className="mt-6  w-full flex justify-center h-auto lg:h-[30%] items-start ">
                 <button className="bg-[#FED543] btn-hover   px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition font-bold text-sm sm:text-base max-h-[52px]" onClick={moveToNextSection}>
                     Know More
                 </button>
@@ -155,7 +155,7 @@ function AudienceItem({
         <AccordionItem value={`item-${idx}`} className=" border-b border-[#C8AD6E] pb-3 sm:pb-4 p-5 z-20" >
             <AccordionTrigger  className="
             flex items-center gap-x-5  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333]   transition-all duration-700 ease-in-out
-    [&[data-state=open]>div>p]:fontWeightAnimate [&[data-state=open]>div>p]:scale-[1.02]
+    [&[data-state=open]>div>p]:fontWeightAnimate [&[data-state=open]>div>p]:scale-[1.02] pb-0
               ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M8.72279 0.5L6.87474 2.65L6.35729 0H5.64271L5.05134 2.65L3.35113 0.5L2.75975 0.85L3.59754 3.55L0.985626 2.65L0.616016 3.175L2.48871 5.075L0 5.65L0.0246407 6.3L2.75975 6.85L0.616016 8.775L0.985626 9.35L3.59754 8.4L2.75975 11.075L3.35113 11.475L5.05134 9.35L5.64271 12H6.35729L6.87474 9.35L8.72279 11.475L9.26489 11.075L8.37782 8.4L11.0637 9.35L11.3593 8.775L9.26489 6.85L12 6.3V5.65L9.26489 5.075L11.3593 3.175L11.0144 2.625L8.37782 3.55L9.26489 0.85L8.72279 0.5Z" fill="#C8AD6E" />
