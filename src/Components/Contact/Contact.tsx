@@ -38,6 +38,7 @@ const AnimatedCard = ({ data }: { idx: number, data: ContactData }) => {
 
 
 export default function Contact() {
+
     const [data, setData] = useState<ContactData[]>(ContactInfo)
     const [visibleData, setVisibleData] = useState<ContactData[]>([])
     const visible = useRef(0)
@@ -133,7 +134,7 @@ export default function Contact() {
                     </div>
                     {
                         (visibleData.length !== data.length) && <div className="text-center mt-10">
-                            <button className="btn-hover bg-[#FED543] text-gray-900 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base max-h-[52px]" onClick={handleClick}>
+                            <button className="btn-hover bg-[#BA8C2D] text-[#222222] font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition text-sm sm:text-base max-h-[52px]" onClick={handleClick}>
                                 Load More
                             </button>
                         </div>}

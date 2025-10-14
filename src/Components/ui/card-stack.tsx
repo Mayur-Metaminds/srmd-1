@@ -600,7 +600,7 @@ export default function CardStackContainer() {
                     translateX: '-50%',
                     translateY: '-50%',
                   }}
-                  className="h-[150px] max-h-[150px] md:max-h-[320px] sm:h-[220px] md:h-[260px] w-full sm:w-[90%] xl:max-w-[60%]"
+                  className="h-[150px] max-h-[150px] md:max-h-[320px] 2xl:h-[340px] sm:h-[220px] md:h-[260px] w-full sm:w-[90%] xl:max-w-[70%]"
                 >
                   <CardContent card={card} isTop={stackIndex === 0} />
                 </motion.div>
@@ -723,8 +723,8 @@ function CardContent({ card, isTop }: { card: Card; isTop: boolean }) {
       >
         {/* Card Image */}
         <motion.div
-          animate={isTop ? { scale: [1, 1.05, 1] } : { scale: 1 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          // animate={isTop ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+          // transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
           className="absolute top-10 right-4 sm:top-16 sm:right-8 md:top-16 md:right-12 w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] xl:w-[180px] xl:h-[180px] rounded-full overflow-hidden shadow-xl z-20"
         >
           <img src={card.image} alt="Card" className="w-full h-full object-cover" />
@@ -737,7 +737,7 @@ function CardContent({ card, isTop }: { card: Card; isTop: boolean }) {
       </div>
 
       {/* SVG 1 - Top Left */}
-      <svg 
+      {/* <svg 
         width="86" 
         height="86" 
         viewBox="0 0 49 52" 
@@ -746,7 +746,7 @@ function CardContent({ card, isTop }: { card: Card; isTop: boolean }) {
         className="absolute -top-1.5 z-20 xl:-left-5 w-10 h-10 sm:w-12 sm:h-10 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
       >
         <path d="M48.556 12.974C37.3429 8.75868 31.6164 7.48971 26.4035 15.0953C26.2936 5.8565 22.1961 2.92254 9.68219 0.578198C4.89052 12.5569 5.38008 17.3957 11.7765 22.7619C2.60941 22.8997 -0.288147 26.9704 -2.66376 39.2957C9.96927 44.7112 14.2851 43.5377 19.3019 37.3665C19.6368 47.7449 25.2599 49.4167 36.21 51.6915C40.7451 40.0233 41.1224 34.6491 33.3224 29.6323C43.7779 29.415 46.1291 24.3944 48.556 12.974Z" fill="white" />
-      </svg>
+      </svg> */}
 
       {/* SVG 2 - Left Bottom */}
       <svg 

@@ -80,7 +80,7 @@ export default function TimelineGallery() {
         ))}
       </div>
       {(visibleData.length !== reels.length) && <div className="text-center mt-5 mb-16">
-        <button className="btn-hover bg-[#FED543] text-[#222222] font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md  transition text-sm sm:text-base cursor-pointer  max-h-[52px]" onClick={handleClick}>
+        <button className="btn-hover bg-[#BA8C2D] text-[#222222] font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md  transition text-sm sm:text-base cursor-pointer  max-h-[52px]" onClick={handleClick}>
           Load More
         </button>
       </div>}

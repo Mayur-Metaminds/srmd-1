@@ -151,13 +151,13 @@ export default function CountDown() {
                         <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0" />
                         <span className="leading-tight">Sunday, 16 November, 2025</span>
                     </div>
-                    <div className="flex  sm:flex-row gap-2 sm:gap-3 justify-center items-center text-center">
+                    <div className="flex  sm:flex-row gap-2 sm:gap-3 justify-center items-start text-center">
                         <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-[37px] 2xl:h-[37px] flex-shrink-0" />
                         <span className="leading-tight ">Jamshed Bhabha Theatre, NCPA, Mumbai</span>
                     </div>
                 </div>
 
-                <button className="bg-[#FED543] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[52px] sm:h-[48px] max-h-[52px]  z-10 mx-4 text-sm sm:text-[18px] btn-hover" onClick={moveToNextSection}>
+                <button className="bg-[#BA8C2D] font-bold  text-[#222222] rounded-md transition-transform duration-500 w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] h-[52px] sm:h-[48px] max-h-[52px]  z-10 mx-4 text-sm sm:text-[18px] btn-hover" onClick={moveToNextSection}>
                     <span>Know More</span>
                 </button>
 

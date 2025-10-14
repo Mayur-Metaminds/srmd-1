@@ -40,11 +40,11 @@ export default function SnakeRevealBottom() {
 
                 xmlns="http://www.w3.org/2000/svg"
                 preserveAspectRatio="xMidYMid slice"
-                className="w-full h-auto "
+                className="w-full h-auto opacity-60 "
             >
                 <defs>
                     {/* Rectangle mask that expands */}
-                    <clipPath id="contactSnakeBot">
+                    {/* <clipPath id="contactSnakeBot">
                         <motion.rect
                             x="0"
                             y="0"
@@ -58,7 +58,7 @@ export default function SnakeRevealBottom() {
                                 },
                             }}
                         />
-                    </clipPath>
+                    </clipPath> */}
                 </defs>
                 <motion.path d="M262.382 18.8317L272.411 34.852L278.473 17.9034L283.183 18.6186L284.429 36.6769L297.787 24.2075L301.334 27.1062L293.11 44.0638L311.227 40.7457L313.137 44.5759L298.893 55.2249L314.721 61.5055L313.908 65.765L295.33 66.6529L307.533 81.4862L304.521 84.9062L288.257 76.0307L291.102 94.5004L286.803 96.545L277.724 80.8374L271.174 97.712L266.464 96.9969L265.705 79.0126L251.398 91.1692L248.225 87.9903L256.749 71.2468L238.096 74.8204L236.722 70.7346L252.454 60.1428L234.977 53.7804L235.627 49.4962L254.23 48.4435L242.327 33.8243L245.151 30.5444L261.603 39.2798L258.458 20.596L262.382 18.8317Z" fill="#A68468"
                     ref={ref1}
