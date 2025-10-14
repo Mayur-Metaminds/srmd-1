@@ -1,22 +1,13 @@
 "use client";
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
 import { useEffect, useState } from "react";
+import instagramReel from '@/lib/data/GalleryData.json'
 
-
-const reels: string[] = [
-  "https://www.instagram.com/reel/DE7JssBygG4/?igsh=MWppZzRpdzIxNzMg==",
-  "https://www.instagram.com/reel/C6_Q0q0suMd/?igsh=MW4yYWIxbmhtODVmMA==",
-  "https://www.instagram.com/reel/C4NqCjmy8vD/?igsh=dGs0eGVtandncmd5",
-  "https://www.instagram.com/reel/Cynv4pUSHRb/?igsh=MTJ5eGQwaWV4eWp4Mg==",
-  "https://www.instagram.com/reel/Cl0W3YXtTm6/?igsh=MTRzd2o0eHJtZGZldA==",
-  "https://www.instagram.com/p/Cf8JKrroW22/?igsh=MXg1eDFneGV4MW8wcQ==",
-  "https://www.instagram.com/reel/ClWP07SqJpy/?igsh=MWc4dXNsZ3ZxYWV2OQ==",
-  "https://www.instagram.com/reel/DAn9YS7yOmR/?igsh=Y3F2eWU0MzkwZGUy",
-  "https://www.instagram.com/reel/DCWZQBNMS22/?igsh=dnFibmczZGtwZDN0",
-  "https://www.instagram.com/reel/DJgwaDXs9Ec/?igsh=NmV3c2F2NmFzYms1"
-];
+type instaData={
+  url: string
+}
 export default function TimelineGallery() {
-  const [visibleData, setVisibleData] = useState<Card[]>([])
+  const [visibleData, setVisibleData] = useState<instaData[]>([])
   const visible = useRef(0)
 
   useEffect(() => {
@@ -27,12 +18,12 @@ export default function TimelineGallery() {
     else {
       visible.current = 4
     }
-    setVisibleData(reels.slice(0, visible.current))
+    setVisibleData(instagramReel.slice(0, visible.current))
   }, [])
   const handleClick = (e: MouseEvent) => {
     const prevScroll = window.scrollY;
     e.preventDefault()
-    const datas = reels.slice(visibleData.length, visible.current + 2)
+    const datas = instagramReel.slice(visibleData.length, visible.current + 2)
     visible.current += 2
     setVisibleData((prev) => ([...prev, ...datas]))
 
@@ -47,7 +38,7 @@ export default function TimelineGallery() {
     });
   }
   return (
-    <section className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden ">
+    <div className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden ">
       {/* Decorative Wave Background */}
 
       <SnakeReveal />
@@ -76,15 +67,15 @@ export default function TimelineGallery() {
       {/* Gallery Grid */}
       <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 ">
         {visibleData.map((card, idx) => (
-          <AnimatedCard card={card} idx={idx} key={`${card}-${idx}`} />
+          <AnimatedCard card={card} idx={idx} key={`${card.url}-${idx}`} />
         ))}
       </div>
-      {(visibleData.length !== reels.length) && <div className="text-center mt-5 mb-16">
+      {(visibleData.length !== instagramReel.length) && <div className="text-center mt-5 mb-16">
         <button className="btn-hover bg-[#BA8C2D] text-[#222222] font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md  transition text-sm sm:text-base cursor-pointer  max-h-[52px]" onClick={handleClick}>
           Load More
         </button>
       </div>}
-    </section>
+    </div>
   );
 }
 import { useRef } from 'react';
@@ -97,7 +88,7 @@ import SnakeReveal from "./SnakeProp";
 const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const url = `${card.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/?autoplay=1`
+  const url = `${card.url.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/?autoplay=1`
   const [play, setPlay] = useState(false)
   const marginClass = idx % 2 === 0 ? "mt-10" : "mb-20";
   return (
@@ -149,6 +140,6 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
 
 
 interface AnimatedCardProps {
-  card: string;
+  card: instaData;
   idx: number;
 }

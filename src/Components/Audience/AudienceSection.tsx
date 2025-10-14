@@ -64,7 +64,7 @@ export default function AudienceSection() {
                 </div>
 
                 {/* Heading */}
-                <div className=" w-full  sm:w-[80%] h-full flex flex-col justify-start">
+                <div className=" w-full h-full flex flex-col justify-start">
                     {/* Decorative Image - positioned differently on mobile */}
 {/* 
                         <motion.svg
@@ -120,7 +120,7 @@ export default function AudienceSection() {
             </div>
 
             {/* CTA Button */}
-            <div className="mt-6  w-full flex justify-center h-auto lg:h-[30%] items-start ">
+            <div className="mt-6  w-full flex justify-center h-auto lg:h-[30%] items-start z-20">
                 <button className="bg-[#BA8C2D]  text-[#222222] btn-hover   px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md transition font-bold text-sm sm:text-base max-h-[52px]" onClick={moveToNextSection}>
                     Know More
                 </button>

@@ -38,18 +38,22 @@ const AnimatedCard = ({ data }: { idx: number, data: ContactData }) => {
 
 
 export default function Contact() {
-
-    const [data, setData] = useState<ContactData[]>(ContactInfo)
+    const townSorting = (a: ContactData, b: ContactData) => {
+        if (a.town < b.town) return -1;
+        if (a.town > b.town) return 1;
+        return 0;
+    }
+    const [data, setData] = useState<ContactData[]>(ContactInfo.sort(townSorting))
     const [visibleData, setVisibleData] = useState<ContactData[]>([])
     const visible = useRef(0)
     useEffect(() => {
         if (window.innerWidth > 768) {
-
             visible.current = 10
         }
         else {
             visible.current = 4
         }
+
         setVisibleData(data.slice(0, visible.current))
     }, [])
 
@@ -58,9 +62,9 @@ export default function Contact() {
         const prevScroll = window.scrollY;
         e.preventDefault()
         const nextCount = window.innerWidth > 768 ? 10 : 2;
-        const datas = data.slice(visibleData.length,  visible.current + nextCount)
+        const datas = data.slice(visibleData.length, visible.current + nextCount)
         setVisibleData((prev) => ([...prev, ...datas]))
-        visible.current+=nextCount
+        visible.current += nextCount
         requestAnimationFrame(() => {
 
             // Adjust scroll position so your view doesn't move
