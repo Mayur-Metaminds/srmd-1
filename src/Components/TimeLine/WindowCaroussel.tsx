@@ -235,7 +235,7 @@ export function WindowCaroussel() {
                             ))}
                         </div>
                         <motion.svg
-                            width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-5 right-20 -z-20">
+                            width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-5 right-20 -z-20 overflow-y-visible">
                             <motion.path d="M34.8912 2.57031L27.499 11.1703L25.4292 0.570312H22.5708L20.2053 11.1703L13.4045 2.57031L11.039 3.97031L14.3901 14.7703L3.94251 11.1703L2.46407 13.2703L9.95483 20.8703L0 23.1703L0.0985627 25.7703L11.039 27.9703L2.46407 35.6703L3.94251 37.9703L14.3901 34.1703L11.039 44.8703L13.4045 46.4703L20.2053 37.9703L22.5708 48.5703H25.4292L27.499 37.9703L34.8912 46.4703L37.0596 44.8703L33.5113 34.1703L44.2546 37.9703L45.4374 35.6703L37.0596 27.9703L48 25.7703V23.1703L37.0596 20.8703L45.4374 13.2703L44.0575 11.0703L33.5113 14.7703L37.0596 3.97031L34.8912 2.57031Z" fill="#A68468"
                                 ref={chakraRef1}
                                 style={{ rotate: chakraRotate1, y: chakraY1 }}
