@@ -46,11 +46,11 @@ export default function AudienceSection() {
         <section
             id="audience"
             className="relative  w-full overflow-y-visible overflow-x-clip min-h-[600px] sm:min-h-[700px] md:min-h-[800px] lg:h-[900px] xl:h-[996px]  sm:py-8 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row lg:flex-wrap z-20 mt-28 mb-24 md:mb-0 "
-            style={{
-                background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-            }}
+            // style={{
+            //     background: "linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)), url('/Eventbg.png')",
+            //     backgroundSize: "cover",
+            //     backgroundPosition: "center"
+            // }}
         >
             {/* Left Section - Badge and Heading */}
             <div className="relative w-full lg:w-[50%] max-w-4xl flex flex-col h-auto lg:h-[70%] justify-start items-start  sm:mb-8 gap-1 ">

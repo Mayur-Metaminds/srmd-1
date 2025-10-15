@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { MobileSnakeReveal } from "./MobileSnakeReveal";
 import { WindowSnakeReveal } from "./WindowSnakeReveal";
-
+const videoUrl = "https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ"
 const VideoSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -19,22 +19,32 @@ const VideoSection = () => {
   };
 
   return (
-    <motion.div className="w-[95%] sm:w-[92%] lg:w-[90%]   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 hover:w-full transition-all duration-500 ease-in-out 
+    <motion.div className="w-full   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 ease-in-out 
     "
+    onHoverStart={(e)=>alert("hello move")}
+      onMouseEnter={(e) => {
+        console.log(e)
+        e.currentTarget.style.width = "100%"
+      }}
       ref={ref}
       initial={{ opacity: 0, y: 200 }}
-      animate={isInView ? { opacity: 1, y:0 } : { opacity: 0, y: 200 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
       transition={{
         duration: 0.5,
         delay: 1,
         ease: "linear"
+
       }}
     >
       {/* Iframe */}
 
       <iframe
-        className="w-full h-full  "
-        src={`https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
+        onMouseEnter={(e) => {
+          console.log(e)
+          e.currentTarget.style.width = "100%"
+        }}
+        className="w-[90%] h-full rounded-2xl  "
+        src={`${videoUrl}${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
         title="Video Player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

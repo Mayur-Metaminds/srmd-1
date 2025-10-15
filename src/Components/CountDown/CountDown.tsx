@@ -6,27 +6,28 @@ import { CalendarDays, MapPin } from "lucide-react";
 import { useParallax } from "@/hooks/paralllelx";
 import { motion } from 'framer-motion';
 import { useRotateScroll } from "@/hooks/useScrollRotate";
+import { CountDownProp } from "./CountDownProp";
 export default function CountDown() {
-    const { ref, y } = useParallax({ speed: 0.4 });
-    const { ref: ref1, rotate: rotate1 } = useRotateScroll();
-    const { ref: ref2, rotate: rotate2 } = useRotateScroll();
-    const { ref: ref3, rotate: rotate3 } = useRotateScroll();
-    const { ref: ref4, rotate: rotate4 } = useRotateScroll();
-    const { ref: ref5, rotate: rotate5 } = useRotateScroll();
-    const { ref: ref6, rotate: rotate6 } = useRotateScroll();
-    const { ref: ref7, rotate: rotate7 } = useRotateScroll();
-    const { ref: ref8, rotate: rotate8 } = useRotateScroll();
-    const { ref: ref9, rotate: rotate9 } = useRotateScroll();
-    const { ref: ref10, rotate: rotate10 } = useRotateScroll();
-    const { ref: ref11, rotate: rotate11 } = useRotateScroll();
-    const { ref: ref12, rotate: rotate12 } = useRotateScroll();
-    const { ref: ref13, rotate: rotate13 } = useRotateScroll();
-    const { ref: ref14, rotate: rotate14 } = useRotateScroll();
-    const { ref: ref15, rotate: rotate15 } = useRotateScroll();
-    const { ref: ref16, rotate: rotate16 } = useRotateScroll();
-    const { ref: ref17, rotate: rotate17 } = useRotateScroll();
-    const { ref: ref18, rotate: rotate18 } = useRotateScroll();
-       const moveToNextSection = () => {
+    // const { ref, y } = useParallax({ speed: 0.4 });
+    // const { ref: ref1, rotate: rotate1 } = useRotateScroll();
+    // const { ref: ref2, rotate: rotate2 } = useRotateScroll();
+    // const { ref: ref3, rotate: rotate3 } = useRotateScroll();
+    // const { ref: ref4, rotate: rotate4 } = useRotateScroll();
+    // const { ref: ref5, rotate: rotate5 } = useRotateScroll();
+    // const { ref: ref6, rotate: rotate6 } = useRotateScroll();
+    // const { ref: ref7, rotate: rotate7 } = useRotateScroll();
+    // const { ref: ref8, rotate: rotate8 } = useRotateScroll();
+    // const { ref: ref9, rotate: rotate9 } = useRotateScroll();
+    // const { ref: ref10, rotate: rotate10 } = useRotateScroll();
+    // const { ref: ref11, rotate: rotate11 } = useRotateScroll();
+    // const { ref: ref12, rotate: rotate12 } = useRotateScroll();
+    // const { ref: ref13, rotate: rotate13 } = useRotateScroll();
+    // const { ref: ref14, rotate: rotate14 } = useRotateScroll();
+    // const { ref: ref15, rotate: rotate15 } = useRotateScroll();
+    // const { ref: ref16, rotate: rotate16 } = useRotateScroll();
+    // const { ref: ref17, rotate: rotate17 } = useRotateScroll();
+    // const { ref: ref18, rotate: rotate18 } = useRotateScroll();
+    const moveToNextSection = () => {
         const nextSection = document.querySelector("#contact")
         if (nextSection) {
             nextSection.scrollIntoView({ behavior: "smooth" })
@@ -43,7 +44,7 @@ export default function CountDown() {
 
             }}>
 
-                <motion.svg
+                {/* <motion.svg
                     ref={ref}
                     style={{ y }}
                     opacity={0.6}
@@ -137,7 +138,8 @@ export default function CountDown() {
                         x="601.766" y="545.43" width="25.1988" height="4.02024" transform="rotate(-34.703 601.766 545.43)" fill="#95A4E6"
 
                         fillOpacity="0.4" />
-                </motion.svg>
+                </motion.svg> */}
+                <CountDownProp />
 
 
 

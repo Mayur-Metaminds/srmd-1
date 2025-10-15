@@ -28,11 +28,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={` antialiased`}>
-        {/* <LenisProvider> */}
+        <LenisProvider>
           {children}
 
           <Footer />
-        {/* </LenisProvider> */}
+        </LenisProvider>
       </body>
     </html>
   );

@@ -38,7 +38,7 @@ export default function TimelineGallery() {
     });
   }
   return (
-    <div className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden ">
+    <div className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-y-visible  ">
       {/* Decorative Wave Background */}
 
       <SnakeReveal />

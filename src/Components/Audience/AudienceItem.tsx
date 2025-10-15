@@ -12,7 +12,7 @@ export function AudienceItem({
     idx: number
 }) {
     return (
-        <AccordionItem value={`item-${idx}`} className=" border-b border-[#BA8C2D] pb-3 sm:pb-4 p-5 z-20" >
+        <AccordionItem value={`item-${idx}`} className=" border-b border-[#BA8C2D] pb-3 sm:pb-4 p-5 z-30" >
             <AccordionTrigger className="
             flex items-center gap-x-5  hover:no-underline  [&[data-state=open]>div>p]:text-[#333333]   transition-all duration-700 ease-in-out
     [&[data-state=open]>div>p]:fontWeightAnimate [&[data-state=open]>div>p]:scale-[1.02] pb-0
@@ -30,7 +30,7 @@ export function AudienceItem({
             </AccordionTrigger>
             {desc && (
                 <AccordionContent className="pb-5 pt-0 pl-8 sm:pl-5 md:pl-6 lg:pl-8 xl:pl-8 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down transition-all duration-700 ease-in-out">
-                    <p className="font-normal text-[16px] sm:text-base md:text-lg lg:[24px] mt-1 leading-relaxed">
+                    <p className="font-normal text-[16px] sm:text-base md:text-lg lg:[24px] mt-1 leading-relaxed z-30">
                         {desc}
                     </p>
                 </AccordionContent>
