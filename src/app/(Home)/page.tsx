@@ -9,7 +9,7 @@ import TimeLineSection from "@/Components/TimeLine/TimeLineSection";
 
 export default function Home() {
   return (
-    <div className="w-full h-full m-0 p-0 relative overflow-hidden -z-50">
+    <div className="w-full h-full m-0 p-0 relative overflow-hidden">
       <HeroSection />
       <CountDown />
       <ImpactCard />
