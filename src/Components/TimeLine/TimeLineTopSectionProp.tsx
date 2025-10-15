@@ -21,7 +21,7 @@ export const TimeLineTopSectionProp = () => {
                 }}
                 style={{ rotate: rotate1, y: y11 }}
             />
-            <motion.circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-0.845842 0.533433 0.533433 0.845842 679.312 -4)" fill="#C8AD6E"
+            <motion.circle cx="12.6" cy="12.6" r="12.6" transform="matrix(-0.845842 0.533433 0.533433 0.845842 679.312 -4)" fill="#BA8C2D"
                 ref={(el) => {
                     ref2.current = el;
                     ref22.current = el
@@ -41,7 +41,7 @@ export const TimeLineTopSectionProp = () => {
                     width="15.7799"
                     height="6.36088"
                     transform="rotate(-162.338 1133.91 96.8125)"
-                    fill="#C8AD6E"
+                    fill="#BA8C2D"
                 />
                 <rect
                     x="1126.84"
@@ -49,7 +49,7 @@ export const TimeLineTopSectionProp = () => {
                     width="15.7799"
                     height="6.36088"
                     transform="rotate(107.662 1126.84 87.9609)"
-                    fill="#C8AD6E"
+                    fill="#BA8C2D"
                 />
                 <rect
                     x="1138.71"
@@ -57,7 +57,7 @@ export const TimeLineTopSectionProp = () => {
                     width="15.7799"
                     height="6.36088"
                     transform="rotate(107.662 1138.71 81.7812)"
-                    fill="#C8AD6E"
+                    fill="#BA8C2D"
                 />
             </motion.g>
         </motion.svg>
