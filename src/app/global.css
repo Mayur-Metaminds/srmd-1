@@ -108,12 +108,18 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Karla:opsz,wght@8..144,100..800&display=swap');
 
 @keyframes fontWeightIncrease {
-  from { font-variation-settings: 'wght' 100; }
-  to { font-variation-settings: 'wght' 600; }
+  from {
+    font-variation-settings: 'wght' 400;
+  }
+
+  to {
+    font-variation-settings: 'wght' 600;
+  }
 }
 
 .fontWeightAnimate {
   font-family: 'Karla', sans-serif;
-  font-variation-settings: 'wght' 100; /* initial weight */
+  font-variation-settings: 'wght' 100;
+  /* initial weight */
   animation: fontWeightIncrease 0.5s ease-in-out forwards;
 }

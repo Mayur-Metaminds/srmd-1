@@ -12,9 +12,9 @@ interface ContactData {
 export default function LocationCard({ ContactData }: { ContactData: ContactData }) {
 
     return (
-        <div className="w-full h-full  border-2 border-[#C8AD6E] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
+        <div className="w-full h-full  border-2 border-[#BA8C2D] rounded-lg overflow-hidden bg-white/80 shadow-md flex flex-col justify-center items-center">
             {/* Header */}
-            <div className="bg-[#C8AD6E] text-white text-center py-3 px-4 font-medium  mt-2 w-[95%] flex justify-center m-auto rounded-lg text-[20px] ">
+            <div className="bg-[#BA8C2D] text-white text-center py-3 px-4 font-medium  mt-2 w-[95%] flex justify-center m-auto rounded-lg text-[20px] ">
                 {ContactData.town}&nbsp;-&nbsp;{ContactData.city}
             </div>
 

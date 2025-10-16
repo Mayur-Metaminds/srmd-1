@@ -7,23 +7,27 @@ import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { MobileSnakeReveal } from "./MobileSnakeReveal";
 import { WindowSnakeReveal } from "./WindowSnakeReveal";
-
+const videoUrl = "https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ"
 const VideoSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handlePlay = () => {
     setIsPlaying(true);
   };
 
   return (
-    <motion.div className="w-[95%] sm:w-[92%] lg:w-[90%]   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 hover:w-full transition-all duration-500 ease-in-out 
+    <motion.div className="w-full   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 ease-in-out 
     "
+      onHoverStart={(e) =>setIsExpanded(true)}
+
       ref={ref}
+
       initial={{ opacity: 0, y: 200 }}
-      animate={isInView ? { opacity: 1, y:0 } : { opacity: 0, y: 200 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
       transition={{
         duration: 0.5,
         delay: 1,
@@ -32,13 +36,19 @@ const VideoSection = () => {
     >
       {/* Iframe */}
 
-      <iframe
-        className="w-full h-full  "
-        src={`https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
+      <motion.iframe
+        className=" h-full rounded-2xl  "
+        src={`${videoUrl}${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
         title="Video Player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        initial={{ width: "90%" }}
+        animate={{ width: isExpanded ? "100%" : "90%" }}
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut"
+        }}
       />
 
       {/* Play Button Overlay */}
@@ -152,7 +162,7 @@ const VideoSection = () => {
 //         {/* --- static shapes --- */}
 //         <motion.path
 //           d="M280.382 44.8317L290.411 60.852L296.473 43.9034L301.183 44.6186L302.429 62.6769L315.787 50.2075L319.334 53.1062L311.11 70.0638L329.227 66.7457L331.137 70.5759L316.893 81.2249L332.721 87.5055L331.908 91.765L313.33 92.6529L325.533 107.486L322.521 110.906L306.257 102.031L309.102 120.5L304.803 122.545L295.724 106.837L289.174 123.712L284.464 122.997L283.705 105.013L269.398 117.169L266.225 113.99L274.749 97.2468L256.096 100.82L254.722 96.7346L270.454 86.1428L252.977 79.7804L253.627 75.4962L272.23 74.4435L260.327 59.8243L263.151 56.5444L279.603 65.2798L276.458 46.596L280.382 44.8317Z"
-//           fill="#C8AD6E"
+//           fill="#BA8C2D"
 //           ref={ref1}
 //           style={{ rotate: rotate1 }}
 //         />
@@ -244,7 +254,7 @@ const VideoSection = () => {
 //           style={{ rotate: mobrotate2 }}
 //         />
 
-//         <motion.path d="M115.74 118.47L124.454 131.803L129.722 117.697L133.814 118.293L134.897 133.321L146.504 122.944L149.586 125.356L142.44 139.469L158.182 136.707L159.842 139.895L147.465 148.757L161.218 153.984L160.511 157.529L144.369 158.268L154.972 170.613L152.355 173.459L138.223 166.073L140.695 181.444L136.96 183.145L129.071 170.073L123.379 184.116L119.287 183.521L118.628 168.554L106.196 178.671L103.439 176.026L110.846 162.091L94.6375 165.065L93.4441 161.665L107.113 152.85L91.9272 147.555L92.4925 143.99L108.657 143.114L98.3138 130.947L100.768 128.218L115.063 135.487L112.331 119.938L115.74 118.47Z" fill="#C8AD6E"
+//         <motion.path d="M115.74 118.47L124.454 131.803L129.722 117.697L133.814 118.293L134.897 133.321L146.504 122.944L149.586 125.356L142.44 139.469L158.182 136.707L159.842 139.895L147.465 148.757L161.218 153.984L160.511 157.529L144.369 158.268L154.972 170.613L152.355 173.459L138.223 166.073L140.695 181.444L136.96 183.145L129.071 170.073L123.379 184.116L119.287 183.521L118.628 168.554L106.196 178.671L103.439 176.026L110.846 162.091L94.6375 165.065L93.4441 161.665L107.113 152.85L91.9272 147.555L92.4925 143.99L108.657 143.114L98.3138 130.947L100.768 128.218L115.063 135.487L112.331 119.938L115.74 118.47Z" fill="#BA8C2D"
 //           ref={mobref3}
 //           style={{ rotate: mobrotate3 }}
 //         />

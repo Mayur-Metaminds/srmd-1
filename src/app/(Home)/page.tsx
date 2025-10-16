@@ -16,7 +16,6 @@ export default function Home() {
       {/* <VisionariesHero /> */}
       <AudienceSection />
       <TimeLineSection />
-      {/* <WindowCaroussel /> */}
       <Contact />
       <TimelineGallery />
   

@@ -2,52 +2,79 @@ import { useRef } from "react";
 import { useScroll, useTransform, MotionValue } from "framer-motion";
 
 interface ParallaxProps {
-    speed?: number; // smaller = slower
+  speed?: number; // smaller = slower
 }
 
 export function useParallax({ speed = 0.3 }: ParallaxProps = {}) {
-    const ref = useRef<HTMLDivElement | SVGSVGElement | HTMLImageElement | null>(null);
-    const { scrollY } = useScroll();
+  const ref = useRef<HTMLDivElement | SVGSVGElement |SVGGElement | HTMLImageElement | SVGPathElement | null>(null);
+  const { scrollY } = useScroll();
 
-    const y: MotionValue<number> = useTransform(scrollY, (value) => {
-        if (!ref.current) return 0;
+  const yRaw: MotionValue<number> = useTransform(scrollY, (value) => {
+    if (!ref.current) return 0
+    const elTop = ref.current.getBoundingClientRect().top + window.scrollY
+    const winH = window.innerHeight
+    const offset = value - elTop + winH
+    return offset * speed
+  })
+  const y = useSpring(yRaw, { stiffness: 80, damping: 40 })
 
-        const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
-        const windowHeight = window.innerHeight;
-        const scrollOffset = value - elementTop + windowHeight;
 
-        return scrollOffset * speed;
-    });
-
-    return { ref, y };
+  return { ref, y };
 }
 
 
 
 interface ParallaxProps {
-    speed?: number; // smaller = slower
-    isRotate?: boolean;
+  speed?: number; // smaller = slower
+  isRotate?: boolean;
 }
 
-export function useParallaxx({ speed = 0.3, isRotate = false }: ParallaxProps = {}) {
-    const ref = useRef<HTMLDivElement | SVGSVGElement | HTMLImageElement | null>(null);
-    const { scrollY } = useScroll();
 
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"],
-    });
-    const rotate: MotionValue<number> = useTransform(scrollYProgress, [0, 1], [0, 90])
-    const y: MotionValue<number> = useTransform(scrollY, (value) => {
-        if (!ref.current) return 0;
 
-        const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
-        const windowHeight = window.innerHeight;
-        const scrollOffset = value - elementTop + windowHeight;
-        return scrollOffset * speed;
-    });
-    if (!isRotate) {
-        return { ref, y };
-    }
-    return { ref, y, rotate };
+
+
+
+
+
+import { useSpring } from "framer-motion"
+
+type ParallaxxProps = {
+  speed?: number
+  rotateSpeed?: number
+  isRotate?: boolean
+  smoothness?: number // lower = smoother
+  rotateDegree?: number
 }
+
+export function useParallaxx<T extends HTMLElement = HTMLDivElement>({
+  speed = 0.3,
+  rotateSpeed = 0.1,
+  isRotate = false,
+  smoothness = 0.15,
+  rotateDegree = 180
+}: ParallaxxProps = {}) {
+  const ref = useRef<T | null>(null)
+  const { scrollY } = useScroll()
+
+  // Calculate raw motion values
+  const yRaw: MotionValue<number> = useTransform(scrollY, (value) => {
+    if (!ref.current) return 0
+    const elTop = ref.current.getBoundingClientRect().top + window.scrollY
+    const winH = window.innerHeight
+    const offset = value - elTop + winH
+    return offset * speed
+  })
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"], // start/end triggers
+  });
+
+  const rotateRaw = useTransform(scrollYProgress, [0, 1], [0, rotateDegree]);
+
+  // Apply smooth spring for buttery animation
+  const y = useSpring(yRaw, { stiffness: 80, damping: 25, mass: 0.5 })
+  const rotate = useSpring(rotateRaw, { stiffness: 80, damping: 25, mass: 0.5 })
+
+  return { ref, y, rotate }
+}
+

@@ -15,7 +15,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
             smoothWheel: true,
         })
         lenis.on('scroll', (e) => {
-            console.log("AAA", e)
+            // console.log("AAA", e)
         })
         function raf(time: number) {
 
@@ -27,5 +27,5 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
         requestAnimationFrame(raf);
         return () => lenis.destroy();
     }, [])
-    return <>{ children }</>;
+    return <>{children}</>;
 }

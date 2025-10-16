@@ -58,7 +58,7 @@ export default function Footer() {
                         </h2>
                         <button className="text-base sm:text-lg lg:text-[20px] bg-white text-[#222222] px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center gap-2 font-bold hover:bg-gray-100 transition-colors w-fit">
                             Know More
-                            <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 p-1 bg-[#C8AD6E] text-white rounded-full flex-shrink-0" />
+                            <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 p-1 bg-[#BA8C2D] text-white rounded-full flex-shrink-0" />
                         </button>
                     </div>
 

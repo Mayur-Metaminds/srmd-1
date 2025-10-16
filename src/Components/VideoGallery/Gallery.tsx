@@ -1,22 +1,13 @@
 "use client";
 import ScrollTypingEffect from "../Common/ScrollTextFilling";
 import { useEffect, useState } from "react";
+import instagramReel from '@/lib/data/GalleryData.json'
 
-
-const reels: string[] = [
-  "https://www.instagram.com/reel/DE7JssBygG4/?igsh=MWppZzRpdzIxNzMg==",
-  "https://www.instagram.com/reel/C6_Q0q0suMd/?igsh=MW4yYWIxbmhtODVmMA==",
-  "https://www.instagram.com/reel/C4NqCjmy8vD/?igsh=dGs0eGVtandncmd5",
-  "https://www.instagram.com/reel/Cynv4pUSHRb/?igsh=MTJ5eGQwaWV4eWp4Mg==",
-  "https://www.instagram.com/reel/Cl0W3YXtTm6/?igsh=MTRzd2o0eHJtZGZldA==",
-  "https://www.instagram.com/p/Cf8JKrroW22/?igsh=MXg1eDFneGV4MW8wcQ==",
-  "https://www.instagram.com/reel/ClWP07SqJpy/?igsh=MWc4dXNsZ3ZxYWV2OQ==",
-  "https://www.instagram.com/reel/DAn9YS7yOmR/?igsh=Y3F2eWU0MzkwZGUy",
-  "https://www.instagram.com/reel/DCWZQBNMS22/?igsh=dnFibmczZGtwZDN0",
-  "https://www.instagram.com/reel/DJgwaDXs9Ec/?igsh=NmV3c2F2NmFzYms1"
-];
+type instaData={
+  url: string
+}
 export default function TimelineGallery() {
-  const [visibleData, setVisibleData] = useState<Card[]>([])
+  const [visibleData, setVisibleData] = useState<instaData[]>([])
   const visible = useRef(0)
 
   useEffect(() => {
@@ -27,12 +18,12 @@ export default function TimelineGallery() {
     else {
       visible.current = 4
     }
-    setVisibleData(reels.slice(0, visible.current))
+    setVisibleData(instagramReel.slice(0, visible.current))
   }, [])
   const handleClick = (e: MouseEvent) => {
     const prevScroll = window.scrollY;
     e.preventDefault()
-    const datas = reels.slice(visibleData.length, visible.current + 2)
+    const datas = instagramReel.slice(visibleData.length, visible.current + 2)
     visible.current += 2
     setVisibleData((prev) => ([...prev, ...datas]))
 
@@ -47,7 +38,7 @@ export default function TimelineGallery() {
     });
   }
   return (
-    <section className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden ">
+    <div className="mt-24 relative w-full py-12  px-4 sm:px-6 md:px-12 lg:px-20 z-20">
       {/* Decorative Wave Background */}
 
       <SnakeReveal />
@@ -55,7 +46,7 @@ export default function TimelineGallery() {
       <div className="w-[90%] sm:w-full   mb-5 flex  items-start flex-col  ">
         <div className=" w-full lg:w-[22%] xl:w-[22%] md:w-[45%] max-w-4xl bg-[#1D2B53] text-white  text-[12px]  sm:text-[16px] font-semibold   py-3 rounded-full mb-4 flex  gap-x-1  sm:px-3 justify-center">
           <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#C8AD6E" />
+            <ellipse cx="16.8919" cy="10.7157" rx="7.78639" ry="7.78604" fill="#BA8C2D" />
             <path d="M11.3198 1.14884L8.92157 3.93883L8.25005 0.5H7.32272L6.55528 3.93883L4.34887 1.14884L3.58142 1.60302L4.66864 5.10674L1.27908 3.93883L0.799424 4.62011L3.22967 7.08569L0 7.83185L0.031977 8.67534L3.58142 9.38906L0.799424 11.8871L1.27908 12.6332L4.66864 11.4005L3.58142 14.8717L4.34887 15.3908L6.55528 12.6332L7.32272 16.0721H8.25005L8.92157 12.6332L11.3198 15.3908L12.0233 14.8717L10.8722 11.4005L14.3577 12.6332L14.7414 11.8871L12.0233 9.38906L15.5728 8.67534V7.83185L12.0233 7.08569L14.7414 4.62011L14.2937 3.90639L10.8722 5.10674L12.0233 1.60302L11.3198 1.14884Z" fill="#FED543" />
           </svg>
           The Ripple Has Already Begun
@@ -76,15 +67,15 @@ export default function TimelineGallery() {
       {/* Gallery Grid */}
       <div className="flex flex-wrap gap-x-4  justify-center items-center  w-full z-10 pt-5 ">
         {visibleData.map((card, idx) => (
-          <AnimatedCard card={card} idx={idx} key={`${card}-${idx}`} />
+          <AnimatedCard card={card} idx={idx} key={`${card.url}-${idx}`} />
         ))}
       </div>
-      {(visibleData.length !== reels.length) && <div className="text-center mt-5 mb-16">
+      {(visibleData.length !== instagramReel.length) && <div className="text-center mt-5 mb-16">
         <button className="btn-hover bg-[#BA8C2D] text-[#222222] font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-md shadow-md  transition text-sm sm:text-base cursor-pointer  max-h-[52px]" onClick={handleClick}>
           Load More
         </button>
       </div>}
-    </section>
+    </div>
   );
 }
 import { useRef } from 'react';
@@ -97,7 +88,7 @@ import SnakeReveal from "./SnakeProp";
 const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const url = `${card.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/?autoplay=1`
+  const url = `${card.url.replace(/\/\?igsh=.*$/, "").replace(/\/$/, "")}/embed/?autoplay=1`
   const [play, setPlay] = useState(false)
   const marginClass = idx % 2 === 0 ? "mt-10" : "mb-20";
   return (
@@ -149,6 +140,6 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, idx }) => {
 
 
 interface AnimatedCardProps {
-  card: string;
+  card: instaData;
   idx: number;
 }

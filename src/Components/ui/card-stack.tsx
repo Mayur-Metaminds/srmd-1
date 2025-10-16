@@ -727,7 +727,7 @@ function CardContent({ card, isTop }: { card: Card; isTop: boolean }) {
           // transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
           className="absolute top-10 right-4 sm:top-16 sm:right-8 md:top-16 md:right-12 w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[180px] lg:h-[180px] xl:w-[180px] xl:h-[180px] rounded-full overflow-hidden shadow-xl z-20"
         >
-          <img src={card.image} alt="Card" className="w-full h-full object-cover" />
+          <img src={"/impactCard/f.png"} alt="Card" className="w-full h-full object-cover" />
         </motion.div>
 
         {/* Card Title */}
