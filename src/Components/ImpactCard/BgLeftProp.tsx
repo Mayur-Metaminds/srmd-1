@@ -6,11 +6,11 @@ export const BgLeftProp = () => {
     const { ref: ref1, rotate: rotate1 } = useRotateScroll({ rotateDeg: 170 });
     const { ref: ref2, rotate: rotate2 } = useRotateScroll({ rotateDeg: 120 });
     const { ref: ref3, rotate: rotate3 } = useRotateScroll({ rotateDeg: 160 });
-    const { ref: ref11, y: y11 } = useParallax({ speed: 0.5 });
+    const { ref: ref11, y: y11 } = useParallax({ speed: 0.15 });
     const { ref: ref22, y: y22 } = useParallax({ speed: 0.2 });
-    const { ref: ref33, y: y33 } = useParallax({ speed: 0.3 });
+    const { ref: ref33, y: y33 } = useParallax({ speed: 0.13 });
     const { ref: ref4, rotate: rotate4 } = useRotateScroll({ rotateDeg: 160 });
-    const { ref: ref44, y: y44 } = useParallax({ speed: 0.4 });
+    const { ref: ref44, y: y44 } = useParallax({ speed: 0.14 });
 
     return (
         <svg width="270" height="535" viewBox="0 0 270 535" fill="none"  className="opacity-60  overflow-y-visible overflow-x-clip" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">

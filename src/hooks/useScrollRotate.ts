@@ -1,9 +1,9 @@
 import { useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 
-export function useRotateScroll({ rotateDeg = 90 }: { rotateDeg?: number } = {}) {
+export function useRotateScroll({ rotateDeg = 30 }: { rotateDeg?: number } = {}) {
     const ref = useRef<HTMLDivElement | SVGGElement | SVGSVGElement | HTMLImageElement | SVGPathElement | null>(null);
-    const rotationSpeed = 2    // make it spin 2× faster
+    const rotationSpeed = 1    // make it spin 2× faster
     const stiffness = 80       // snappy or smooth?
     const damping = 40
     // Track scroll progress for this element

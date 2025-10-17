@@ -12,14 +12,14 @@ export default function ImageStackk({
     className = ""
 }: CarouselProps) {
 
-    const { ref, y } = useParallax({ speed: 0.3 })
+    const { ref, y } = useParallax({ speed: 0.13 })
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"],
     });
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
 
-    const { ref: circleRef, y: circley } = useParallax({ speed: 0.3 })
+    const { ref: circleRef, y: circley } = useParallax({ speed: 0.13 })
 
     const [cardOrder, setCardOrder] = useState<string[]>(images);
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);

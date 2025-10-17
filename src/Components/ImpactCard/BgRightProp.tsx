@@ -4,12 +4,12 @@ import { useRotateScroll } from "@/hooks/useScrollRotate";
 import { motion } from 'framer-motion'
 export const BgRightProp = () => {
     const { ref: rightRef, y: righty } = useParallax({ speed: 0.1 })
-    const { ref: starRef, y: stary } = useParallax({ speed: 0.5 })
+    const { ref: starRef, y: stary } = useParallax({ speed: 0.15 })
     const { ref: starRotateRef, rotate: starRotate } = useRotateScroll({ rotateDeg: 150 })
     const { ref: smallStarRotateRef, rotate: smallStarRotate } = useRotateScroll({ rotateDeg: 190 })
     const { ref: flowRotateRef, rotate: flowRotate } = useRotateScroll({ rotateDeg: 100 })
     const { ref: flowerRef, y: flowery } = useParallax({ speed: 0.1 })
-    const { ref: smallStarRef, y: smallStary } = useParallax({ speed: 0.4 })
+    const { ref: smallStarRef, y: smallStary } = useParallax({ speed: 0.14 })
     // const { ref: ladRotateRef, rotate: ladRotate } = useRotateScroll()
     // const { ref: ladRef, y: lady } = useParallax({ speed: 0.2 })
     return (

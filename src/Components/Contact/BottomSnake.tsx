@@ -19,9 +19,9 @@ export default function SnakeRevealBottom() {
     const { ref: ref11, y: y11 } = useParallax({ speed: 0.1 });
     const { ref: ref22, y: y22 } = useParallax({ speed: 0.2 });
     const { ref: ref33, y: y33 } = useParallax({ speed: 0.1 });
-    const { ref: ref44, y: y44 } = useParallax({ speed: 0.5 });
-    const { ref: ref55, y: y55 } = useParallax({ speed: 0.6 });
-    const { ref: ref66, y: y66 } = useParallax({ speed: 0.4 });
+    const { ref: ref44, y: y44 } = useParallax({ speed: 0.15 });
+    const { ref: ref55, y: y55 } = useParallax({ speed: 0.16 });
+    const { ref: ref66, y: y66 } = useParallax({ speed: 0.14 });
     const { ref: ref77, y: y77 } = useParallax({ speed: 0.1 });
 
     useEffect(() => {

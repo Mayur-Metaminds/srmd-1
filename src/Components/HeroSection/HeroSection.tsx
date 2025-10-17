@@ -1,31 +1,357 @@
+// "use client"
+// import Image from "next/image"
+// import { useRef } from "react";
+// import { useInView } from "framer-motion";
+// import React, { useState } from 'react';
+// import { motion } from 'framer-motion';
+// import { Play } from 'lucide-react';
+// import { MobileSnakeReveal } from "./MobileSnakeReveal";
+// import { WindowSnakeReveal } from "./WindowSnakeReveal";
+// const videoUrl = "https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ"
+
+// const VideoSection = () => {
+//   const ref = useRef<HTMLDivElement>(null);
+//   const isInView = useInView(ref, { once: true, amount: 0.1 });
+//   const [isPlaying, setIsPlaying] = useState(false);
+//   const [isHovering, setIsHovering] = useState(false);
+//   const [isExpanded, setIsExpanded] = useState(false);
+
+//   const handlePlay = () => {
+//     setIsPlaying(true);
+//   };
+
+//   return (
+//     <motion.div className="w-full   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 ease-in-out 
+//     "
+//       onHoverStart={(e) =>setIsExpanded(true)}
+
+//       ref={ref}
+
+//       initial={{ opacity: 0, y: 200 }}
+//       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
+//       transition={{
+//         duration: 0.5,
+//         delay: 1,
+//         ease: "linear"
+//       }}
+//     >
+//       {/* Iframe */}
+
+//       <motion.iframe
+//         className=" h-full rounded-2xl  "
+//         src={`${videoUrl}${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
+//         title="Video Player"
+//         frameBorder="0"
+//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//         allowFullScreen
+//         initial={{ width: "90%" }}
+//         animate={{ width: isExpanded ? "100%" : "90%" }}
+//         transition={{
+//           duration: 0.6,
+//           ease: "easeInOut"
+//         }}
+//       />
+
+//       {/* Play Button Overlay */}
+//       {!isPlaying && (
+//         <motion.div
+//           className="absolute inset-0 flex items-center justify-center  cursor-pointer z-20 "
+//           onClick={handlePlay}
+//           onMouseEnter={() => setIsHovering(true)}
+//           onMouseLeave={() => setIsHovering(false)}
+//           initial={{ opacity: 1 }}
+//           animate={{ opacity: 1 }}
+//         >
+//           <motion.div
+//             className="bg-white rounded-full p-6 sm:p-8 shadow-2xl"
+//             animate={{
+//               scale: isHovering ? 1.15 : 1
+//             }}
+//             transition={{
+//               type: "spring",
+//               stiffness: 300,
+//               damping: 20
+//             }}
+//           >
+//             <Play
+//               className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[#AF212B]"
+//               fill="#AF212B"
+
+//             />
+//           </motion.div>
+//         </motion.div>
+//       )}
+//     </motion.div>
+//   );
+// }
+
+// // import { useAnimation, } from "framer-motion";
+// // import { useEffect, } from "react";
+// // import { useParallax } from "@/hooks/paralllelx";
+// // import { useRotateScroll } from "@/hooks/useScrollRotate";
+// // import { WindowSnakeReveal } from "./WindowSnakeReveal";
+
+// // function SnakeReveal() {
+// //   const { ref, y } = useParallax({ speed: 0.2 })
+// //   const controls = useAnimation();
+// //   // const ref = useRef(null);
+// //   const isInView = useInView(ref, { once: true, margin: "-100px" });
+// //   const { ref: ref1, rotate: rotate1 } = useRotateScroll()
+// //   const { ref: ref2, rotate: rotate2 } = useRotateScroll()
+// //   const { ref: ref3, rotate: rotate3 } = useRotateScroll()
+// //   const { ref: ref4, rotate: rotate4 } = useRotateScroll()
+
+// //   //   useEffect(() => {
+// //   //   if (ref.current) {
+// //   //     const parallaxInstance =  SimpleParallax(ref.current);
+
+// //   //   }
+// //   // }, []);
+
+// //   useEffect(() => {
+// //     if (isInView) {
+// //       controls.start("visible");
+// //     }
+// //   }, [isInView, controls]);
+
+// //   return (
+
+
+// //     <motion.div
+// //       ref={ref}
+// //       style={{ y }}
+// //       className="hidden sm:block absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto"
+// //       initial={{ opacity: 0 }}
+// //       animate={isInView ? { opacity: 1 } : {}}
+// //       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+// //     >
+// //       <svg
+// //         width="1440"
+// //         height="396"
+// //         viewBox="0 0 1440 396"
+// //         fill="none"
+// //         xmlns="http://www.w3.org/2000/svg"
+// //         className="w-full h-auto"
+// //       >
+// //         <defs>
+// //           {/* Rectangle mask that expands */}
+// //           <clipPath id="snakeClip">
+// //             <motion.rect
+// //               x="0"
+// //               y="0"
+// //               height="396"
+// //               initial={{ width: 0 }}
+// //               animate={controls}
+// //               variants={{
+// //                 visible: {
+// //                   width: "100%",
+// //                   transition: { duration: 1.5, ease: "easeOut" },
+// //                 },
+// //               }}
+// //             />
+// //           </clipPath>
+// //         </defs>
+
+
+// //         {/* --- the yellow snake --- */}
+// //         <path
+// //           className="z-10"
+// //           d="M1335.5 320.001C1377.41 318.617 1440.5 297.501 1440.5 297.501V381.501C1440.5 381.501 1368.87 395.854 1322.5 395.001C1268.8 394.014 1237.62 389.432 1187 371.501C1145.76 356.893 1124.29 343.681 1087.5 320.001C1042.7 291.166 1022.8 267.759 982 233.501C939.584 197.889 921.721 169.94 874.5 141.001C836.043 117.433 812.359 106.426 769 94.001C726.712 81.8835 701.489 77.7411 657.5 78.001C615.25 78.2507 591.507 83.827 550.5 94.001C508.482 104.426 486.944 116.937 446 131.001C392.332 149.435 363.803 166.197 308 176.501C262.375 184.926 235.659 189.682 189.5 185.001C150.016 180.997 128.111 174.063 91 160.001C53.5974 145.828 0 113.001 0 113.001V16.501C0 16.501 42.6974 50.2284 73.5 66.001C115.823 87.673 142.26 97.5865 189.5 103.001C235.609 108.286 262.492 103.109 308 94.001C356.741 84.2458 381.448 69.032 428.5 53.001C470.291 38.7623 492.571 26.8128 535.5 16.501C582.248 5.27202 609.422 0.0786127 657.5 0.00103905C706.158 -0.0774714 733.901 4.28316 781 16.501C831.12 29.5023 858.987 40.412 904 66.001C946.438 90.1258 966.722 109.484 1004 141.001C1043.86 174.704 1058.71 202.215 1100.5 233.501C1140.28 263.287 1163.85 280.35 1210.5 297.501C1257.05 314.618 1285.93 321.638 1335.5 320.001Z"
+// //           fill="#EFB744"
+// //           clipPath="url(#snakeClip)"
+// //         />
+// //         {/* --- static shapes --- */}
+// //         <motion.path
+// //           d="M280.382 44.8317L290.411 60.852L296.473 43.9034L301.183 44.6186L302.429 62.6769L315.787 50.2075L319.334 53.1062L311.11 70.0638L329.227 66.7457L331.137 70.5759L316.893 81.2249L332.721 87.5055L331.908 91.765L313.33 92.6529L325.533 107.486L322.521 110.906L306.257 102.031L309.102 120.5L304.803 122.545L295.724 106.837L289.174 123.712L284.464 122.997L283.705 105.013L269.398 117.169L266.225 113.99L274.749 97.2468L256.096 100.82L254.722 96.7346L270.454 86.1428L252.977 79.7804L253.627 75.4962L272.23 74.4435L260.327 59.8243L263.151 56.5444L279.603 65.2798L276.458 46.596L280.382 44.8317Z"
+// //           fill="#BA8C2D"
+// //           ref={ref1}
+// //           style={{ rotate: rotate1 }}
+// //         />
+// //         <motion.path
+// //           d="M219.073 74.8789L225.843 85.6927L229.935 74.2524L233.114 74.7351L233.955 86.9245L242.972 78.5076L245.366 80.4643L239.815 91.9106L252.044 89.6709L253.333 92.2563L243.718 99.4444L254.402 103.684L253.853 106.559L241.313 107.158L249.55 117.171L247.518 119.479L236.539 113.488L238.459 125.955L235.558 127.335L229.429 116.733L225.008 128.123L221.829 127.64L221.317 115.501L211.659 123.707L209.518 121.561L215.271 110.259L202.68 112.671L201.753 109.913L212.372 102.764L200.575 98.4694L201.014 95.5775L213.571 94.867L205.536 84.999L207.442 82.7851L218.548 88.6814L216.425 76.0699L219.073 74.8789Z"
+// //           fill="#1CB377"
+// //           ref={ref2}
+// //           style={{ rotate: rotate2 }}
+// //         />
+
+
+// //         <motion.path
+// //           d="M1003.25 81.7083L1013.26 93.3542L1016.06 79H1019.94L1023.14 93.3542L1032.35 81.7083L1035.55 83.6042L1031.01 98.2292L1045.16 93.3542L1047.16 96.1979L1037.02 106.49L1050.5 109.604L1050.37 113.125L1035.55 116.104L1047.16 126.531L1045.16 129.646L1031.01 124.5L1035.55 138.99L1032.35 141.156L1023.14 129.646L1019.94 144H1016.06L1013.26 129.646L1003.25 141.156L1000.32 138.99L1005.12 124.5L990.572 129.646L988.97 126.531L1000.32 116.104L985.5 113.125V109.604L1000.32 106.49L988.97 96.1979L990.839 93.2188L1005.12 98.2292L1000.32 83.6042L1003.25 81.7083Z"
+// //           fill="#0B5399"
+// //           ref={ref3}
+// //           style={{ rotate: rotate3 }}
+// //         />
+// //         <motion.path
+// //           d="M1400.35 249.333L1412.67 263.667L1416.12 246H1420.88L1424.82 263.667L1436.16 249.333L1440.1 251.667L1434.52 269.667L1451.93 263.667L1454.39 267.167L1441.91 279.833L1458.5 283.667L1458.34 288L1440.1 291.667L1454.39 304.5L1451.93 308.333L1434.52 302L1440.1 319.833L1436.16 322.5L1424.82 308.333L1420.88 326H1416.12L1412.67 308.333L1400.35 322.5L1396.73 319.833L1402.65 302L1384.74 308.333L1382.77 304.5L1396.73 291.667L1378.5 288V283.667L1396.73 279.833L1382.77 267.167L1385.07 263.5L1402.65 269.667L1396.73 251.667L1400.35 249.333Z"
+// //           fill="#293464"
+// //           ref={ref4}
+// //           style={{ rotate: rotate4 }}
+// //         />
+// //       </svg>
+// //     </motion.div>
+// //   );
+// // }
+// // function MobileVersionSnakeReveal() {
+// //   const controls = useAnimation();
+// //   const ref = useRef(null);
+// //   const isInView = useInView(ref, { once: true, margin: "-100px" });
+// //   const { ref: mobref1, rotate: mobrotate1 } = useRotateScroll()
+// //   const { ref: mobref2, rotate: mobrotate2 } = useRotateScroll()
+// //   const { ref: mobref3, rotate: mobrotate3 } = useRotateScroll()
+// //   const { ref: mobref4, rotate: mobrotate4 } = useRotateScroll()
+
+
+// //   useEffect(() => {
+// //     if (isInView) {
+// //       controls.start("visible");
+// //     }
+// //   }, [isInView, controls]);
+
+// //   return (
+// //     <motion.div
+// //       ref={ref}
+// //       className="block sm:hidden w-full h-auto -mt-8 mb-4 absolute top-[300px]"
+// //       initial={{ opacity: 0 }}
+// //       animate={isInView ? { opacity: 1 } : {}}
+// //       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+// //     >
+// //       <svg
+// //         width="375" height="188"
+// //         viewBox="0 0 375 188"
+// //         fill="none"
+// //         xmlns="http://www.w3.org/2000/svg"
+// //         className="w-full h-auto"
+// //       >
+// //         <defs>
+// //           {/* Rectangle mask that expands */}
+// //           <clipPath id="MobilesnakeClip">
+// //             <motion.rect
+// //               x="0"
+// //               y="0"
+// //               height="188"
+// //               initial={{ width: 0 }}
+// //               animate={controls}
+// //               variants={{
+// //                 visible: {
+// //                   width: "100%",
+// //                   transition: { duration: 1.5, ease: "easeOut" },
+// //                 },
+// //               }}
+// //             />
+// //           </clipPath>
+// //         </defs>
+
+
+// //         <path d="M-26 145.5C-26 145.5 164 20.3053 244.5 116.298C325 212.29 497 79 497 79" stroke="#FED543" strokeWidth="32" clipPath="url(#MobilesnakeClip)" />
+// //         <motion.path d="M225.695 24.3284L231.726 31.0486L233.415 22.7656H235.747L237.677 31.0486L243.225 24.3284L245.155 25.4224L242.421 33.8616L250.945 31.0486L252.151 32.6895L246.039 38.6283L254.161 40.4255L254.081 42.4572L245.155 44.1763L252.151 50.1931L250.945 51.9904L242.421 49.021L245.155 57.3821L243.225 58.6324L237.677 51.9904L235.747 60.2733H233.415L231.726 51.9904L225.695 58.6324L223.926 57.3821L226.821 49.021L218.056 51.9904L217.091 50.1931L223.926 44.1763L215 42.4572V40.4255L223.926 38.6283L217.091 32.6895L218.217 30.9704L226.821 33.8616L223.926 25.4224L225.695 24.3284Z" fill="#AF212B"
+// //           ref={mobref1}
+// //           style={{ rotate: mobrotate1 }}
+
+
+// //         />
+
+// //         <motion.path d="M289.47 4.41667L306.514 23.4083L311.287 0H317.877L323.331 23.4083L339.012 4.41667L344.466 7.50833L336.739 31.3583L360.828 23.4083L364.237 28.0458L346.965 44.8292L369.918 49.9083L369.691 55.65L344.466 60.5083L364.237 77.5125L360.828 82.5917L336.739 74.2L344.466 97.8292L339.012 101.363L323.331 82.5917L317.877 106H311.287L306.514 82.5917L289.47 101.363L284.471 97.8292L292.652 74.2L267.881 82.5917L265.154 77.5125L284.471 60.5083L259.246 55.65V49.9083L284.471 44.8292L265.154 28.0458L268.336 23.1875L292.652 31.3583L284.471 7.50833L289.47 4.41667Z" fill="#0B5399"
+// //           ref={mobref2}
+// //           style={{ rotate: mobrotate2 }}
+// //         />
+
+// //         <motion.path d="M115.74 118.47L124.454 131.803L129.722 117.697L133.814 118.293L134.897 133.321L146.504 122.944L149.586 125.356L142.44 139.469L158.182 136.707L159.842 139.895L147.465 148.757L161.218 153.984L160.511 157.529L144.369 158.268L154.972 170.613L152.355 173.459L138.223 166.073L140.695 181.444L136.96 183.145L129.071 170.073L123.379 184.116L119.287 183.521L118.628 168.554L106.196 178.671L103.439 176.026L110.846 162.091L94.6375 165.065L93.4441 161.665L107.113 152.85L91.9272 147.555L92.4925 143.99L108.657 143.114L98.3138 130.947L100.768 128.218L115.063 135.487L112.331 119.938L115.74 118.47Z" fill="#BA8C2D"
+// //           ref={mobref3}
+// //           style={{ rotate: mobrotate3 }}
+// //         />
+
+// //         <motion.path d="M62.4196 143.518L68.3018 152.517L71.8576 142.996L74.62 143.398L75.3507 153.542L83.1853 146.538L85.266 148.166L80.4425 157.692L91.0679 155.828L92.1886 157.98L83.8339 163.962L93.1172 167.49L92.6404 169.883L81.7442 170.382L88.9015 178.714L87.1352 180.635L77.5957 175.65L79.2643 186.025L76.7433 187.174L71.418 178.35L67.5764 187.829L64.814 187.427L64.3691 177.325L55.9776 184.154L54.1167 182.368L59.1161 172.962L48.1756 174.97L47.37 172.674L56.5967 166.724L46.3461 163.15L46.7277 160.744L57.6386 160.152L50.6571 151.94L52.3135 150.097L61.9629 155.005L60.1185 144.509L62.4196 143.518Z" fill="#1CB377"
+// //           ref={mobref4}
+// //           style={{ rotate: mobrotate4 }}
+// //         />
+// //       </svg>
+// //     </motion.div>
+// //   );
+// // }
+
+
+
+// export default function HeroSection() {
+//   const logoRef = useRef<HTMLDivElement>(null);
+//   const isInView = useInView(logoRef, { once: true, amount: 0.1 });
+//   return (
+//     <>
+//       <div className="flex flex-col overflow-hidden "
+
+//       >
+//         {/* Logo Section */}
+//         <div id="logo-section" className="justify-center flex items-center flex-col gap-10 mb-20">
+//           <motion.div
+//             ref={logoRef}
+//             initial={{ opacity: 0, scale: 0.9 }}
+//             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+//             transition={{
+//               duration: 0.5,
+//               delay: 1,
+//               ease: "easeOut"
+//             }}
+//             className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]   ">
+//             <Image
+//               src="/HeroSection/logo.svg"
+//               width={610.59}
+//               height={329}
+//               alt="Company Logo"
+//               className="w-full h-auto object-contain"
+//               priority
+//             />
+//           </motion.div>
+//         </div>
+//         <WindowSnakeReveal />
+//         <MobileSnakeReveal />
+//         <VideoSection />
+//       </div>
+
+//     </>
+
+//   )
+// }
 "use client"
 import Image from "next/image"
 import { useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useScroll, useTransform } from "framer-motion";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import { MobileSnakeReveal } from "./MobileSnakeReveal";
 import { WindowSnakeReveal } from "./WindowSnakeReveal";
+
 const videoUrl = "https://www.youtube.com/embed/GLMMMiwImrQ?si=mHybvQ3szpm0KBGuQ"
+
 const VideoSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Track scroll progress from when video element enters until it leaves the top
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"] 
+  });
+
+  // Transform scroll progress to width values
+  // Expands from 90% to 100% as you scroll down (0 to 0.5)
+  // Stays at 100% in the middle range (0.5 to 0.5)
+  // Shrinks back to 90% when scrolling back up (0.5 to 0)
+  const width = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["80%", "100%", "100%"]
+  );
 
   const handlePlay = () => {
     setIsPlaying(true);
   };
 
   return (
-    <motion.div className="w-full   rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 ease-in-out 
-    "
-      onHoverStart={(e) =>setIsExpanded(true)}
-
+    <motion.div 
+      className="w-full rounded-2xl m-auto flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] lg:h-[657px] overflow-hidden relative z-10 mb-10 ease-in-out"
       ref={ref}
-
       initial={{ opacity: 0, y: 200 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
       transition={{
@@ -35,26 +361,20 @@ const VideoSection = () => {
       }}
     >
       {/* Iframe */}
-
       <motion.iframe
-        className=" h-full rounded-2xl  "
+        className="h-full rounded-2xl"
         src={`${videoUrl}${isPlaying ? '?autoplay=1&mute=1' : '?mute=1'}`}
         title="Video Player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        initial={{ width: "90%" }}
-        animate={{ width: isExpanded ? "100%" : "90%" }}
-        transition={{
-          duration: 0.6,
-          ease: "easeInOut"
-        }}
+        style={{ width }}
       />
 
       {/* Play Button Overlay */}
       {!isPlaying && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center  cursor-pointer z-20 "
+          className="absolute inset-0 flex items-center justify-center cursor-pointer z-20"
           onClick={handlePlay}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -73,9 +393,8 @@ const VideoSection = () => {
             }}
           >
             <Play
-              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16  overflow-hidden text-[#AF212B]"
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 overflow-hidden text-[#AF212B]"
               fill="#AF212B"
-
             />
           </motion.div>
         </motion.div>
@@ -84,200 +403,13 @@ const VideoSection = () => {
   );
 }
 
-// import { useAnimation, } from "framer-motion";
-// import { useEffect, } from "react";
-// import { useParallax } from "@/hooks/paralllelx";
-// import { useRotateScroll } from "@/hooks/useScrollRotate";
-// import { WindowSnakeReveal } from "./WindowSnakeReveal";
-
-// function SnakeReveal() {
-//   const { ref, y } = useParallax({ speed: 0.2 })
-//   const controls = useAnimation();
-//   // const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const { ref: ref1, rotate: rotate1 } = useRotateScroll()
-//   const { ref: ref2, rotate: rotate2 } = useRotateScroll()
-//   const { ref: ref3, rotate: rotate3 } = useRotateScroll()
-//   const { ref: ref4, rotate: rotate4 } = useRotateScroll()
-
-//   //   useEffect(() => {
-//   //   if (ref.current) {
-//   //     const parallaxInstance =  SimpleParallax(ref.current);
-
-//   //   }
-//   // }, []);
-
-//   useEffect(() => {
-//     if (isInView) {
-//       controls.start("visible");
-//     }
-//   }, [isInView, controls]);
-
-//   return (
-
-
-//     <motion.div
-//       ref={ref}
-//       style={{ y }}
-//       className="hidden sm:block absolute top-[200px] sm:top-[250px] md:top-[280px] lg:top-[321px] -z-10 left-0 w-full h-auto"
-//       initial={{ opacity: 0 }}
-//       animate={isInView ? { opacity: 1 } : {}}
-//       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-//     >
-//       <svg
-//         width="1440"
-//         height="396"
-//         viewBox="0 0 1440 396"
-//         fill="none"
-//         xmlns="http://www.w3.org/2000/svg"
-//         className="w-full h-auto"
-//       >
-//         <defs>
-//           {/* Rectangle mask that expands */}
-//           <clipPath id="snakeClip">
-//             <motion.rect
-//               x="0"
-//               y="0"
-//               height="396"
-//               initial={{ width: 0 }}
-//               animate={controls}
-//               variants={{
-//                 visible: {
-//                   width: "100%",
-//                   transition: { duration: 1.5, ease: "easeOut" },
-//                 },
-//               }}
-//             />
-//           </clipPath>
-//         </defs>
-
-
-//         {/* --- the yellow snake --- */}
-//         <path
-//           className="z-10"
-//           d="M1335.5 320.001C1377.41 318.617 1440.5 297.501 1440.5 297.501V381.501C1440.5 381.501 1368.87 395.854 1322.5 395.001C1268.8 394.014 1237.62 389.432 1187 371.501C1145.76 356.893 1124.29 343.681 1087.5 320.001C1042.7 291.166 1022.8 267.759 982 233.501C939.584 197.889 921.721 169.94 874.5 141.001C836.043 117.433 812.359 106.426 769 94.001C726.712 81.8835 701.489 77.7411 657.5 78.001C615.25 78.2507 591.507 83.827 550.5 94.001C508.482 104.426 486.944 116.937 446 131.001C392.332 149.435 363.803 166.197 308 176.501C262.375 184.926 235.659 189.682 189.5 185.001C150.016 180.997 128.111 174.063 91 160.001C53.5974 145.828 0 113.001 0 113.001V16.501C0 16.501 42.6974 50.2284 73.5 66.001C115.823 87.673 142.26 97.5865 189.5 103.001C235.609 108.286 262.492 103.109 308 94.001C356.741 84.2458 381.448 69.032 428.5 53.001C470.291 38.7623 492.571 26.8128 535.5 16.501C582.248 5.27202 609.422 0.0786127 657.5 0.00103905C706.158 -0.0774714 733.901 4.28316 781 16.501C831.12 29.5023 858.987 40.412 904 66.001C946.438 90.1258 966.722 109.484 1004 141.001C1043.86 174.704 1058.71 202.215 1100.5 233.501C1140.28 263.287 1163.85 280.35 1210.5 297.501C1257.05 314.618 1285.93 321.638 1335.5 320.001Z"
-//           fill="#EFB744"
-//           clipPath="url(#snakeClip)"
-//         />
-//         {/* --- static shapes --- */}
-//         <motion.path
-//           d="M280.382 44.8317L290.411 60.852L296.473 43.9034L301.183 44.6186L302.429 62.6769L315.787 50.2075L319.334 53.1062L311.11 70.0638L329.227 66.7457L331.137 70.5759L316.893 81.2249L332.721 87.5055L331.908 91.765L313.33 92.6529L325.533 107.486L322.521 110.906L306.257 102.031L309.102 120.5L304.803 122.545L295.724 106.837L289.174 123.712L284.464 122.997L283.705 105.013L269.398 117.169L266.225 113.99L274.749 97.2468L256.096 100.82L254.722 96.7346L270.454 86.1428L252.977 79.7804L253.627 75.4962L272.23 74.4435L260.327 59.8243L263.151 56.5444L279.603 65.2798L276.458 46.596L280.382 44.8317Z"
-//           fill="#BA8C2D"
-//           ref={ref1}
-//           style={{ rotate: rotate1 }}
-//         />
-//         <motion.path
-//           d="M219.073 74.8789L225.843 85.6927L229.935 74.2524L233.114 74.7351L233.955 86.9245L242.972 78.5076L245.366 80.4643L239.815 91.9106L252.044 89.6709L253.333 92.2563L243.718 99.4444L254.402 103.684L253.853 106.559L241.313 107.158L249.55 117.171L247.518 119.479L236.539 113.488L238.459 125.955L235.558 127.335L229.429 116.733L225.008 128.123L221.829 127.64L221.317 115.501L211.659 123.707L209.518 121.561L215.271 110.259L202.68 112.671L201.753 109.913L212.372 102.764L200.575 98.4694L201.014 95.5775L213.571 94.867L205.536 84.999L207.442 82.7851L218.548 88.6814L216.425 76.0699L219.073 74.8789Z"
-//           fill="#1CB377"
-//           ref={ref2}
-//           style={{ rotate: rotate2 }}
-//         />
-
-
-//         <motion.path
-//           d="M1003.25 81.7083L1013.26 93.3542L1016.06 79H1019.94L1023.14 93.3542L1032.35 81.7083L1035.55 83.6042L1031.01 98.2292L1045.16 93.3542L1047.16 96.1979L1037.02 106.49L1050.5 109.604L1050.37 113.125L1035.55 116.104L1047.16 126.531L1045.16 129.646L1031.01 124.5L1035.55 138.99L1032.35 141.156L1023.14 129.646L1019.94 144H1016.06L1013.26 129.646L1003.25 141.156L1000.32 138.99L1005.12 124.5L990.572 129.646L988.97 126.531L1000.32 116.104L985.5 113.125V109.604L1000.32 106.49L988.97 96.1979L990.839 93.2188L1005.12 98.2292L1000.32 83.6042L1003.25 81.7083Z"
-//           fill="#0B5399"
-//           ref={ref3}
-//           style={{ rotate: rotate3 }}
-//         />
-//         <motion.path
-//           d="M1400.35 249.333L1412.67 263.667L1416.12 246H1420.88L1424.82 263.667L1436.16 249.333L1440.1 251.667L1434.52 269.667L1451.93 263.667L1454.39 267.167L1441.91 279.833L1458.5 283.667L1458.34 288L1440.1 291.667L1454.39 304.5L1451.93 308.333L1434.52 302L1440.1 319.833L1436.16 322.5L1424.82 308.333L1420.88 326H1416.12L1412.67 308.333L1400.35 322.5L1396.73 319.833L1402.65 302L1384.74 308.333L1382.77 304.5L1396.73 291.667L1378.5 288V283.667L1396.73 279.833L1382.77 267.167L1385.07 263.5L1402.65 269.667L1396.73 251.667L1400.35 249.333Z"
-//           fill="#293464"
-//           ref={ref4}
-//           style={{ rotate: rotate4 }}
-//         />
-//       </svg>
-//     </motion.div>
-//   );
-// }
-// function MobileVersionSnakeReveal() {
-//   const controls = useAnimation();
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const { ref: mobref1, rotate: mobrotate1 } = useRotateScroll()
-//   const { ref: mobref2, rotate: mobrotate2 } = useRotateScroll()
-//   const { ref: mobref3, rotate: mobrotate3 } = useRotateScroll()
-//   const { ref: mobref4, rotate: mobrotate4 } = useRotateScroll()
-
-
-//   useEffect(() => {
-//     if (isInView) {
-//       controls.start("visible");
-//     }
-//   }, [isInView, controls]);
-
-//   return (
-//     <motion.div
-//       ref={ref}
-//       className="block sm:hidden w-full h-auto -mt-8 mb-4 absolute top-[300px]"
-//       initial={{ opacity: 0 }}
-//       animate={isInView ? { opacity: 1 } : {}}
-//       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-//     >
-//       <svg
-//         width="375" height="188"
-//         viewBox="0 0 375 188"
-//         fill="none"
-//         xmlns="http://www.w3.org/2000/svg"
-//         className="w-full h-auto"
-//       >
-//         <defs>
-//           {/* Rectangle mask that expands */}
-//           <clipPath id="MobilesnakeClip">
-//             <motion.rect
-//               x="0"
-//               y="0"
-//               height="188"
-//               initial={{ width: 0 }}
-//               animate={controls}
-//               variants={{
-//                 visible: {
-//                   width: "100%",
-//                   transition: { duration: 1.5, ease: "easeOut" },
-//                 },
-//               }}
-//             />
-//           </clipPath>
-//         </defs>
-
-
-//         <path d="M-26 145.5C-26 145.5 164 20.3053 244.5 116.298C325 212.29 497 79 497 79" stroke="#FED543" strokeWidth="32" clipPath="url(#MobilesnakeClip)" />
-//         <motion.path d="M225.695 24.3284L231.726 31.0486L233.415 22.7656H235.747L237.677 31.0486L243.225 24.3284L245.155 25.4224L242.421 33.8616L250.945 31.0486L252.151 32.6895L246.039 38.6283L254.161 40.4255L254.081 42.4572L245.155 44.1763L252.151 50.1931L250.945 51.9904L242.421 49.021L245.155 57.3821L243.225 58.6324L237.677 51.9904L235.747 60.2733H233.415L231.726 51.9904L225.695 58.6324L223.926 57.3821L226.821 49.021L218.056 51.9904L217.091 50.1931L223.926 44.1763L215 42.4572V40.4255L223.926 38.6283L217.091 32.6895L218.217 30.9704L226.821 33.8616L223.926 25.4224L225.695 24.3284Z" fill="#AF212B"
-//           ref={mobref1}
-//           style={{ rotate: mobrotate1 }}
-
-
-//         />
-
-//         <motion.path d="M289.47 4.41667L306.514 23.4083L311.287 0H317.877L323.331 23.4083L339.012 4.41667L344.466 7.50833L336.739 31.3583L360.828 23.4083L364.237 28.0458L346.965 44.8292L369.918 49.9083L369.691 55.65L344.466 60.5083L364.237 77.5125L360.828 82.5917L336.739 74.2L344.466 97.8292L339.012 101.363L323.331 82.5917L317.877 106H311.287L306.514 82.5917L289.47 101.363L284.471 97.8292L292.652 74.2L267.881 82.5917L265.154 77.5125L284.471 60.5083L259.246 55.65V49.9083L284.471 44.8292L265.154 28.0458L268.336 23.1875L292.652 31.3583L284.471 7.50833L289.47 4.41667Z" fill="#0B5399"
-//           ref={mobref2}
-//           style={{ rotate: mobrotate2 }}
-//         />
-
-//         <motion.path d="M115.74 118.47L124.454 131.803L129.722 117.697L133.814 118.293L134.897 133.321L146.504 122.944L149.586 125.356L142.44 139.469L158.182 136.707L159.842 139.895L147.465 148.757L161.218 153.984L160.511 157.529L144.369 158.268L154.972 170.613L152.355 173.459L138.223 166.073L140.695 181.444L136.96 183.145L129.071 170.073L123.379 184.116L119.287 183.521L118.628 168.554L106.196 178.671L103.439 176.026L110.846 162.091L94.6375 165.065L93.4441 161.665L107.113 152.85L91.9272 147.555L92.4925 143.99L108.657 143.114L98.3138 130.947L100.768 128.218L115.063 135.487L112.331 119.938L115.74 118.47Z" fill="#BA8C2D"
-//           ref={mobref3}
-//           style={{ rotate: mobrotate3 }}
-//         />
-
-//         <motion.path d="M62.4196 143.518L68.3018 152.517L71.8576 142.996L74.62 143.398L75.3507 153.542L83.1853 146.538L85.266 148.166L80.4425 157.692L91.0679 155.828L92.1886 157.98L83.8339 163.962L93.1172 167.49L92.6404 169.883L81.7442 170.382L88.9015 178.714L87.1352 180.635L77.5957 175.65L79.2643 186.025L76.7433 187.174L71.418 178.35L67.5764 187.829L64.814 187.427L64.3691 177.325L55.9776 184.154L54.1167 182.368L59.1161 172.962L48.1756 174.97L47.37 172.674L56.5967 166.724L46.3461 163.15L46.7277 160.744L57.6386 160.152L50.6571 151.94L52.3135 150.097L61.9629 155.005L60.1185 144.509L62.4196 143.518Z" fill="#1CB377"
-//           ref={mobref4}
-//           style={{ rotate: mobrotate4 }}
-//         />
-//       </svg>
-//     </motion.div>
-//   );
-// }
-
-
-
 export default function HeroSection() {
   const logoRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(logoRef, { once: true, amount: 0.1 });
+  
   return (
     <>
-      <div className="flex flex-col overflow-hidden "
-
-      >
+      <div className="flex flex-col overflow-hidden">
         {/* Logo Section */}
         <div id="logo-section" className="justify-center flex items-center flex-col gap-10 mb-20">
           <motion.div
@@ -289,7 +421,7 @@ export default function HeroSection() {
               delay: 1,
               ease: "easeOut"
             }}
-            className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]   ">
+            className="w-[364px] sm:w-full md:max-w-[350px] lg:max-w-[500px] xl:max-w-[610.59px]">
             <Image
               src="/HeroSection/logo.svg"
               width={610.59}
@@ -304,8 +436,6 @@ export default function HeroSection() {
         <MobileSnakeReveal />
         <VideoSection />
       </div>
-
     </>
-
   )
 }
